@@ -18,6 +18,7 @@ content/              ← ★ 여기만 고치면 됩니다
   news.yml            최근 소식
   people.yml          지도 학생, 협력 기관
   honors.yml          수상, 초청강연, 학술봉사, 언론, 툴박스
+  gallery.yml         사진 갤러리 (학회·현장·연구실·일상)
 assets/
   img/                사진·그림 (profile-portrait.jpg, profile.jpg 등)
   video/              hero-loop.mp4 (첫 화면 배경), research-overview.mp4 (2½분 소개 영상), ai-lsm.mp4
@@ -126,6 +127,46 @@ python -m http.server 8000
 **연구 주제 그림 바꾸기** — `content/research.yml` 의 `media: src:` 경로, 추가 그림은 `gallery:` 에. 영상이면 `type: video`.
 
 **Google Scholar / ORCID 버튼** — `content/profile.yml` → `links:` 아래 주석(`#`)을 지우고 주소 입력.
+
+---
+
+## 2-1. 사진 갤러리 (Gallery) 📷
+
+학회·현장·연구실·일상 사진은 **Gallery** 섹션(어두운 배경, 카테고리 필터, 크게 보기/좌우 넘기기)에 나옵니다.
+내용은 `content/gallery.yml`, 사진 파일은 `assets/img/gallery/` 에 있습니다. 사진이 하나도 없으면 섹션과 메뉴가 자동으로 숨겨집니다.
+
+### 방법 A — 자동 (추천, 내 컴퓨터에서)
+1. `ResearchWebsite/photo_inbox/` 안의 카테고리 폴더에 사진을 넣습니다.
+   `Conferences` · `Fieldwork` · `Lab & Team` · `Everyday` (새 폴더를 만들면 새 카테고리가 됩니다)
+2. `site` 폴더에서 터미널(Anaconda Prompt 등)을 열고 실행:
+   ```bash
+   python tools/add_photos.py
+   # 장소를 한꺼번에 지정:  python tools/add_photos.py --place "New Orleans, LA"
+   ```
+   - 휴대폰 사진 회전 보정, 긴 변 1800px로 축소(보통 200~400 KB)
+   - **EXIF 정보(촬영 위치 GPS 포함)를 지우고 저장** → 개인정보 보호
+   - 촬영 날짜를 읽어 `gallery.yml` 에 자동 추가 (최신순 정렬)
+   - 처리된 원본은 `photo_inbox/_done/` 으로 이동 (원본은 웹에 올라가지 않음)
+3. `content/gallery.yml` 맨 아래 새 항목의 `title`, `caption`, `place` 를 다듬습니다.
+4. 바뀐 파일(`assets/img/gallery/` 새 사진들 + `content/gallery.yml`)을 GitHub에 올립니다.
+
+### 방법 B — GitHub 웹에서 직접
+1. 사진을 미리 줄여 주세요 (긴 변 1600~2000px, 1 MB 이하 권장). ⚠️ 휴대폰 원본은 위치정보가 들어 있으니 방법 A를 권장합니다.
+2. 저장소에서 `assets/img/gallery/` → *Add file → Upload files*
+3. `content/gallery.yml` 의 `photos:` 아래에 추가:
+```yaml
+  - src: "assets/img/gallery/2025-12-agu.jpg"
+    title: "AGU Fall Meeting 2025"
+    caption: "Talk on Harvey & Beryl compound flooding"
+    date: "2025-12"
+    place: "New Orleans, LA"
+    category: "Conferences"
+```
+
+- 카테고리 색/순서: `gallery.yml` 의 `categories:`
+- 처음 보이는 장수: `show: 12` (나머지는 "Show more photos" 버튼)
+- 사진 삭제: `gallery.yml` 에서 해당 항목을 지우고, 원하면 사진 파일도 삭제
+- 💡 다른 사람이 나온 사진은 공개 전에 동의를 받는 것이 좋습니다.
 
 ---
 
