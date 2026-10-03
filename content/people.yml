@@ -1,45 +1,135 @@
 # =====================================================================
-#  people.yml  —  지도/멘토링 학생, 협력 기관
-#  current: true 이면 'Current', false 이면 'Alumni'
+#  people.yml  —  Team 섹션: PI 소개 + 그룹별 학생/연구자 + 협력 기관
+#
+#  ▸ groups: 그룹을 원하는 만큼 만들 수 있습니다 (제목·색·설명 자유)
+#  ▸ 사람 항목:
+#      name: 이름        role: 소속/과정        topic: 연구 주제
+#      years: "2024–present"   with: "공동지도 교수" (선택)
+#      current: false  → 'Alumni' 표시 (생략하면 현재 멤버)
+#      photo: "assets/img/team/이름.jpg" (선택, 없으면 이니셜 원)
+#      url: 개인 페이지/LinkedIn (선택)
+#  ▸ 들여쓰기는 스페이스 2칸, 문장은 "따옴표"로.
 # =====================================================================
+
+# ---------------- Principal Investigator
+pi:
+  name: "Wonhyun Lee, Ph.D."
+  role: "Principal Investigator"
+  photo: "assets/img/profile-portrait.jpg"
+  positions:
+    - "Research Assistant Professor"
+    - "Bureau of Economic Geology, Jackson School of Geosciences, The University of Texas at Austin"
+  bio: "I lead research on **compound flooding** — coupling physics-based coastal and hydrologic models, large probabilistic ensembles and physics-aware AI to predict where, how deep and how soon floods arrive, and to support adaptation in Texas and Gulf communities."
+  background:
+    - years: "2022–now"
+      title: "Research Assistant Professor (PI)"
+      org: "Bureau of Economic Geology, UT Austin"
+    - years: "2018–2021"
+      title: "NRC Postdoctoral Fellow"
+      org: "U.S. Naval Research Laboratory, Stennis Space Center"
+    - years: "2018"
+      title: "Ph.D., Civil Engineering"
+      org: "Texas A&M University"
+    - years: "2012 · 2010"
+      title: "M.E. · B.S., Civil Engineering"
+      org: "Seoul National University of Science & Technology"
+  links:
+    - label: "Email"
+      url: "mailto:wonhyun.lee@beg.utexas.edu"
+      icon: "mail"
+    - label: "CV"
+      url: "assets/cv/Wonhyun_Lee_CV.pdf"
+      icon: "doc"
+    - label: "BEG profile"
+      url: "https://www.beg.utexas.edu/people/wonhyun-lee"
+      icon: "uni"
 
 mentoring_intro: "I enjoy helping students turn models into insight — from setting up their first SFINCS domain to publishing their first paper."
 
-Co-Advising:
-  - name: "Hyunje Yang"
-    role: "Ph.D. student, UT Austin CAEE"
-    topic: "Physics-informed deep learning for compound flooding; storm surge & tsunami"
-    current: true
+# ---------------- Students & researchers
+groups:
+  - title: "Co-Advising"
+    color: "#a78bfa"
+    note: "Ph.D. research co-advised with UT Austin faculty."
+    members:
+      - name: "Hyunje Yang"
+        role: "Ph.D. student, UT Austin CAEE"
+        topic: "Physics-informed deep learning for compound flooding; storm surge & tsunami"
+        years: "2024–present"
+        with: "Dr. Jun-Whan Lee"
 
-Techincal Advising:
-  - name: "M. Enayet Chowdhury"
-    role: "Ph.D. student, UT Austin CAEE"
-    topic: "Storm surge & compound-flood driver attribution"
-    current: true
-  - name: "Armando Ulises Santos Cruz"
-    role: "Ph.D. student, UT Austin CAEE"
-    topic: "Pyflood — high-resolution coastal flood mapping"
-    current: true
-  - name: "Philip M. Souza"
-    role: "Postdoc, UT Marine Science Institute"
-    topic: "Salinity–temperature modeling of fish spawning habitat"
-    current: true
-  - name: "Aaron Murai"
-    role: "M.S. student, Texas A&M"
-    topic: "Coupled hydrodynamic–wave hurricane surge prediction"
-    current: true
-  - name: "Javad Teymoori"
-    role: "Ph.D., UT Arlington"
-    topic: "SFINCS model setup and HPC workflows"
-    current: false
-  - name: "Mark K. Wang"
-    role: "Ph.D. student, UT Austin Jackson School"
-    topic: "SFINCS modeling in Texas"
-    current: false
-  
-  
+  - title: "Technical Advising"
+    color: "#2dd4bf"
+    note: "Hands-on guidance on modeling, HPC and analysis for students and early-career researchers."
+    members:
+      - name: "M. Enayet Chowdhury"
+        role: "Ph.D. student, UT Austin CAEE"
+        topic: "Storm surge & compound-flood driver attribution"
+        years: "2024–present"
+      - name: "Armando Ulises Santos Cruz"
+        role: "Ph.D. student, UT Austin CAEE"
+        topic: "Pyflood — high-resolution coastal flood mapping"
+        years: "2024–present"
+      - name: "Philip M. Souza"
+        role: "Postdoc, UT Marine Science Institute"
+        topic: "Salinity–temperature modeling of fish spawning habitat"
+        years: "2024–present"
+      - name: "Aaron Murai"
+        role: "M.S. student, Texas A&M"
+        topic: "Coupled hydrodynamic–wave hurricane surge prediction"
+        years: "2025–present"
+      - name: "Javad Teymoori"
+        role: "Ph.D., UT Arlington"
+        topic: "SFINCS model setup and HPC workflows"
+        years: "2025–2026"
+        current: false
+      - name: "Mark K. Wang"
+        role: "Ph.D. student, UT Austin Jackson School"
+        topic: "SFINCS modeling in Texas"
+        years: "2025"
+        current: false
 
-# 협력 기관 (이름만 바꾸거나 추가하면 됩니다)
+  - title: "Mentees"
+    color: "#fb923c"
+    note: "Students I mentored on modeling projects at UT Austin, Texas A&M and abroad."
+    members:
+      - name: "William S. Bailey"
+        role: "Ph.D. student, UT Austin Jackson School"
+        topic: "Delft3D-FM morphodynamics, sediment & microplastic transport"
+        years: "2025"
+        current: false
+      - name: "Xuan Ma"
+        role: "Ph.D. student, Texas A&M"
+        topic: "Hydrodynamic–wave coupling"
+        years: "2023–2024"
+        current: false
+      - name: "Arrumi Isnandiahening"
+        role: "M.S. student, STMKG Indonesia"
+        topic: "Hydrodynamic modeling"
+        years: "2023"
+        current: false
+      - name: "Jin Young Kim"
+        role: "Ph.D. student, Texas A&M"
+        topic: "Hydrodynamic–wave coupling and forcing on HPC"
+        years: "2017–2018"
+        current: false
+      - name: "Szu-Ting Lee"
+        role: "M.E. student, Texas A&M"
+        topic: "Hydrodynamic modeling and sensitivity on HPC"
+        years: "2017–2018"
+        current: false
+      - name: "Chi Lu"
+        role: "M.S. student, Texas A&M"
+        topic: "Hydrodynamic & morphodynamic modeling"
+        years: "2015–2016"
+        current: false
+      - name: "Woongsuk Pae"
+        role: "M.S. student, Texas A&M"
+        topic: "Hydrodynamic & morphodynamic modeling on HPC"
+        years: "2015–2016"
+        current: false
+
+# ---------------- 협력 기관 (이름만 바꾸거나 추가하면 됩니다)
 collaborators_intro: "Built together with agencies, labs and industry partners."
 collaborators:
   - group: "Agencies & stakeholders"
