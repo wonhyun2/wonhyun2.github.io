@@ -93,41 +93,41 @@ groups:
     color: "#fb923c"
     note: "Students I mentored on modeling projects at UT Austin, Texas A&M and abroad."
     members:
-      - name: "William S. Bailey"
-        role: "Ph.D. student, UT Austin Jackson School"
-        topic: "Delft3D-FM morphodynamics, sediment & microplastic transport"
-        years: "2025"
-        current: false
-      - name: "Xuan Ma"
-        role: "Ph.D. student, Texas A&M"
-        topic: "Hydrodynamic–wave coupling"
-        years: "2023–2024"
-        current: false
-      - name: "Arrumi Isnandiahening"
-        role: "M.S. student, STMKG Indonesia"
-        topic: "Hydrodynamic modeling"
-        years: "2023"
-        current: false
-      - name: "Jin Young Kim"
-        role: "Ph.D. student, Texas A&M"
-        topic: "Hydrodynamic–wave coupling and forcing on HPC"
-        years: "2017–2018"
-        current: false
-      - name: "Szu-Ting Lee"
-        role: "M.E. student, Texas A&M"
-        topic: "Hydrodynamic modeling and sensitivity on HPC"
-        years: "2017–2018"
-        current: false
-      - name: "Chi Lu"
-        role: "M.S. student, Texas A&M"
-        topic: "Hydrodynamic & morphodynamic modeling"
-        years: "2015–2016"
-        current: false
-      - name: "Woongsuk Pae"
-        role: "M.S. student, Texas A&M"
-        topic: "Hydrodynamic & morphodynamic modeling on HPC"
-        years: "2015–2016"
-        current: false
+      # - name: "William S. Bailey"
+      #   role: "Ph.D. student, UT Austin Jackson School"
+      #   topic: "Delft3D-FM morphodynamics, sediment & microplastic transport"
+      #   years: "2025"
+      #   current: false
+      # - name: "Xuan Ma"
+      #   role: "Ph.D. student, Texas A&M"
+      #   topic: "Hydrodynamic–wave coupling"
+      #   years: "2023–2024"
+      #   current: false
+      # - name: "Arrumi Isnandiahening"
+      #   role: "M.S. student, STMKG Indonesia"
+      #   topic: "Hydrodynamic modeling"
+      #   years: "2023"
+      #   current: false
+      # - name: "Jin Young Kim"
+      #   role: "Ph.D. student, Texas A&M"
+      #   topic: "Hydrodynamic–wave coupling and forcing on HPC"
+      #   years: "2017–2018"
+      #   current: false
+      # - name: "Szu-Ting Lee"
+      #   role: "M.E. student, Texas A&M"
+      #   topic: "Hydrodynamic modeling and sensitivity on HPC"
+      #   years: "2017–2018"
+      #   current: false
+      # - name: "Chi Lu"
+      #   role: "M.S. student, Texas A&M"
+      #   topic: "Hydrodynamic & morphodynamic modeling"
+      #   years: "2015–2016"
+      #   current: false
+      # - name: "Woongsuk Pae"
+      #   role: "M.S. student, Texas A&M"
+      #   topic: "Hydrodynamic & morphodynamic modeling on HPC"
+      #   years: "2015–2016"
+      #   current: false
 
 # ---------------- 협력 기관 (이름만 바꾸거나 추가하면 됩니다)
 collaborators_intro: "Built together with agencies, labs and industry partners."
