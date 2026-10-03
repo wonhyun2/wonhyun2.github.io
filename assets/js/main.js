@@ -261,12 +261,42 @@
   function renderPeople(d) {
     if (!d) return;
     $('#mentoring-intro').innerHTML = md(d.mentoring_intro || '');
-    const pc = Object.values(PILLAR);
-    const ms = list(d.mentees);
-    $('#mentees-current').innerHTML = ms.filter(m => m.current).map((m, i) => `
-      <div class="person reveal"><span class="ini" style="--c:${pc[i % pc.length] || '#38bdf8'}">${esc(initials(m.name))}</span>
-      <div><b>${esc(m.name)}</b><span class="r">${esc(m.role || '')}</span><span class="t">${esc(m.topic || '')}</span></div></div>`).join('');
-    $('#mentees-past').innerHTML = ms.filter(m => !m.current).map(m => `<li><b>${esc(m.name)}</b><span>${esc(m.role || '')} — ${esc(m.topic || '')}</span></li>`).join('');
+    // ---- PI card
+    const pi = d.pi, card = $('#pi-card');
+    if (pi && pi.name) {
+      const btns = list(pi.links).map(l => `<a class="btn btn-out" href="${esc(l.url)}" ${/^https?:/.test(l.url) ? 'target="_blank" rel="noopener"' : ''}>${icon(l.icon)}${esc(l.label)}</a>`).join('');
+      card.innerHTML = `
+        <figure class="pi-photo"><img src="${esc(pi.photo || 'assets/img/profile-portrait.jpg')}" alt="${esc(pi.name)}" loading="lazy"><div class="pillar-bar">${Object.values(PILLAR).map(c => `<span style="--c:${c}"></span>`).join('')}</div></figure>
+        <div class="pi-body">
+          <span class="pi-kicker">${esc(pi.role || 'Principal Investigator')}</span>
+          <h3>${esc(pi.name)}</h3>
+          ${list(pi.positions).map(x => `<p class="pi-pos">${md(x)}</p>`).join('')}
+          ${pi.bio ? `<p class="pi-bio">${md(pi.bio)}</p>` : ''}
+          ${list(pi.background).length ? `<ul class="pi-bg">${list(pi.background).map(b => `<li><span>${esc(b.years || '')}</span><div><b>${esc(b.title || '')}</b>${b.org ? ` — ${esc(b.org)}` : ''}</div></li>`).join('')}</ul>` : ''}
+          ${btns ? `<div class="link-row">${btns}</div>` : ''}
+        </div>`;
+    } else card.remove();
+    // ---- groups (Co-advising / Technical advising / Mentees ...)
+    let groups = list(d.groups);
+    if (!groups.length && list(d.mentees).length) groups = [{ title: 'Mentees', members: d.mentees }];  // old format
+    const pal = Object.values(PILLAR);
+    $('#people-groups').innerHTML = groups.map((g, gi) => {
+      const col = g.color || pal[gi % pal.length] || '#38bdf8';
+      const mem = list(g.members);
+      const cur = mem.filter(m => m.current !== false), past = mem.filter(m => m.current === false);
+      const cardOf = m => `
+        <div class="person reveal ${m.current === false ? 'alum' : ''}" style="--c:${esc(col)}">
+          ${m.photo ? `<img class="ini" src="${esc(m.photo)}" alt="">` : `<span class="ini">${esc(initials(m.name))}</span>`}
+          <div><b>${m.url ? `<a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.name)}</a>` : esc(m.name)}</b>
+          <span class="r">${esc(m.role || '')}</span>
+          ${m.topic ? `<span class="t">${md(m.topic)}</span>` : ''}
+          ${(m.years || m.with || m.current === false) ? `<span class="pmeta">${m.current === false ? '<i>Alumni</i>' : ''}${esc([m.years, m.with ? 'with ' + m.with : ''].filter(Boolean).join(' · '))}</span>` : ''}</div>
+        </div>`;
+      return `<section class="pgroup" style="--c:${esc(col)}">
+        <div class="pgroup-head"><h3><i></i>${esc(g.title || '')}<small>${mem.length}</small></h3>${g.note ? `<p>${md(g.note)}</p>` : ''}</div>
+        <div class="people-grid">${cur.map(cardOf).join('')}${past.map(cardOf).join('')}</div>
+      </section>`;
+    }).join('');
     $('#collab-intro').textContent = d.collaborators_intro || 'Collaborators';
     $('#collabs').innerHTML = list(d.collaborators).map(g => `<div class="collab-group"><h4 class="h4">${esc(g.group)}</h4><div class="collab-chips">${list(g.names).map(n => `<span>${esc(n)}</span>`).join('')}</div></div>`).join('');
   }
