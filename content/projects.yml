@@ -21,7 +21,7 @@ projects:
     color: "#a78bfa"
     text: "Satellite radar measurements of vertical land motion feeding AI-driven compound-flood models and a coastal digital twin."
 
-   - title: "Modeling Surface–Groundwater Interactions during Surge and Compound Flooding"
+  - title: "Modeling Surface–Groundwater Interactions during Surge and Compound Flooding"
     sponsor: "USACE-ERDC Civil Works"
     role: "Lead PI"
     amount: "$1,500,000"
