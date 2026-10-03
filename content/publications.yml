@@ -26,6 +26,7 @@ papers:
     title: "Probabilistic Flash–Flood Inundation under Ensemble Rainfall Uncertainty in the Texas Hill Country"
     venue: "Journal of Hydrology"
     details: "under review"
+    doi: "10.2139/ssrn.7545121"
   - year: 2026
     type: submitted
     authors: "Souza, P.M.J., Lee, W., Bolser, D.G., Souza, C.M. and Brandl, S.J."
@@ -38,12 +39,14 @@ papers:
     title: "Multi-Event Flood Risk Assessment and Adaptation Prioritization in Underserved Border Communities: Colonias in the Lower Rio Grande Valley, Texas"
     venue: "International Journal of Disaster Risk Reduction"
     details: "under review"
+    doi: "10.2139/ssrn.7228030" 
   - year: 2026
     type: submitted
     authors: "Yang, H., Lee, J.W. and Lee, W."
     title: "Where, When, and How Do Physics-Informed Deep Learning Models Improve Hurricane-Induced Compound Flooding Predictions?"
     venue: "Water Resources Research"
     details: "under review"
+    doi: "10.22541/essoar.15005345/v1" 
   - year: 2026
     type: submitted
     authors: "Zhang, Y., Scanlon, B.R., Kyne, D., Stephens, K., Porter, B., Dashtian, H. and Lee, W."
