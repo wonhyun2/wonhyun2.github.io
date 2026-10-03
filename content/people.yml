@@ -82,12 +82,12 @@ groups:
         role: "Ph.D., UT Arlington"
         topic: "SFINCS model setup and HPC workflows"
         years: "2025–2026"
-        current: false
+        # current: false
       - name: "Mark K. Wang"
         role: "Ph.D. student, UT Austin Jackson School"
         topic: "SFINCS modeling in Texas"
         years: "2025"
-        current: false
+        # current: false
 
   - title: "Mentees"
     color: "#fb923c"
