@@ -1,0 +1,109 @@
+# =====================================================================
+#  profile.yml  —  이름, 소개, 연락처, 링크, 핵심 숫자 (사이트 상단/소개)
+#  ▸ 문자열에 콜론(:)이 들어가면 반드시 "따옴표"로 감싸 주세요.
+#  ▸ 들여쓰기는 스페이스 2칸 (Tab 금지).
+# =====================================================================
+
+name: "Wonhyun Lee"
+credentials: "Ph.D."
+title: "Research Assistant Professor · Principal Investigator"
+affiliation: "Bureau of Economic Geology, Jackson School of Geosciences"
+institution: "The University of Texas at Austin"
+location: "Austin, Texas"
+
+# 히어로(첫 화면) 문구
+tagline: "Before the Water Rises"
+headline: "Predicting compound floods fast enough — and honestly enough — to change what communities do before the storm."
+
+# 연구의 네 기둥 (색상은 사이트 전체의 테마 색으로 사용됩니다)
+pillars:
+  - name: "Physics"
+    color: "#38bdf8"
+    short: "Coupled surge · rain · river · wave models"
+  - name: "Probability"
+    color: "#2dd4bf"
+    short: "Ensembles that quantify what could happen"
+  - name: "AI"
+    color: "#a78bfa"
+    short: "Neural-operator surrogates in seconds"
+  - name: "People"
+    color: "#fb923c"
+    short: "Digital twins & adaptation for communities"
+
+# 소개 (About) — 문단은 리스트 항목 하나씩
+bio:
+  - "I am a Research Assistant Professor and Principal Investigator at the Bureau of Economic Geology, The University of Texas at Austin. I study how hurricanes, extreme rainfall, rivers and rising seas combine into **compound floods** — and how to forecast them quickly and with honest uncertainty, so that people can act before the water rises."
+  - "My group couples physics-based coastal and hydrologic models (Delft3D-FM, SFINCS, SWAN) with large **probabilistic ensembles**, **AI surrogates** such as Fourier and latent-spectral neural operators, and decision tools like **FloodAdapt** — building toward a flood **digital twin** for the Gulf of America coast and the Texas Hill Country."
+  - "Before UT Austin I was a National Research Council Postdoctoral Fellow at the U.S. Naval Research Laboratory (NASA Stennis Space Center), working on probabilistic surge and inundation prediction and the ocean's thermohaline response to hurricanes. I received my Ph.D. in Civil Engineering from Texas A&M University, where I modeled 3-D hydrodynamics and desalination impacts in the Arabian/Persian Gulf."
+
+education:
+  - degree: "Ph.D., Civil Engineering"
+    school: "Texas A&M University"
+    year: "2018"
+  - degree: "M.E., Civil Engineering"
+    school: "Seoul National University of Science & Technology"
+    year: "2012"
+  - degree: "B.S., Civil Engineering"
+    school: "Seoul National University of Science & Technology"
+    year: "2010"
+
+appointments:
+  - role: "Research Assistant Professor (PI)"
+    org: "Bureau of Economic Geology, UT Austin"
+    years: "2022 – present"
+  - role: "NRC Postdoctoral Fellow"
+    org: "U.S. Naval Research Laboratory, Stennis Space Center"
+    years: "2018 – 2021"
+  - role: "Graduate Research Assistant"
+    org: "Zachry Dept. of Civil Engineering, Texas A&M"
+    years: "2014 – 2018"
+
+# 첫 화면 아래 '숫자로 보는 연구' — 직접 고쳐서 최신화하세요
+stats:
+  - value: "12"
+    label: "peer-reviewed papers & proceedings"
+  - value: "$2.5M"
+    label: "active awards as PI / Co-PI (NASEM GRP · NASA)"
+  - value: "35+"
+    label: "conference presentations (AGU · EGU · HydroML)"
+  - value: "14"
+    label: "students & early-career researchers advised"
+
+# 연락처 / 링크  (비워두거나 줄을 지우면 버튼이 사라집니다)
+contact:
+  email: "wonhyun.lee@beg.utexas.edu"
+  email2: "wonhyun2@gmail.com"
+  address: "Bureau of Economic Geology, The University of Texas at Austin, Austin, TX 78713"
+  cv: "assets/cv/Wonhyun_Lee_CV.pdf"
+  cv_updated: "2026"
+
+links:
+  - label: "Applied Water Research Lab"
+    url: "https://zprivf.github.io/applied-water-research-lab/index.html"
+    icon: "lab"
+  - label: "BEG profile"
+    url: "https://www.beg.utexas.edu/people/wonhyun-lee"
+    icon: "uni"
+  # 아래 줄의 # 을 지우고 주소를 넣으면 버튼이 생깁니다
+  # - label: "Google Scholar"
+  #   url: "https://scholar.google.com/citations?user=XXXX"
+  #   icon: "scholar"
+  # - label: "ORCID"
+  #   url: "https://orcid.org/0000-0000-0000-0000"
+  #   icon: "orcid"
+  # - label: "LinkedIn"
+  #   url: "https://www.linkedin.com/in/XXXX"
+  #   icon: "linkedin"
+
+# 미디어 파일 (파일만 교체하면 됩니다)
+media:
+  portrait: "assets/img/profile-portrait.jpg"
+  avatar: "assets/img/profile.jpg"
+  hero_video: "assets/video/hero-loop.mp4"
+  hero_poster: "assets/img/hero-poster.jpg"
+  overview_video: "assets/video/research-overview.mp4"
+  overview_poster: "assets/img/video-poster.jpg"
+  # YouTube에 올렸다면 ID만 넣으세요 (예: tAHxNV_VG94). 넣으면 mp4 대신 YouTube가 재생됩니다.
+  overview_youtube: ""
+  overview_title: "Before the Water Rises — research in 2½ minutes"
+  overview_caption: "Physics → Probability → AI → People. Hill Country flash floods, Gulf-wide hurricane ensembles, neural-operator surrogates, FloodAdapt, NISAR, nature-based solutions and more. Original soundtrack."

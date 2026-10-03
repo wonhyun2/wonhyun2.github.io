@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wonhyun Lee · Compound Flood Research</title>
+  <meta name="description" content="Wonhyun Lee, Ph.D. — Research Assistant Professor at the Bureau of Economic Geology, UT Austin. Compound flooding, probabilistic ensembles, AI neural operators and flood digital twins for the Gulf of America coast.">
+  <meta property="og:title" content="Wonhyun Lee · Before the Water Rises">
+  <meta property="og:description" content="Physics · Probability · AI · People — compound flood research at UT Austin.">
+  <meta property="og:image" content="assets/img/video-poster.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#070d18">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Home">
+    <span class="mono">WL</span><span class="brand-name">Wonhyun Lee</span>
+  </a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  <nav class="nav-links">
+    <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
+    <a href="#news">News</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-sm" data-bind="cv" href="assets/cv/Wonhyun_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>
+  </nav>
+</header>
+
+<div id="load-error" class="load-error" hidden></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <video class="hero-video" id="hero-video" muted loop playsinline preload="metadata" poster="assets/img/hero-poster.jpg">
+    <source src="assets/video/hero-loop.mp4" type="video/mp4">
+  </video>
+  <div class="hero-shade"></div>
+  <div class="hero-inner wrap">
+    <p class="eyebrow" id="hero-aff">Bureau of Economic Geology · The University of Texas at Austin</p>
+    <h1 class="hero-name"><span id="hero-name">Wonhyun Lee</span><span class="cred" id="hero-cred">, Ph.D.</span></h1>
+    <p class="hero-title" id="hero-title">Research Assistant Professor · Principal Investigator</p>
+    <p class="tagline" id="hero-tagline">Before the Water Rises</p>
+    <p class="hero-headline" id="hero-headline"></p>
+    <ul class="pillars" id="hero-pillars"></ul>
+    <div class="hero-cta">
+      <a class="btn btn-light" href="#overview"><svg viewBox="0 0 24 24" class="ic"><path d="M8 5v14l11-7z"/></svg>Watch the overview</a>
+      <a class="btn btn-ghost" href="#research">Explore research</a>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#about" aria-label="Scroll"><span></span></a>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="wrap about-grid">
+    <figure class="portrait reveal">
+      <img id="portrait" src="assets/img/profile-portrait.jpg" alt="Portrait of Wonhyun Lee" loading="lazy">
+      <div class="pillar-bar" id="pillar-bar"></div>
+    </figure>
+    <div class="about-text reveal">
+      <p class="kicker">About</p>
+      <h2 class="h2">Floods rarely come from one source.<br><em>Neither should their prediction.</em></h2>
+      <div id="bio" class="bio"></div>
+      <div class="about-cols">
+        <div><h3 class="h4">Appointments</h3><ul class="mini" id="appointments"></ul></div>
+        <div><h3 class="h4">Education</h3><ul class="mini" id="education"></ul></div>
+      </div>
+      <div class="link-row" id="about-links"></div>
+    </div>
+  </div>
+  <div class="wrap stats reveal" id="stats"></div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section class="section dark overview" id="overview">
+  <div class="wrap">
+    <p class="kicker light">Research overview</p>
+    <h2 class="h2 light" id="ov-title">Before the Water Rises</h2>
+    <div class="player reveal" id="player"></div>
+    <p class="ov-cap" id="ov-cap"></p>
+  </div>
+</section>
+
+<!-- ============ RESEARCH ============ -->
+<section class="section research" id="research">
+  <div class="wrap">
+    <p class="kicker">Research</p>
+    <h2 class="h2">Observe <span class="arrow">→</span> Simulate <span class="arrow">→</span> Learn <span class="arrow">→</span> Act</h2>
+    <p class="lead" id="research-intro"></p>
+    <div id="themes"></div>
+    <h3 class="h3 also-h">Beyond flooding</h3>
+    <div class="also-grid" id="also"></div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section tint" id="projects">
+  <div class="wrap">
+    <p class="kicker">Funded research</p>
+    <h2 class="h2">Projects</h2>
+    <div class="proj-grid" id="proj-current"></div>
+    <div id="proj-pending"></div>
+    <details class="past">
+      <summary>Past projects</summary>
+      <ul class="past-list" id="proj-past"></ul>
+    </details>
+  </div>
+</section>
+
+<!-- ============ PUBLICATIONS ============ -->
+<section class="section" id="publications">
+  <div class="wrap">
+    <p class="kicker">Publications</p>
+    <h2 class="h2">Papers &amp; preprints</h2>
+    <div class="pub-tools">
+      <div class="chips" id="pub-filters" role="tablist"></div>
+      <input type="search" id="pub-search" placeholder="Search title, author, journal…" aria-label="Search publications">
+    </div>
+    <div id="pub-list"></div>
+    <p class="pub-note">Mentored students are co-authors on several papers. Full list in the <a data-bind="cv" href="assets/cv/Wonhyun_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>.</p>
+  </div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section class="section tint" id="news">
+  <div class="wrap news-wrap">
+    <div>
+      <p class="kicker">News</p>
+      <h2 class="h2">Latest</h2>
+    </div>
+    <div><ol class="news" id="news-list"></ol></div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="section" id="team">
+  <div class="wrap">
+    <p class="kicker">Mentoring &amp; collaboration</p>
+    <h2 class="h2">People</h2>
+    <p class="lead" id="mentoring-intro"></p>
+    <div class="people-grid" id="mentees-current"></div>
+    <details class="past">
+      <summary>Former mentees</summary>
+      <ul class="past-list" id="mentees-past"></ul>
+    </details>
+    <h3 class="h3" id="collab-intro">Built together</h3>
+    <div id="collabs"></div>
+  </div>
+</section>
+
+<!-- ============ RECOGNITION ============ -->
+<section class="section tint" id="recognition">
+  <div class="wrap">
+    <p class="kicker">Recognition &amp; service</p>
+    <h2 class="h2">Awards, talks &amp; service</h2>
+    <div class="rec-grid">
+      <div><h3 class="h4">Awards</h3><ul class="dated" id="awards"></ul></div>
+      <div><h3 class="h4">Invited talks</h3><ul class="dated" id="talks"></ul></div>
+      <div><h3 class="h4">Service</h3><ul class="svc" id="service"></ul></div>
+    </div>
+    <div class="rec-grid two">
+      <div><h3 class="h4">In the media</h3><ul class="dated" id="media"></ul></div>
+      <div><h3 class="h4">Toolbox</h3><div id="skills"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section dark contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="kicker light">Contact</p>
+      <h2 class="h2 light">Let's work on the next flood<br><em>before it arrives.</em></h2>
+      <p class="light-sub">Students, collaborators, agencies and journalists are welcome to reach out.</p>
+    </div>
+    <div class="contact-card">
+      <img id="avatar" src="assets/img/profile.jpg" alt="" class="avatar">
+      <div id="contact-lines"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap foot">
+    <span id="foot-copy">© Wonhyun Lee</span>
+    <span class="foot-pillars" id="foot-pillars"></span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<dialog id="lightbox" class="lightbox">
+  <button class="lb-close" aria-label="Close">×</button>
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+</dialog>
+
+<script src="assets/js/js-yaml.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

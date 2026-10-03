@@ -1,0 +1,169 @@
+# =====================================================================
+#  publications.yml  —  논문 목록 (사이트에서 자동으로 연도별 정렬/필터)
+#  type: journal | conference | submitted | report | thesis
+#        (submitted 는 details 에 "under review" / "in preparation" 등을 쓰면 배지로 표시)
+#  selected: true  →  'Selected' 필터 & 별표 표시
+#  me: 굵게 표시할 내 이름 표기 (여러 형태 가능)
+#  새 논문 추가: 아래 템플릿을 복사해서 맨 위 papers: 바로 아래에 붙이세요.
+#
+#  - year: 2027
+#    type: journal
+#    authors: "Lee, W., Coauthor, A. and Coauthor, B."
+#    title: "Paper title"
+#    venue: "Journal Name"
+#    details: "volume, page"
+#    doi: "10.xxxx/xxxxx"
+#    selected: true
+# =====================================================================
+
+me: ["Lee, W.", "Lee,W", "Lee, W"]
+
+papers:
+  # ---------------- Submitted / under review / in preparation
+  - year: 2026
+    type: submitted
+    authors: "Souza, P.M.J., Lee, W., Bolser, D.G., Souza, C.M. and Brandl, S.J."
+    title: "Acoustic competition amplifies climate-driven loss of fish spawning habitat"
+    venue: "Nature Climate Change"
+    details: "under review"
+  - year: 2026
+    type: submitted
+    authors: "Lee, W., Zhang, Y., Kyne, D., Stephens, K., Porter, B., Vega, A. and Scanlon, B.R."
+    title: "Multi-Event Flood Risk Assessment and Adaptation Prioritization in Underserved Border Communities: Colonias in the Lower Rio Grande Valley, Texas"
+    venue: "International Journal of Disaster Risk Reduction"
+    details: "under review"
+  - year: 2026
+    type: submitted
+    authors: "Yang, H., Lee, J.W. and Lee, W."
+    title: "Where, When, and How Do Physics-Informed Deep Learning Models Improve Hurricane-Induced Compound Flooding Predictions?"
+    venue: "Water Resources Research"
+    details: "under review"
+  - year: 2026
+    type: submitted
+    authors: "Zhang, Y., Scanlon, B.R., Kyne, D., Stephens, K., Porter, B., Dashtian, H. and Lee, W."
+    title: "Decadal Settlement Dynamics in Texas Colonias Revealed by Remote Sensing"
+    venue: "Environmental Research Letters"
+    details: "under review"
+  - year: 2026
+    type: submitted
+    authors: "Lee, W., Sun, A.Y., Scanlon, B.R. and Azizzadenesheli, K."
+    title: "Physics-Aware Neural Operators for Compound Flood Prediction: A Multi-Model Benchmark in the Texas Gulf Coast"
+    venue: "Manuscript"
+    details: "in preparation"
+
+  # ---------------- Journal articles
+  - year: 2026
+    type: journal
+    authors: "Kyne, D., Scanlon, B.R., Zhang, Y., Stephens, K., Porter, B., Lee, W. and Vega, A."
+    title: "A Parcel-Level GIS Analysis of Development Disparities, Floodplain Exposure, and Building Growth in Texas Border Colonias"
+    venue: "Sustainability"
+    details: "18, 8603"
+    doi: "10.3390/su18168603"
+  - year: 2026
+    type: journal
+    authors: "Chowdhury, M.E., Lee, J.W. and Lee, W."
+    title: "Spatiotemporal quantification of relative contributions of compound flood drivers using Shapley value-based approach"
+    venue: "Journal of Hydrology"
+    details: "677, 135808"
+    doi: "10.1016/j.jhydrol.2026.135808"
+    selected: true
+  - year: 2026
+    type: journal
+    authors: "Cruz, A.U.S., Lee, J.W. and Lee, W."
+    title: "Pyflood: Coastal Flood Mapping with High-Resolution Digital Elevation Model and Land Cover Data"
+    venue: "Environmental Modelling & Software"
+    details: "203, 107010"
+    doi: "10.1016/j.envsoft.2026.107010"
+  - year: 2026
+    type: journal
+    authors: "Lee, W., Sun, A.Y. and Scanlon, B.R."
+    title: "Rapid Intensification and Relative Sea-Level Rise Amplify Compound Flooding from Hurricanes Harvey and Beryl"
+    venue: "Earth's Future"
+    details: "14, e2025EF007678"
+    doi: "10.1029/2025EF007678"
+    selected: true
+  - year: 2025
+    type: journal
+    authors: "Lee, W., Sun, A.Y. and Scanlon, B.R."
+    title: "Probabilistic Storm Surge and Flood Inundation Modeling of the Texas Gulf Coast Using Super-Fast INundation of CoastS (SFINCS)"
+    venue: "Coastal Engineering"
+    details: "104721"
+    doi: "10.1016/j.coastaleng.2025.104721"
+    selected: true
+  - year: 2024
+    type: journal
+    authors: "Lee, W. and Veeramony, J."
+    title: "The Response of Mixed Layer Depth Due to Hurricane Katrina (2005)"
+    venue: "Journal of Marine Science and Engineering"
+    details: "12(4), 678"
+    doi: "10.3390/jmse12040678"
+  - year: 2023
+    type: journal
+    authors: "Lee, W., Sun, A.Y., Scanlon, B.R. et al."
+    title: "Hindcasting compound pluvial, fluvial and coastal flooding during Hurricane Harvey (2017) using Delft3D-FM"
+    venue: "Natural Hazards"
+    doi: "10.1007/s11069-023-06247-9"
+    selected: true
+  - year: 2023
+    type: conference
+    authors: "Sun, A.Y., Li, Z., Lee, W., Huang, Q., Scanlon, B.R. and Dawson, C."
+    title: "Rapid Flood Inundation Forecast Using Fourier Neural Operator"
+    venue: "Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)"
+    details: "pp. 3733–3739"
+    doi: "10.48550/arXiv.2307.16090"
+    selected: true
+  - year: 2017
+    type: journal
+    authors: "Lee, W., McLaughlin, P.W. and Kaihatu, J.M."
+    title: "Parameterization of maximum significant wave heights in coastal regions due to hurricanes"
+    venue: "Journal of Waterway, Port, Coastal, and Ocean Engineering"
+    details: "143(2)"
+    doi: "10.1061/(ASCE)WW.1943-5460.0000362"
+  - year: 2012
+    type: journal
+    authors: "Hong, S.H., Kim, Y.K., Lee, W. and Chung, E.S."
+    title: "Rainfall Variations of Temporal Characteristics of Korea Using Rainfall Indicators"
+    venue: "Journal of Korea Water Resources Association"
+    doi: "10.3741/JKWRA.2012.45.4.393"
+  - year: 2011
+    type: journal
+    authors: "Lee, W., Hong, S.H., Kim, Y.K. and Chung, E.S."
+    title: "Temporal & Spatial Variability of Precipitation and Daily Average Temperature in the South Korea"
+    venue: "Journal of the Korean Society of Hazard Mitigation"
+    doi: "10.9798/KOSHAM.2011.11.4.073"
+  - year: 2011
+    type: journal
+    authors: "Kim, Y.K., Hong, S.H., Lee, W. and Chung, E.S."
+    title: "Variations of Weather Stations Characteristics to Recent Climate Change Using Rainfall & Average Daily Temperature Data"
+    venue: "Journal of the Korean Society of Hazard Mitigation"
+
+  # ---------------- Proceedings / reports
+  - year: 2024
+    type: conference
+    authors: "Lee, W., Sun, A.Y. and Scanlon, B.R."
+    title: "Advancing Coastal Resilience through Integrated Modeling of Compound Flooding Events"
+    venue: "EGU General Assembly 2024, Vienna"
+    details: "EGU24-21937"
+    doi: "10.5194/egusphere-egu24-21937"
+  - year: 2018
+    type: conference
+    authors: "Lee, W. and Kaihatu, J.M."
+    title: "Effects of Desalination on Hydrodynamic Process in Persian Gulf"
+    venue: "Coastal Engineering Proceedings (ICCE 2018)"
+    details: "36, papers.3"
+    doi: "10.9753/icce.v36.papers.3"
+  - year: 2021
+    type: report
+    authors: "Lee, W. et al."
+    title: "Model Validation: Hydrodynamics, Waves, and Storm Surge Predictions in Puerto Rico Using Delft3D Flexible Mesh"
+    venue: "NRL Formal Report, U.S. Naval Research Laboratory"
+  - year: 2021
+    type: report
+    authors: "Veeramony, J. et al."
+    title: "Storm Surge Modeling Using Delft3D FM — A Flexible Mesh Model"
+    venue: "NRL Formal Report, U.S. Naval Research Laboratory"
+  - year: 2018
+    type: thesis
+    authors: "Lee, W."
+    title: "Modeling of Three Dimensional Wind-Driven Hydrodynamic and Environmental Processes in the Arabian/Persian Gulf"
+    venue: "Ph.D. Dissertation, Texas A&M University (advisor: J.M. Kaihatu)"

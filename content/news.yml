@@ -1,0 +1,34 @@
+# =====================================================================
+#  news.yml  —  최근 소식 (맨 위에 추가하세요. date는 "2026-10" 또는 "2026-10-02")
+#  text 안에서 **굵게**, [링크 글자](https://...) 사용 가능
+#  tag: award | paper | grant | talk | media | service  (색상 아이콘)
+# =====================================================================
+
+news:
+  - date: "2026-12"
+    tag: talk
+    text: "Four presentations at **AGU Fall Meeting 2026** (San Francisco): multi-domain SFINCS across the Gulf, LRGV pluvial flood adaptation, PlanetScope colonias monitoring, and LiDAR building-level flash-flood vulnerability in Kerrville."
+  - date: "2026-09"
+    tag: grant
+    text: "**COAST-NISAR** selected by NASA's NISAR Data, Applications, Research & Technology program (Co-PI) — compound-flood assessment from space."
+  - date: "2026-05"
+    tag: service
+    text: "Organizing Committee and presenter at **HydroML 2026**, Austin."
+  - date: "2026-04"
+    tag: award
+    text: "**First Author Achievement Award** (2025), Bureau of Economic Geology — second year in a row."
+  - date: "2026"
+    tag: paper
+    text: "New in *Earth's Future*: rapid intensification and relative sea-level rise amplify compound flooding from Hurricanes Harvey and Beryl. [doi](https://doi.org/10.1029/2025EF007678)"
+  - date: "2026"
+    tag: media
+    text: "Interviewed by KXAN / The Hill on AI-assisted flash-flood prediction. [story](https://www.kxan.com/weather-traffic-qas/google-rolls-out-ai-tool-to-predict-flash-floods-up-to-24-hours-ahead/)"
+  - date: "2025-10"
+    tag: grant
+    text: "Awarded **$1.5M** from the NASEM Gulf Research Program (PI) to predict submonthly Gulf sea-level variability and its effect on flooding."
+  - date: "2025-03"
+    tag: talk
+    text: "Invited seminars at BEG and UT Austin EWRE / Center for Water and the Environment: *Coastal Resilience through Integrated Modeling of Compound Flooding Events*. [watch](https://www.beg.utexas.edu/presentations/coastal-resilience-through-integrated-modeling-of-compound-flooding-events)"
+  - date: "2025-01"
+    tag: award
+    text: "**Best Research and Best Poster** awards, Climate Health Frontiers 2025 Symposium, University of Houston."

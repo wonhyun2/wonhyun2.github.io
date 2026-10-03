@@ -1,0 +1,66 @@
+# =====================================================================
+#  people.yml  —  지도/멘토링 학생, 협력 기관
+#  current: true 이면 'Current', false 이면 'Alumni'
+# =====================================================================
+
+mentoring_intro: "I enjoy helping students turn models into insight — from setting up their first SFINCS domain to publishing their first paper."
+
+mentees:
+  - name: "Hyunje Yang"
+    role: "Ph.D. student, UT Austin CAEE"
+    topic: "Physics-informed deep learning for compound flooding; storm surge & tsunami"
+    current: true
+  - name: "M. Enayet Chowdhury"
+    role: "Ph.D. student, UT Austin CAEE"
+    topic: "Storm surge & compound-flood driver attribution"
+    current: true
+  - name: "Armando Ulises Santos Cruz"
+    role: "Ph.D. student, UT Austin CAEE"
+    topic: "Pyflood — high-resolution coastal flood mapping"
+    current: true
+  - name: "Philip M. Souza"
+    role: "Postdoc, UT Marine Science Institute"
+    topic: "Salinity–temperature modeling of fish spawning habitat"
+    current: true
+  - name: "Aaron Murai"
+    role: "M.S. student, Texas A&M"
+    topic: "Coupled hydrodynamic–wave hurricane surge prediction"
+    current: true
+  - name: "Javad Teymoori"
+    role: "Ph.D., UT Arlington"
+    topic: "SFINCS model setup and HPC workflows"
+    current: false
+  - name: "Mark K. Wang"
+    role: "Ph.D. student, UT Austin Jackson School"
+    topic: "SFINCS modeling in Texas"
+    current: false
+  - name: "William S. Bailey"
+    role: "Ph.D. student, UT Austin Jackson School"
+    topic: "Delft3D-FM morphodynamics, sediment & microplastic transport"
+    current: false
+  - name: "Xuan Ma"
+    role: "Ph.D. student, Texas A&M"
+    topic: "Hydrodynamic–wave coupling"
+    current: false
+  - name: "Arrumi Isnandiahening"
+    role: "M.S. student, STMKG Indonesia"
+    topic: "Hydrodynamic modeling"
+    current: false
+  - name: "Jin Young Kim"
+    role: "Ph.D. student, Texas A&M"
+    topic: "Hydrodynamic–wave coupling on HPC"
+    current: false
+  - name: "Szu-Ting Lee · Chi Lu · Woongsuk Pae"
+    role: "M.E./M.S. students, Texas A&M"
+    topic: "Hydrodynamic & morphodynamic modeling"
+    current: false
+
+# 협력 기관 (이름만 바꾸거나 추가하면 됩니다)
+collaborators_intro: "Built together with agencies, labs and industry partners."
+collaborators:
+  - group: "Agencies & stakeholders"
+    names: ["Texas General Land Office", "Texas Water Development Board", "TCEQ", "Harris County Flood Control District", "Harris–Galveston Subsidence District", "U.S. Army Corps of Engineers ERDC"]
+  - group: "Research partners"
+    names: ["Coastal Hazards Lab, UT Austin", "UT Marine Science Institute", "NVIDIA Research", "Deltares", "U.S. Naval Research Laboratory", "U.S. Geological Survey", "LSU", "University of Notre Dame", "Pacific Northwest National Laboratory"]
+  - group: "Funding"
+    names: ["NASEM Gulf Research Program", "NASA", "U.S. Department of Energy", "Office of Naval Research", "National Research Council", "Qatar National Research Fund"]

@@ -1,0 +1,114 @@
+# =====================================================================
+#  research.yml  —  연구 주제 카드
+#  pillar: Physics / Probability / AI / People 중 하나 → 색상이 자동 적용
+#  media.type: image 또는 video   (src는 assets/ 아래 파일 경로)
+#  gallery: 클릭하면 크게 보이는 추가 그림 (선택)
+# =====================================================================
+
+intro: "One question runs through my work: **when several flood drivers arrive together, what will happen, how sure are we, and what should we do about it?** Each pillar below answers part of it — and together they form a flood digital twin: Observe → Simulate → Learn → Act."
+
+themes:
+  - id: physics
+    pillar: "Physics"
+    kicker: "01 · Physics"
+    title: "Compound-flood physics, from hillslope to shelf"
+    summary: "Coupled hydrodynamic–wave–land models that resolve how storm surge, extreme rainfall and river flow interact — validated against gauges and high-water marks, and pushed into future climates with relative sea-level rise and land subsidence."
+    bullets:
+      - "Hurricane Harvey (2017) and Beryl (2024) hindcasts with Delft3D-FM and SFINCS: rapid intensification and relative sea-level rise amplify compound flooding."
+      - "Texas Hill Country flash floods: building-level exposure in Kerrville, July 2025 vs. 2026, with airborne LiDAR."
+      - "Gulf-wide relative sea-level rise and subsidence drivers (1900–2024) and their effect on future flood depth."
+    tags: ["Delft3D-FM", "SFINCS", "SWAN", "LiDAR", "RSLR"]
+    media:
+      type: image
+      src: "assets/img/hill-3d.jpg"
+      caption: "Guadalupe River currents near Camp Mystic, July 4 2025 — 3-D SFINCS visualization."
+    gallery:
+      - src: "assets/img/kerrville-2025-2026.jpg"
+        caption: "Kerrville, Texas — flooded buildings in the 2025 vs. 2026 events, same 48-hour model window."
+      - src: "assets/img/galveston-ike.jpg"
+        caption: "Galveston Bay at the peak of Hurricane Ike (2008) — compound water level."
+      - src: "assets/img/rslr-trend.jpg"
+        caption: "Relative sea-level rise trends along the Gulf of America coast."
+    papers: ["10.1029/2025EF007678", "10.1007/s11069-023-06247-9"]
+
+  - id: probability
+    pillar: "Probability"
+    kicker: "02 · Probability"
+    title: "Probabilistic flood hazard at regional scale"
+    summary: "Fast reduced-complexity models make it possible to run thousands of plausible storms instead of one. I built a 17-domain SFINCS framework spanning the U.S. Gulf coast and drive it with synthetic and perturbed hurricane tracks to map exceedance probabilities."
+    bullets:
+      - "A multi-domain SFINCS framework tested for transferability and forcing sensitivity, with track ensembles for storms such as Ike, Katrina, Michael and Ian."
+      - "Maximum-depth exceedance probability maps for coastal Texas and the Hill Country."
+      - "Shapley-value attribution of the relative contribution of each compound-flood driver in space and time."
+    tags: ["Ensembles", "Exceedance probability", "Uncertainty", "Shapley"]
+    media:
+      type: image
+      src: "assets/img/gulf-ensemble.jpg"
+      caption: "Hurricane-track ensembles crossing the 17 Gulf-coast SFINCS domains."
+    gallery:
+      - src: "assets/img/hill-exceedance.jpg"
+        caption: "Probability that maximum flood depth exceeds 0.1, 0.3, 0.5 and 1.0 m."
+    papers: ["10.1016/j.coastaleng.2025.104721", "10.1016/j.jhydrol.2026.135808"]
+
+  - id: ai
+    pillar: "AI"
+    kicker: "03 · AI"
+    title: "Neural operators & physics-aware deep learning"
+    summary: "AI surrogates learn the solution operator of the flood model and reproduce full inundation maps in seconds instead of hours — fast enough for large ensembles and real-time forecasting, with physics kept in the loop."
+    bullets:
+      - "Fourier and latent-spectral neural operators (FNO, LSM) trained on SFINCS ensembles; tested on unseen storms such as Beryl (2024)."
+      - "Where, when and how physics-informed deep learning improves hurricane compound-flood prediction."
+      - "Multi-model benchmark of physics-aware neural operators with NVIDIA research collaborators."
+    tags: ["FNO", "LSM", "PINN", "Surrogates", "SciML"]
+    media:
+      type: video
+      src: "assets/video/ai-lsm.mp4"
+      poster: "assets/img/ai-lsm.jpg"
+      caption: "Hurricane Beryl (2024), an unseen event: SFINCS physics vs. LSM neural-operator prediction and absolute error."
+    papers: ["10.48550/arXiv.2307.16090"]
+
+  - id: people
+    pillar: "People"
+    kicker: "04 · People"
+    title: "Flood digital twins & adaptation for communities"
+    summary: "Predictions matter when they reach decisions. I connect hazard models to buildings, roads and people — testing adaptation measures with FloodAdapt and Delft-FIAT for underserved colonias in the Lower Rio Grande Valley, and linking satellites, sensors, models and AI into a digital twin."
+    bullets:
+      - "Multi-event flood risk and adaptation prioritization for border colonias (Texas General Land Office)."
+      - "FloodAdapt scenarios: floodproofing, elevation, pump stations — damages avoided per measure."
+      - "Observe → Simulate → Learn → Act: a digital-twin loop for coastal and urban flood resilience."
+    tags: ["FloodAdapt", "Delft-FIAT", "Digital twin", "Equity"]
+    media:
+      type: image
+      src: "assets/img/floodadapt-measures.jpg"
+      caption: "FloodAdapt: building damages under current conditions vs. floodproofing and pump-station measures."
+    gallery:
+      - src: "assets/img/floodadapt-workflow.jpg"
+        caption: "End-to-end workflow: data → HydroMT → FloodAdapt scenarios → SFINCS → FIAT → decision support."
+      - src: "assets/img/nisar-workflow.jpg"
+        caption: "COAST-NISAR: satellite land-motion data feeding an AI-driven coastal resilience workflow."
+    papers: ["10.3390/su18168603"]
+
+# '그 밖의 연구' 작은 카드들  (fit: contain → 그림 전체가 흰 배경에, contain-dark → 어두운 배경에, 생략하면 꽉 채움)
+also:
+  - title: "Nature-based solutions"
+    color: "#4ade80"
+    text: "Mangrove and marsh wave & surge attenuation with a BMI Dynamic Vegetation model coupled to SFINCS in the NOAA NextGen framework."
+    image: "assets/img/nextgen-bmi.jpg"
+    fit: contain-dark
+    gallery:
+      - src: "assets/img/mangrove-concept.jpg"
+        caption: "Concept animation: wave height at the shore with a mangrove forest vs. a bare shoreline."
+  - title: "Space geodesy · NASA NISAR"
+    color: "#38bdf8"
+    text: "COAST-NISAR (Co-PI): tracking natural and human-driven land subsidence from space and feeding it into compound-flood models."
+    image: "assets/img/nisar-vlm.jpg"
+  - title: "Desalination & coastal water quality"
+    color: "#fbbf24"
+    text: "3-D thermohaline modeling of brine discharge from 12 desalination plants in the Arabian/Persian Gulf; scenarios for the Texas coast."
+    image: "assets/img/desal-gulf.jpg"
+    fit: contain
+  - title: "Climate & coastal ecology"
+    color: "#f472b6"
+    text: "With UT Marine Science Institute: salinity–temperature projections of fish spawning habitat through 2176."
+    image: "assets/img/msi-habitat.jpg"
+    fit: contain

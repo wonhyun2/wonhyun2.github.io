@@ -1,0 +1,60 @@
+# =====================================================================
+#  honors.yml  —  수상, 초청 강연, 학술 봉사, 미디어, 학회 회원
+# =====================================================================
+
+awards:
+  - year: "2026"
+    text: "First Author Achievement Award 2025, Bureau of Economic Geology, UT Austin"
+  - year: "2025"
+    text: "First Author Achievement Award 2024, Bureau of Economic Geology, UT Austin"
+  - year: "2025"
+    text: "Best Research & Best Poster Awards, Climate Health Frontiers 2025 Symposium, University of Houston"
+  - year: "2022–25"
+    text: "BEG Proposal Development Assistance Grants (five awards)"
+  - year: "2018–21"
+    text: "NRC Research Associateship Award (Postdoctoral Fellowship), U.S. Naval Research Laboratory"
+  - year: "2014–16"
+    text: "American Bureau of Shipping Scholarship; Bechtel Foundation Scholarship, Texas A&M Ocean Engineering"
+
+talks:
+  - year: "2025"
+    text: "Coastal Resilience through Integrated Modeling of Compound Flooding Events — BEG Seminar, UT Austin"
+    url: "https://www.beg.utexas.edu/presentations/coastal-resilience-through-integrated-modeling-of-compound-flooding-events"
+  - year: "2025"
+    text: "Coastal Resilience through Integrated Modeling of Compound Flooding Events — EWRE & Center for Water and the Environment Seminar, UT Austin"
+  - year: "2022"
+    text: "Predictions of Hydrodynamics, Waves and Environmental Processes under Extreme Weather — BEG (virtual)"
+  - year: "2018"
+    text: "Modeling of Three-Dimensional Wind-Driven Hydrodynamic and Environmental Processes — U.S. Naval Research Laboratory"
+
+service:
+  - label: "Organizing Committee"
+    text: "HydroML 2026"
+  - label: "Review Editor"
+    text: "Frontiers in Water"
+  - label: "Proposal reviewer"
+    text: "National Science Foundation (NSF)"
+  - label: "Seminar Coordinator"
+    text: "Bureau of Economic Geology, UT Austin (2023–2024)"
+  - label: "Journal reviewer"
+    text: "Water Resources Research · Earth's Future · JGR Oceans · JGR Atmospheres · Journal of Hydrology · Natural Hazards · Communications Earth & Environment · Communications Sustainability · Estuaries and Coasts · J. Waterway, Port, Coastal & Ocean Eng. · J. Atmospheric & Oceanic Technology · JMSE · Marine Geodesy · and more"
+
+media:
+  - year: "2026"
+    outlet: "KXAN / The Hill"
+    text: "Expert interview: Google rolls out AI tool to predict flash floods up to 24 hours ahead"
+    url: "https://www.kxan.com/weather-traffic-qas/google-rolls-out-ai-tool-to-predict-flash-floods-up-to-24-hours-ahead/"
+  - year: "2026"
+    outlet: "BEG Field Notes"
+    text: "Texas Applied Water Research Team"
+    url: "https://www.beg.utexas.edu/publications/field-notes"
+
+memberships: ["AGU", "AMS", "EGU", "ASCE", "KSEA"]
+
+skills:
+  - group: "Models"
+    items: ["Delft3D-FM / Delft3D 4", "SFINCS", "SWAN · WAVEWATCH III", "XBeach", "FloodAdapt · Delft-FIAT", "HydroMT"]
+  - group: "AI / data"
+    items: ["Neural operators (FNO, LSM)", "Physics-informed deep learning", "EnKF data assimilation", "Google Earth Engine", "Python · MATLAB · Fortran"]
+  - group: "Computing"
+    items: ["TACC & DoD HPC", "Docker", "Cesium digital twin", "QGIS · ArcGIS"]
