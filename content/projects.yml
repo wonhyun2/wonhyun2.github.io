@@ -36,7 +36,7 @@ projects:
     status: past
     text: "WAM-based hydrologic routing with neural-operator bias correction for improved runoff forecasting."
 
-   - title: "Mapping Lower Rio Grande Valley Colonias Using Remote Sensing and Machine Learning"
+  - title: "Mapping Lower Rio Grande Valley Colonias Using Remote Sensing and Machine Learning"
     sponsor: "Texas General Land Office"
     role: "Collaborator"
     amount: "$921,956"
