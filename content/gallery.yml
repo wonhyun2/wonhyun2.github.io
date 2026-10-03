@@ -1,0 +1,43 @@
+# =====================================================================
+#  gallery.yml  —  사진 갤러리 (학회, 현장, 연구실, 일상)
+#
+#  ▸ 가장 쉬운 방법 (자동):
+#      1) ResearchWebsite/photo_inbox/<카테고리 폴더>/ 에 사진을 넣고
+#      2) site 폴더에서  python tools/add_photos.py  실행
+#         → 사진 크기 줄임(1800px) + 위치정보(GPS) 등 EXIF 삭제 + 아래 목록에 자동 추가
+#      3) title / caption / place 만 손으로 다듬으면 끝
+#
+#  ▸ 직접 추가: 사진을 assets/img/gallery/ 에 올리고 아래 형식으로 한 줄 묶음 추가
+#  ▸ 사진이 하나도 없으면 Gallery 섹션과 메뉴가 자동으로 숨겨집니다.
+#  ▸ 정렬: date 기준 최신순 (date 형식 "2026", "2026-10", "2026-10-03")
+# =====================================================================
+
+title: "Moments"
+intro: "Conferences, fieldwork, the team, and life in between."
+show: 12            # 처음에 보여줄 사진 수 (나머지는 'Show more')
+
+# 카테고리 표시 순서와 색 (photos 의 category 와 이름이 같아야 함)
+categories:
+  - name: "Conferences"
+    color: "#a78bfa"
+  - name: "Fieldwork"
+    color: "#38bdf8"
+  - name: "Lab & Team"
+    color: "#2dd4bf"
+  - name: "Everyday"
+    color: "#fb923c"
+
+photos:
+  # ---- 예시 (복사해서 쓰세요) ----------------------------------------
+  # - src: "assets/img/gallery/2025-12-agu-new-orleans.jpg"
+  #   title: "AGU Fall Meeting 2025"
+  #   caption: "Talk on Harvey & Beryl compound flooding"
+  #   date: "2025-12"
+  #   place: "New Orleans, LA"
+  #   category: "Conferences"
+  # --------------------------------------------------------------------
+  - src: "assets/img/profile-portrait.jpg"
+    title: "Portrait"
+    date: "2026"
+    place: "Austin, TX"
+    category: "Everyday"
