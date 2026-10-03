@@ -29,7 +29,7 @@ themes:
         caption: "Galveston Bay at the peak of Hurricane Ike (2008) — compound water level."
       - src: "assets/img/rslr-trend.jpg"
         caption: "Relative sea-level rise trends along the Gulf of America coast."
-    papers: ["10.1029/2025EF007678", "10.1007/s11069-023-06247-9"]
+    papers: ["10.1029/2025EF007678", "10.1007/s11069-023-06247-9","10.1016/j.jhydrol.2026.135808","10.1016/j.envsoft.2026.107010","10.3390/jmse12040678"]
 
   - id: probability
     pillar: "Probability"
@@ -48,7 +48,7 @@ themes:
     gallery:
       - src: "assets/img/hill-exceedance.jpg"
         caption: "Probability that maximum flood depth exceeds 0.1, 0.3, 0.5 and 1.0 m."
-    papers: ["10.1016/j.coastaleng.2025.104721", "10.1016/j.jhydrol.2026.135808"]
+    papers: ["10.1016/j.coastaleng.2025.104721", "10.2139/ssrn.7545121"]
 
   - id: ai
     pillar: "AI"
@@ -65,7 +65,7 @@ themes:
       src: "assets/video/ai-lsm.mp4"
       poster: "assets/img/ai-lsm.jpg"
       caption: "Hurricane Beryl (2024), an unseen event: SFINCS physics vs. LSM neural-operator prediction and absolute error."
-    papers: ["10.48550/arXiv.2307.16090"]
+    papers: ["10.48550/arXiv.2307.16090","10.22541/essoar.15005345/v1"]
 
   - id: people
     pillar: "People"
@@ -86,7 +86,7 @@ themes:
         caption: "End-to-end workflow: data → HydroMT → FloodAdapt scenarios → SFINCS → FIAT → decision support."
       - src: "assets/img/nisar-workflow.jpg"
         caption: "COAST-NISAR: satellite land-motion data feeding an AI-driven coastal resilience workflow."
-    papers: ["10.3390/su18168603"]
+    papers: ["10.2139/ssrn.7228030","10.3390/su18168603"]
 
 # '그 밖의 연구' 작은 카드들  (fit: contain → 그림 전체가 흰 배경에, contain-dark → 어두운 배경에, 생략하면 꽉 채움)
 also:
@@ -107,6 +107,7 @@ also:
     text: "3-D thermohaline modeling of brine discharge from 12 desalination plants in the Arabian/Persian Gulf; scenarios for the Texas coast."
     image: "assets/img/desal-gulf.jpg"
     fit: contain
+    papers: ["10.9753/icce.v36.papers.3"]
   - title: "Climate & coastal ecology"
     color: "#f472b6"
     text: "With UT Marine Science Institute: salinity–temperature projections of fish spawning habitat through 2176."
