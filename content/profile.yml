@@ -85,15 +85,15 @@ links:
     url: "https://www.beg.utexas.edu/people/wonhyun-lee"
     icon: "uni"
   # 아래 줄의 # 을 지우고 주소를 넣으면 버튼이 생깁니다
-  # - label: "Google Scholar"
-  #   url: "https://scholar.google.com/citations?user=XXXX"
-  #   icon: "scholar"
-  # - label: "ORCID"
-  #   url: "https://orcid.org/0000-0000-0000-0000"
-  #   icon: "orcid"
-  # - label: "LinkedIn"
-  #   url: "https://www.linkedin.com/in/XXXX"
-  #   icon: "linkedin"
+  - label: "Google Scholar"
+    url: "https://scholar.google.com/citations?user=XXXX"
+    icon: "scholar"
+  - label: "ORCID"
+    url: "https://orcid.org/0000-0000-0000-0000"
+    icon: "orcid"
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/wonhyun-lee-05a55b70/?isSelfProfile=true"
+    icon: "linkedin"
 
 # 미디어 파일 (파일만 교체하면 됩니다)
 media:
