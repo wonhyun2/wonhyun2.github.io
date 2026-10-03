@@ -5,7 +5,7 @@
 projects:
   - title: "Predicting Submonthly Gulf Coast Sea Level Variability and its Effect on Flooding"
     sponsor: "National Academies (NASEM) Gulf Research Program — GSLVR Cycle II"
-    role: "Principal Investigator"
+    role: "Principal Investigator at UT-Austin"
     amount: "$1,500,000"
     period: "2025 – 2030"
     status: current
@@ -21,16 +21,7 @@ projects:
     color: "#a78bfa"
     text: "Satellite radar measurements of vertical land motion feeding AI-driven compound-flood models and a coastal digital twin."
 
-  - title: "Mapping Lower Rio Grande Valley Colonias Using Remote Sensing and Machine Learning"
-    sponsor: "Texas General Land Office"
-    role: "Co-Investigator"
-    amount: "$921,956"
-    period: "2025 – 2027"
-    status: current
-    color: "#fb923c"
-    text: "Satellite and LiDAR mapping of colonias, process-based flood modeling and adaptation prioritization for underserved border communities."
-
-  - title: "Modeling Surface–Groundwater Interactions during Surge and Compound Flooding"
+   - title: "Modeling Surface–Groundwater Interactions during Surge and Compound Flooding"
     sponsor: "USACE-ERDC Civil Works"
     role: "Lead PI"
     amount: "$1,500,000"
@@ -40,10 +31,19 @@ projects:
 
   - title: "Texas Imperative — Water System and Drought (Project STARR)"
     sponsor: "Bureau of Economic Geology, UT Austin"
-    role: "Co-Investigator"
+    role: "Collaborator"
     period: "2024 – 2026"
     status: past
     text: "WAM-based hydrologic routing with neural-operator bias correction for improved runoff forecasting."
+
+   - title: "Mapping Lower Rio Grande Valley Colonias Using Remote Sensing and Machine Learning"
+    sponsor: "Texas General Land Office"
+    role: "Collaborator"
+    amount: "$921,956"
+    period: "2025 – 2026"
+    status: past
+    color: "#fb923c"
+    text: "Satellite and LiDAR mapping of colonias, process-based flood modeling and adaptation prioritization for underserved border communities."
 
   - title: "MuSiKAL: Multiphysics Simulations and Knowledge Discovery through AI/ML"
     sponsor: "U.S. Department of Energy"
