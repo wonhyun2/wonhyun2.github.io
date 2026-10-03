@@ -4,7 +4,7 @@
    ===================================================================== */
 (() => {
   'use strict';
-  const FILES = ['profile', 'research', 'publications', 'projects', 'news', 'people', 'honors'];
+  const FILES = ['profile', 'research', 'publications', 'projects', 'news', 'people', 'honors', 'gallery'];
   const $ = (s, r = document) => r.querySelector(s);
   const el = (tag, attrs = {}, html = '') => {
     const e = document.createElement(tag);
@@ -68,6 +68,7 @@
     safe(renderNews, data.news, 'news');
     safe(renderPeople, data.people, 'people');
     safe(renderHonors, data.honors, 'honors');
+    safe(renderGallery, data.gallery, 'gallery');
     setupReveal();
   }
   function showError(html) { const b = $('#load-error'); b.innerHTML = html; b.hidden = false; }
@@ -283,6 +284,65 @@
     $('#skills').innerHTML = list(d.skills).map(g => `<div class="skill-g"><b>${esc(g.group)}</b>${list(g.items).map(i => `<span>${esc(i)}</span>`).join('')}</div>`).join('');
   }
 
+  // ------------------------------------------------------------------ gallery
+  let GAL = [], galView = [], galIdx = -1;
+  function renderGallery(d) {
+    const sec = $('#gallery');
+    const photos = list(d && d.photos).filter(p => p && p.src);
+    if (!photos.length) { sec.remove(); $('#nav-gallery')?.remove(); return; }
+    if (d.title) $('#gal-title').textContent = d.title;
+    $('#gal-intro').innerHTML = md(d.intro || '');
+    const catColor = {}; list(d.categories).forEach(c => { if (c && c.name) catColor[c.name] = c.color; });
+    const pal = ['#a78bfa', '#38bdf8', '#2dd4bf', '#fb923c', '#f472b6', '#facc15'];
+    const order = list(d.categories).map(c => c.name);
+    photos.forEach((p, i) => p._i = i);
+    // newest first (date "YYYY", "YYYY-MM" or "YYYY-MM-DD"); undated keep file order at end
+    photos.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || a._i - b._i);
+    const cats = [...new Set(photos.map(p => p.category).filter(Boolean))].sort((a, b) => (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99));
+    cats.forEach((c, i) => { if (!catColor[c]) catColor[c] = pal[i % pal.length]; });
+    const PAGE = Number(d.show || 12);
+    let filt = 'All', shown = PAGE;
+    const fbox = $('#gal-filters');
+    const chips = ['All', ...cats];
+    fbox.innerHTML = chips.length > 2 || cats.length > 1 ? chips.map(c => `<button class="chip" role="tab" data-c="${esc(c)}" aria-selected="${c === filt}" ${c !== 'All' ? `style="--c:${esc(catColor[c])}"` : ''}>${esc(c)}<small>${c === 'All' ? photos.length : photos.filter(p => p.category === c).length}</small></button>`).join('') : '';
+    fbox.addEventListener('click', e => {
+      const b = e.target.closest('.chip'); if (!b) return;
+      filt = b.dataset.c; shown = PAGE; fbox.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-selected', x === b)); draw();
+    });
+    const more = $('#gal-more');
+    more.addEventListener('click', () => { shown += PAGE; draw(); });
+    const fmt = s => { if (!s) return ''; const [y, m] = String(s).split('-'); const M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; return m ? `${M[+m - 1] || m} ${y}` : y; };
+    GAL = photos.map(p => ({ src: p.src, cap: [p.title, p.caption, [fmt(p.date), p.place].filter(Boolean).join(' · ')].filter(Boolean).join(' — ') }));
+    function draw() {
+      const list_ = photos.filter(p => filt === 'All' || p.category === filt);
+      galView = list_.map(p => photos.indexOf(p));
+      $('#gal-grid').innerHTML = list_.slice(0, shown).map((p, k) => `
+        <figure class="gal-item" data-gal="${k}" tabindex="0" style="--c:${esc(catColor[p.category] || '#38bdf8')}">
+          <img src="${esc(p.src)}" alt="${esc(p.title || p.caption || '')}" loading="lazy">
+          <figcaption>
+            ${p.category ? `<span class="gal-cat">${esc(p.category)}</span>` : ''}
+            ${p.title ? `<b>${esc(p.title)}</b>` : ''}
+            <span class="gal-meta">${esc([fmt(p.date), p.place].filter(Boolean).join(' · '))}</span>
+          </figcaption>
+        </figure>`).join('');
+      more.hidden = list_.length <= shown;
+    }
+    draw();
+    $('#gal-grid').addEventListener('click', e => { const f = e.target.closest('.gal-item'); if (f) openGal(+f.dataset.gal); });
+    $('#gal-grid').addEventListener('keydown', e => { const f = e.target.closest('.gal-item'); if (f && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openGal(+f.dataset.gal); } });
+  }
+  function showGal(k) {
+    const n = galView.length; galIdx = (k + n) % n;
+    const p = GAL[galView[galIdx]];
+    $('#lb-img').src = p.src; $('#lb-cap').textContent = `${p.cap}${n > 1 ? `   (${galIdx + 1}/${n})` : ''}`;
+  }
+  function openGal(k) {
+    showGal(k);
+    const multi = galView.length > 1;
+    document.querySelectorAll('.lb-nav').forEach(b => b.hidden = !multi);
+    $('#lightbox').classList.add('photo'); $('#lightbox').showModal();
+  }
+
   // ------------------------------------------------------------------ UI: nav, lightbox, reveal
   const nav = $('#nav');
   const onScroll = () => nav.classList.toggle('solid', scrollY > window.innerHeight * 0.75 - 64);
@@ -297,9 +357,26 @@
     const t = e.target.closest('[data-full]');
     if (!t || !t.dataset.full) return;
     $('#lb-img').src = t.dataset.full; $('#lb-cap').textContent = t.dataset.cap || '';
+    galIdx = -1; document.querySelectorAll('.lb-nav').forEach(b => b.hidden = true); lb.classList.remove('photo');
     lb.showModal();
   });
-  lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lb-close')) lb.close(); });
+  lb.addEventListener('click', e => {
+    if (e.target.classList.contains('lb-prev')) return showGal(galIdx - 1);
+    if (e.target.classList.contains('lb-next')) return showGal(galIdx + 1);
+    if (e.target === lb || e.target.classList.contains('lb-close')) lb.close();
+  });
+  lb.addEventListener('keydown', e => {
+    if (galIdx < 0) return;
+    if (e.key === 'ArrowLeft') showGal(galIdx - 1);
+    if (e.key === 'ArrowRight') showGal(galIdx + 1);
+  });
+  let tx = null;
+  lb.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    if (galIdx < 0 || tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 50) showGal(galIdx + (dx < 0 ? 1 : -1));
+  });
 
   function setupReveal() {
     const els = document.querySelectorAll('.reveal');
