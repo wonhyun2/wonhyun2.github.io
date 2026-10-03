@@ -5,11 +5,13 @@
 
 mentoring_intro: "I enjoy helping students turn models into insight — from setting up their first SFINCS domain to publishing their first paper."
 
-mentees:
+Co-Advising:
   - name: "Hyunje Yang"
     role: "Ph.D. student, UT Austin CAEE"
     topic: "Physics-informed deep learning for compound flooding; storm surge & tsunami"
     current: true
+
+Techincal Advising:
   - name: "M. Enayet Chowdhury"
     role: "Ph.D. student, UT Austin CAEE"
     topic: "Storm surge & compound-flood driver attribution"
@@ -34,26 +36,8 @@ mentees:
     role: "Ph.D. student, UT Austin Jackson School"
     topic: "SFINCS modeling in Texas"
     current: false
-  - name: "William S. Bailey"
-    role: "Ph.D. student, UT Austin Jackson School"
-    topic: "Delft3D-FM morphodynamics, sediment & microplastic transport"
-    current: false
-  - name: "Xuan Ma"
-    role: "Ph.D. student, Texas A&M"
-    topic: "Hydrodynamic–wave coupling"
-    current: false
-  - name: "Arrumi Isnandiahening"
-    role: "M.S. student, STMKG Indonesia"
-    topic: "Hydrodynamic modeling"
-    current: false
-  - name: "Jin Young Kim"
-    role: "Ph.D. student, Texas A&M"
-    topic: "Hydrodynamic–wave coupling on HPC"
-    current: false
-  - name: "Szu-Ting Lee · Chi Lu · Woongsuk Pae"
-    role: "M.E./M.S. students, Texas A&M"
-    topic: "Hydrodynamic & morphodynamic modeling"
-    current: false
+  
+  
 
 # 협력 기관 (이름만 바꾸거나 추가하면 됩니다)
 collaborators_intro: "Built together with agencies, labs and industry partners."
