@@ -7,10 +7,10 @@
 news:
   - date: "2026-12"
     tag: talk
-    text: "Four presentations at **AGU Fall Meeting 2026** (San Francisco): multi-domain SFINCS across the Gulf, LRGV pluvial flood adaptation, PlanetScope colonias monitoring, and LiDAR building-level flash-flood vulnerability in Kerrville."
+    text: "Five presentations at **AGU Fall Meeting 2026** (San Francisco): multi-domain SFINCS across the Gulf, LRGV pluvial flood adaptation, PlanetScope colonias monitoring, LiDAR building-level flash-flood vulnerability in Kerrville and drought and hydrologic variablity in Central Texas Hill County using high-resolution data and ML ."
   - date: "2026-09"
     tag: grant
-    text: "**COAST-NISAR** selected by NASA's NISAR Data, Applications, Research & Technology program (Co-PI) — compound-flood assessment from space."
+    text: "**COAST-NISAR** selected by NASA's NISAR Data $975,000, Applications, Research & Technology program (Co-PI) — compound-flood assessment from space."
   - date: "2026-05"
     tag: service
     text: "Organizing Committee and presenter at **HydroML 2026**, Austin."
