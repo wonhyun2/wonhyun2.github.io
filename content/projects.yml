@@ -5,7 +5,7 @@
 projects:
   - title: "Predicting Submonthly Gulf Coast Sea Level Variability and its Effect on Flooding"
     sponsor: "National Academies (NASEM) Gulf Research Program — GSLVR Cycle II"
-    role: "Principal Investigator at UT-Austin"
+    role: "PI at UT-Austin"
     amount: "$1,500,000"
     period: "2025 – 2030"
     status: current
@@ -21,6 +21,15 @@ projects:
     color: "#a78bfa"
     text: "Satellite radar measurements of vertical land motion feeding AI-driven compound-flood models and a coastal digital twin."
 
+  - title: "Texas Oﬀ shore Legacy and Orphaned Wells: Environmental and Climate-Informed Risk Assessment and Integrated Mapping"
+    sponsor: "National Academies (NASEM) Gulf Research Program (GRP)"
+    role: "Co-PI"
+    amount: "$---"
+    period: "2025 – 2030"
+    status: current
+    color: "#38bdf8"
+    text: "Linking ocean circulation, tides and atmospheric forcing to short-term sea-level anomalies and their effect on compound surge–rainfall flooding across the Gulf coast."
+  
   - title: "Modeling Surface–Groundwater Interactions during Surge and Compound Flooding"
     sponsor: "USACE-ERDC Civil Works"
     role: "Lead PI"
@@ -38,7 +47,7 @@ projects:
 
   - title: "Mapping Lower Rio Grande Valley Colonias Using Remote Sensing and Machine Learning"
     sponsor: "Texas General Land Office"
-    role: "Collaborator"
+    role: "Co-PI"
     amount: "$921,956"
     period: "2025 – 2026"
     status: past
