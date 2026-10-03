@@ -22,6 +22,12 @@ papers:
   # ---------------- Submitted / under review / in preparation
   - year: 2026
     type: submitted
+    authors: "Lee, W., Ancell, B., and Scanlon, B.R."
+    title: "Probabilistic Flash–Flood Inundation under Ensemble Rainfall Uncertainty in the Texas Hill Country"
+    venue: "Journal of Hydrology"
+    details: "under review"
+  - year: 2026
+    type: submitted
     authors: "Souza, P.M.J., Lee, W., Bolser, D.G., Souza, C.M. and Brandl, S.J."
     title: "Acoustic competition amplifies climate-driven loss of fish spawning habitat"
     venue: "Nature Climate Change"
@@ -74,6 +80,7 @@ papers:
     venue: "Environmental Modelling & Software"
     details: "203, 107010"
     doi: "10.1016/j.envsoft.2026.107010"
+    selected: true
   - year: 2026
     type: journal
     authors: "Lee, W., Sun, A.Y. and Scanlon, B.R."
