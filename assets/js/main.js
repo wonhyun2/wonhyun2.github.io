@@ -146,6 +146,11 @@
     if (m.type === 'video') return `<video autoplay muted loop playsinline preload="metadata" poster="${esc(m.poster || '')}" aria-label="${esc(alt)}"><source src="${esc(m.src)}" type="video/mp4"></video>`;
     return `<img src="${esc(m.src)}" alt="${esc(alt)}" loading="lazy">`;
   }
+  // DOI links: accepts "10.xxxx/yyy", "doi:10.xxxx/yyy" or "https://doi.org/10.xxxx/yyy"
+  function paperLinks(arr) {
+    return list(arr).map(x => String(x).trim().replace(/^https?:\/\/(dx\.)?doi\.org\//i, '').replace(/^doi:\s*/i, '')).filter(Boolean)
+      .map(d => `<a href="https://doi.org/${esc(d)}" target="_blank" rel="noopener">${icon('doc')} ${esc(d.split('/')[0] === '10.48550' ? 'arXiv' : 'doi')}: ${esc(d.replace(/^10\.\d+\//, ''))}</a>`).join('');
+  }
   function renderResearch(r) {
     if (!r) return;
     $('#research-intro').innerHTML = md(r.intro || '');
@@ -154,7 +159,7 @@
       const c = colorOf(t.pillar);
       const art = el('article', { class: 'theme reveal', id: `theme-${t.id || ''}`, style: { '--accent': c } });
       const gal = list(t.gallery);
-      const papers = list(t.papers).map(d => `<a href="https://doi.org/${esc(d)}" target="_blank" rel="noopener">${icon('doc')} ${esc(d.split('/')[0] === '10.48550' ? 'arXiv' : 'doi')}: ${esc(d.replace(/^10\.\d+\//, ''))}</a>`).join('');
+      const papers = paperLinks(t.papers);
       art.innerHTML = `
         <figure class="theme-media">
           <div class="frame" data-full="${t.media && t.media.type !== 'video' ? esc(t.media.src) : ''}" data-cap="${esc(t.media?.caption || '')}">${mediaHTML(t.media, t.title)}</div>
@@ -177,7 +182,8 @@
       const g = list(a.gallery);
       card.innerHTML = `<div class="img ${a.fit === 'contain' ? 'contain' : a.fit === 'contain-dark' ? 'contain dark' : ''}" data-full="${esc(a.image)}" data-cap="${esc(a.title)}">${a.image ? `<img src="${esc(a.image)}" alt="${esc(a.title)}" loading="lazy">` : ''}</div>
         <div class="body"><h4>${esc(a.title)}</h4><p>${md(a.text || '')}</p>
-        ${g.length ? `<div class="thumbs">${g.map(x => `<button data-full="${esc(x.src)}" data-cap="${esc(x.caption || '')}" aria-label="Enlarge figure"><img src="${esc(x.src)}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}</div>`;
+        ${g.length ? `<div class="thumbs">${g.map(x => `<button data-full="${esc(x.src)}" data-cap="${esc(x.caption || '')}" aria-label="Enlarge figure"><img src="${esc(x.src)}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}
+        ${list(a.papers).length ? `<div class="paper-links" style="margin-top:12px;font-size:13px">${paperLinks(a.papers)}</div>` : ''}</div>`;
       also.append(card);
     });
   }
