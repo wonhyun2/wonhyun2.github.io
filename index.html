@@ -30,6 +30,7 @@
     <a href="#publications">Publications</a>
     <a href="#news">News</a>
     <a href="#team">Team</a>
+    <a href="#gallery" id="nav-gallery">Gallery</a>
     <a href="#contact">Contact</a>
     <a class="btn btn-sm" data-bind="cv" href="assets/cv/Wonhyun_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>
   </nav>
@@ -156,6 +157,18 @@
   </div>
 </section>
 
+<!-- ============ GALLERY ============ -->
+<section class="section dark gallery" id="gallery">
+  <div class="wrap">
+    <p class="kicker light">Gallery</p>
+    <h2 class="h2 light" id="gal-title">Moments</h2>
+    <p class="light-sub gal-intro" id="gal-intro"></p>
+    <div class="chips gal-chips" id="gal-filters" role="tablist"></div>
+    <div class="gal-grid" id="gal-grid"></div>
+    <div class="gal-more-wrap"><button class="btn btn-ghost" id="gal-more" hidden>Show more photos</button></div>
+  </div>
+</section>
+
 <!-- ============ RECOGNITION ============ -->
 <section class="section tint" id="recognition">
   <div class="wrap">
@@ -198,6 +211,8 @@
 
 <dialog id="lightbox" class="lightbox">
   <button class="lb-close" aria-label="Close">×</button>
+  <button class="lb-nav lb-prev" aria-label="Previous" hidden>‹</button>
+  <button class="lb-nav lb-next" aria-label="Next" hidden>›</button>
   <img id="lb-img" alt="">
   <p id="lb-cap"></p>
 </dialog>
