@@ -58,7 +58,7 @@ themes:
     bullets:
       - "Fourier and latent-spectral neural operators (FNO, LSM) trained on SFINCS ensembles; tested on unseen storms such as Beryl (2024)."
       - "Where, when and how physics-informed deep learning improves hurricane compound-flood prediction."
-      - "Multi-model benchmark of physics-aware neural operators with NVIDIA research collaborators."
+      - "Multi-model benchmark of physics-aware neural operators with AI/SciML research collaborators."
     tags: ["FNO", "LSM", "PINN", "Surrogates", "SciML"]
     media:
       type: video
