@@ -135,6 +135,6 @@ collaborators:
   - group: "Agencies & stakeholders"
     names: ["Texas General Land Office", "Texas Water Development Board", "TCEQ", "Harris County Flood Control District", "Harris–Galveston Subsidence District", "U.S. Army Corps of Engineers ERDC"]
   - group: "Research partners"
-    names: ["Coastal Hazards Lab, UT Austin", "UT Marine Science Institute", "NVIDIA Research", "Deltares", "U.S. Naval Research Laboratory", "U.S. Geological Survey", "LSU", "University of Notre Dame", "Pacific Northwest National Laboratory"]
+    names: ["Coastal Hazards Lab, UT Austin", "UT Marine Science Institute", "Texas Advanced Computing Center (TACC)","NVIDIA Research", "Deltares", "U.S. Naval Research Laboratory", "U.S. Geological Survey", "LSU", "Coastal Emergency Risks Assessment (CERA)", "University of Notre Dame", "Pacific Northwest National Laboratory"]
   - group: "Funding"
     names: ["NASEM Gulf Research Program", "NASA", "U.S. Department of Energy", "Office of Naval Research", "National Research Council", "Qatar National Research Fund"]
