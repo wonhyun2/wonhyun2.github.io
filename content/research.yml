@@ -20,7 +20,7 @@ themes:
     tags: ["Delft3D-FM", "SFINCS", "SWAN", "LiDAR", "RSLR"]
     media:
       type: video
-      src: "assets/video/camp3d.mp4""
+      src: "assets/video/camp3d.mp4"
       caption: "Guadalupe River currents near Camp Mystic, July 4 2025 — 3-D SFINCS visualization."
     gallery:
       - src: "assets/img/kerrville-2025-2026.jpg"
