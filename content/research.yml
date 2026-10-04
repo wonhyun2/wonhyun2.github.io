@@ -62,7 +62,7 @@ themes:
     tags: ["FNO", "LSM", "PINN", "Surrogates", "SciML"]
     media:
       type: video
-      src: "assets/video/ai-lsm.mp4"
+      src: "assets/video/ai_lsm_fno.mp4"
       poster: "assets/img/ai-lsm.jpg"
       caption: "Hurricane Beryl (2024), an unseen event: SFINCS physics vs. LSM neural-operator prediction and absolute error."
     papers: ["10.48550/arXiv.2307.16090","10.22541/essoar.15005345/v1"]
