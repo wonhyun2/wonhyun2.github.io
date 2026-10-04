@@ -42,8 +42,8 @@ themes:
       - "Shapley-value attribution of the relative contribution of each compound-flood driver in space and time."
     tags: ["Ensembles", "Exceedance probability", "Uncertainty", "Shapley"]
     media:
-      type: image
-      src: "assets/img/gulf-ensemble.jpg"
+      type: video
+      src: "assets/video/s03.mp4"
       caption: "Hurricane-track ensembles crossing the 17 Gulf-coast SFINCS domains."
     gallery:
       - src: "assets/img/hill-exceedance.jpg"
