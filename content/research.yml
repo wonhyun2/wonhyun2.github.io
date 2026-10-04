@@ -19,8 +19,8 @@ themes:
       - "Gulf-wide relative sea-level rise and subsidence drivers (1900–2024) and their effect on future flood depth."
     tags: ["Delft3D-FM", "SFINCS", "SWAN", "LiDAR", "RSLR"]
     media:
-      type: image
-      src: "assets/img/hill-3d.jpg"
+      type: video
+      src: "assets/video/camp3d.mp4""
       caption: "Guadalupe River currents near Camp Mystic, July 4 2025 — 3-D SFINCS visualization."
     gallery:
       - src: "assets/img/kerrville-2025-2026.jpg"
