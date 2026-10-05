@@ -37,7 +37,7 @@ service:
   - label: "Seminar Coordinator"
     text: "Bureau of Economic Geology, UT Austin (2023–2024)"
   - label: "Journal reviewer"
-    text: "Water Resources Research · Earth's Future · JGR Oceans · JGR Atmospheres · Journal of Hydrology · Natural Hazards · Communications Earth & Environment · Communications Sustainability · Estuaries and Coasts · J. Waterway, Port, Coastal & Ocean Eng. · J. Atmospheric & Oceanic Technology · JMSE · Marine Geodesy · and more"
+    text: "Water Resources Research · Earth's Future · JGR Oceans · JGR Atmospheres · Journal of Hydrology · Natural Hazards · Ocean Modeling · Communications Earth & Environment · Communications Sustainability · Estuaries and Coasts · J. Waterway, Port, Coastal & Ocean Eng. · J. Atmospheric & Oceanic Technology · JMSE · Marine Geodesy · and more"
 
 media:
   - year: "2026"
