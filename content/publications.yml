@@ -59,6 +59,24 @@ papers:
     title: "Physics-Aware Neural Operators for Compound Flood Prediction: A Multi-Model Benchmark in the Texas Gulf Coast"
     venue: "Manuscript"
     details: "in preparation"
+  - year: 2026
+    type: submitted
+    authors: "Lee, W., Rateb, A., Widlansky, M.J and Little, C.M."
+    title: "Transferability and Validation of Reduced-Complexity Compound Flood Models: A multi-Storm SFINCS Assessment Across the U.S. Gulf Coast"
+    venue: "Manuscript"
+    details: "in preparation"
+  - year: 2026
+    type: submitted
+    authors: "Little, C.M., Widlansky, M.J, Wang, Y., Rateb, A., Dusek G., and Lee, W."
+    title: "Learning from the oracle: prioritizing Gulf Coast high-tide flood forecasting efforts"
+    venue: "Manuscript"
+    details: "in preparation"
+  - year: 2026
+    type: submitted
+    authors: "Kyne, D., Scanlon B.R., Zhang, Y., Stephens K., Porter, B., Lee, W. and Vega, A."
+    title: "Poverty, Income, and the Geography of Colonias in Texas’s Rio Grande Valley"
+    venue: "Manuscript"
+    details: "in preparation"
 
   # ---------------- Journal articles
   - year: 2026
