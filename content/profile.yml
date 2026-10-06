@@ -105,5 +105,5 @@ media:
   overview_poster: "assets/img/video-poster.jpg"
   # YouTube에 올렸다면 ID만 넣으세요 (예: tAHxNV_VG94). 넣으면 mp4 대신 YouTube가 재생됩니다.
   overview_youtube: ""
-  overview_title: "Before the Water Rises — research in 2½ minutes"
+  overview_title: "Before the Water Rises — Outsmarting Floods with Science and AI"
   overview_caption: "Physics → Probability → AI → People. Hill Country flash floods, Gulf-wide hurricane ensembles, neural-operator surrogates, FloodAdapt, NISAR, nature-based solutions and more. Original soundtrack."
