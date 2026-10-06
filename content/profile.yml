@@ -32,8 +32,8 @@ pillars:
 
 # 소개 (About) — 문단은 리스트 항목 하나씩
 bio:
-  - "I am a Research Assistant Professor and Principal Investigator at the Bureau of Economic Geology, The University of Texas at Austin. I study how hurricanes, extreme rainfall, rivers and rising seas combine into **compound floods** — and how to forecast them quickly and with honest uncertainty, so that people can act before the water rises."
-  - "My group couples physics-based coastal and hydrologic models (Delft3D-FM, SFINCS, SWAN) with large **probabilistic ensembles**, **AI surrogates** such as Fourier and latent-spectral neural operators, and decision tools like **FloodAdapt** — building toward a flood **digital twin** for the Gulf of America coast and the Texas Hill Country."
+  - "I am a Research Assistant Professor and Principal Investigator at the Bureau of Economic Geology, The University of Texas at Austin. I study how hurricanes, extreme rainfall, rivers and rising seas combine into **compound floods** — and how to forecast them quickly and with uncertainty quantification, so that people can act before the water rises."
+  - "My group couples physics-based coastal and hydrologic models (Delft3D-FM, SFINCS, SWAN) with large **probabilistic ensembles**, **AI surrogates** such as Fourier and latent-spectral neural operators, and decision tools like **FloodAdapt** — building toward a flood **digital twin** for the Gulf of America coast and the overland areas (e.g., Texas Hill Country, Lower Rio Grande Valley)."
   - "Before UT Austin I was a National Research Council Postdoctoral Fellow at the U.S. Naval Research Laboratory (NASA Stennis Space Center), working on probabilistic surge and inundation prediction and the ocean's thermohaline response to hurricanes. I received my Ph.D. in Civil Engineering from Texas A&M University, where I modeled 3-D hydrodynamics and desalination impacts in the Arabian/Persian Gulf."
 
 education:
