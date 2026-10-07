@@ -37,12 +37,74 @@
   };
   const icon = n => `<svg class="ic" viewBox="0 0 24 24">${ICONS[n] || ICONS.link}</svg>`;
 
+  // ------------------------------------------------------------------ language (EN / 한국어)
+  //  ▸ 내용 번역: YAML 항목 이름 뒤에 _ko 를 붙인 값 (예: title_ko) — 없으면 영어 사용
+  //  ▸ 화면 글자(메뉴·제목·버튼) 번역: 아래 UI.ko
+  const LANGS = ['en', 'ko'];
+  const LANG = (() => {
+    const q = new URLSearchParams(location.search).get('lang');
+    if (LANGS.includes(q)) { try { localStorage.setItem('lang', q); } catch (e) {} return q; }
+    try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+    return 'en';
+  })();
+  const UI = { ko: {
+    'nav.research': '연구', 'nav.projects': '연구과제', 'nav.pubs': '논문', 'nav.news': '소식', 'nav.team': '구성원', 'nav.gallery': '갤러리', 'nav.contact': '연락처',
+    'hero.watch': '연구 소개 영상 보기', 'hero.explore': '연구 둘러보기',
+    'about.kicker': '소개', 'about.h2': '홍수는 한 가지 원인으로 오지 않습니다.<br><em>예측도 그래야 합니다.</em>', 'about.appts': '경력', 'about.edu': '학력',
+    'ov.kicker': '연구 소개 영상',
+    'res.kicker': '연구', 'res.h2': '관측 <span class="arrow">→</span> 모의 <span class="arrow">→</span> 학습 <span class="arrow">→</span> 실행', 'res.also': '홍수, 그 너머의 연구',
+    'proj.kicker': '연구비 과제', 'proj.h2': '연구 과제', 'proj.past': '지난 과제', 'proj.pending': '심사 중',
+    'pub.kicker': '논문', 'pub.h2': '논문 및 프리프린트', 'pub.search': '제목, 저자, 저널 검색…',
+    'pub.note': '지도 학생들이 여러 논문의 공저자로 참여했습니다. 전체 목록은 <a data-bind="cv" href="assets/cv/Wonhyun_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>에 있습니다.',
+    'pub.all': '전체', 'pub.selected': '대표 논문', 'pub.journal': '저널', 'pub.conference': '프로시딩', 'pub.submitted': '심사 중', 'pub.report': '보고서 · 학위논문',
+    'pub.b.journal': '저널', 'pub.b.conference': '프로시딩', 'pub.b.report': '보고서', 'pub.b.thesis': '학위논문', 'pub.b.star': '★ 대표',
+    'pub.inreview': '심사 중', 'pub.empty': '검색 결과가 없습니다.', 'st.under review': '심사 중', 'st.in preparation': '준비 중', 'st.in revision': '수정 중',
+    'news.kicker': '소식', 'news.h2': '최근 소식', 'news.all': '전체 {n}개 보기 →',
+    'tag.award': '수상', 'tag.paper': '논문', 'tag.grant': '연구비', 'tag.talk': '발표', 'tag.media': '언론', 'tag.service': '봉사',
+    'team.kicker': '팀', 'team.h2': '구성원', 'team.alumni': '이전 멤버', 'team.with': '공동지도',
+    'gal.kicker': '갤러리', 'gal.all': '전체', 'gal.more': '사진 더 보기',
+    'rec.kicker': '수상 및 학술 활동', 'rec.h2': '수상 · 초청강연 · 학술봉사', 'rec.awards': '수상', 'rec.talks': '초청 강연', 'rec.service': '학술 봉사', 'rec.media': '언론 보도', 'rec.toolbox': '도구', 'rec.members': '학회 회원',
+    'contact.kicker': '연락처', 'contact.h2': '다음 홍수가 닥치기 전에,<br><em>함께 준비합시다.</em>', 'contact.sub': '학생, 공동연구자, 기관, 언론 관계자 모두 편하게 연락 주세요.',
+    'ideas.ex': '적용 예', 'cv.download': 'CV 다운로드', 'copy': '복사', 'copied': '복사됨', 'foot.top': '맨 위로 ↑'
+  } };
+  const t = (k, en) => (UI[LANG] && UI[LANG][k] != null) ? UI[LANG][k] : en;
+  // YAML: replace X with X_ko (when present) everywhere in the data
+  function localize(o) {
+    if (Array.isArray(o)) { o.forEach(localize); return o; }
+    if (o && typeof o === 'object') {
+      for (const k of Object.keys(o)) {
+        const m = k.match(/^(.*)_(en|ko)$/);
+        if (m) { if (m[2] === LANG && o[k] != null && o[k] !== '') o[m[1]] = o[k]; delete o[k]; }
+      }
+      Object.values(o).forEach(localize);
+    }
+    return o;
+  }
+  function applyLang() {
+    document.documentElement.lang = LANG;
+    document.querySelectorAll('.lang-switch button').forEach(b => {
+      b.setAttribute('aria-pressed', b.dataset.lang === LANG);
+      b.addEventListener('click', () => {
+        if (b.dataset.lang === LANG) return;
+        try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+        const u = new URL(location.href); u.searchParams.set('lang', b.dataset.lang); location.replace(u.toString());
+      });
+    });
+    if (LANG === 'en') return;
+    const f = document.createElement('link'); f.rel = 'stylesheet';
+    f.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@500;600&display=swap';
+    document.head.append(f);
+    document.querySelectorAll('[data-i18n]').forEach(e => { const v = t(e.dataset.i18n, null); if (v != null) e.innerHTML = v; });
+    document.querySelectorAll('[data-i18n-ph]').forEach(e => { const v = t(e.dataset.i18nPh, null); if (v != null) e.placeholder = v; });
+  }
+
   let PILLAR = {};
   const colorOf = name => PILLAR[(name || '').toLowerCase()] || '#38bdf8';
   const initials = n => n.split(/[\s·]+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
 
   // ------------------------------------------------------------------ load
   async function load() {
+    applyLang();
     if (location.protocol === 'file:') {
       showError('이 페이지는 파일을 직접 열면(file://) 내용을 불러올 수 없습니다.\n폴더에서 터미널을 열고 <code>python -m http.server</code> 실행 후 <code>http://localhost:8000</code> 으로 여세요.\n(Opened as a local file — run a local server; see README.)');
       return;
@@ -53,7 +115,7 @@
       try {
         const r = await fetch(`content/${f}.yml?v=${Date.now()}`);
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        data[f] = jsyaml.load(await r.text()) || {};
+        data[f] = localize(jsyaml.load(await r.text()) || {});
       } catch (e) {
         errs.push(`<b>content/${f}.yml</b>: ${esc(e.reason || e.message)}${e.mark ? ` — line ${e.mark.line + 1}, column ${e.mark.column + 1}` : ''}`);
         data[f] = {};
@@ -63,6 +125,7 @@
     const safe = (fn, d, name) => { try { fn(d); } catch (e) { console.error(name, e); } };
     safe(renderProfile, data.profile, 'profile');
     safe(renderResearch, data.research, 'research');
+    safe(renderIdeas, data.research && data.research.approach, 'ideas');
     safe(renderProjects, data.projects, 'projects');
     safe(renderPubs, data.publications, 'publications');
     safe(renderNews, data.news, 'news');
@@ -110,7 +173,7 @@
     document.querySelectorAll('[data-bind="cv"]').forEach(a => { if (c.cv) a.href = c.cv; else a.remove(); });
     const links = list(p.links);
     const ar = $('#about-links'); ar.innerHTML = '';
-    if (c.cv) ar.append(el('a', { class: 'btn btn-out', href: c.cv, target: '_blank', rel: 'noopener' }, `${icon('doc')}Download CV`));
+    if (c.cv) ar.append(el('a', { class: 'btn btn-out', href: c.cv, target: '_blank', rel: 'noopener' }, `${icon('doc')}${t('cv.download', 'Download CV')}`));
     links.forEach(l => ar.append(el('a', { class: 'btn btn-out', href: l.url, target: '_blank', rel: 'noopener' }, `${icon(l.icon)}${esc(l.label)}`)));
 
     const pc = list(p.pillars).map(x => x.color);
@@ -128,15 +191,15 @@
 
     // contact
     const lines = [];
-    if (c.email) lines.push(`<div class="cline">${icon('mail')}<a href="mailto:${esc(c.email)}">${esc(c.email)}</a><button class="copy" data-copy="${esc(c.email)}">copy</button></div>`);
-    if (c.email2) lines.push(`<div class="cline">${icon('mail')}<a href="mailto:${esc(c.email2)}">${esc(c.email2)}</a><button class="copy" data-copy="${esc(c.email2)}">copy</button></div>`);
+    if (c.email) lines.push(`<div class="cline">${icon('mail')}<a href="mailto:${esc(c.email)}">${esc(c.email)}</a><button class="copy" data-copy="${esc(c.email)}">${t('copy', 'copy')}</button></div>`);
+    if (c.email2) lines.push(`<div class="cline">${icon('mail')}<a href="mailto:${esc(c.email2)}">${esc(c.email2)}</a><button class="copy" data-copy="${esc(c.email2)}">${t('copy', 'copy')}</button></div>`);
     if (c.address) lines.push(`<div class="cline">${icon('pin')}<span>${esc(c.address)}</span></div>`);
     const btns = [];
     if (c.cv) btns.push(`<a class="btn btn-light" href="${esc(c.cv)}" target="_blank" rel="noopener">${icon('doc')}CV (PDF${c.cv_updated ? ', ' + esc(c.cv_updated) : ''})</a>`);
     links.forEach(l => btns.push(`<a class="btn btn-ghost" href="${esc(l.url)}" target="_blank" rel="noopener">${icon(l.icon)}${esc(l.label)}</a>`));
     $('#contact-lines').innerHTML = lines.join('') + `<div class="c-btns">${btns.join('')}</div>`;
     document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
-      navigator.clipboard?.writeText(b.dataset.copy).then(() => { b.textContent = 'copied'; setTimeout(() => b.textContent = 'copy', 1400); });
+      navigator.clipboard?.writeText(b.dataset.copy).then(() => { b.textContent = t('copied', 'copied'); setTimeout(() => b.textContent = t('copy', 'copy'), 1400); });
     }));
   }
 
@@ -188,6 +251,23 @@
     });
   }
 
+  // ------------------------------------------------------------------ IDEAS (research motto, research.yml → approach)
+  function renderIdeas(a) {
+    const sec = $('#ideas');
+    if (!a || !list(a.steps).length) { sec.remove(); return; }
+    if (a.kicker) $('#ideas-kicker').textContent = a.kicker;
+    $('#ideas-title').innerHTML = esc(a.title || 'IDEAS').replace('IDEAS', '<span class="ideas-word">IDEAS</span>');
+    $('#ideas-intro').innerHTML = md(a.intro || '');
+    $('#ideas-credit').innerHTML = md(a.credit || '');
+    $('#ideas-steps').innerHTML = list(a.steps).map(s => `
+      <li class="reveal" style="--c:${esc(s.color || '#38bdf8')}">
+        <span class="L">${esc(s.letter || '')}</span>
+        <h3>${esc(s.name || '')}</h3>
+        <p>${md(s.text || '')}</p>
+        ${s.example ? `<p class="ex"><b>${esc(t('ideas.ex', 'In practice'))}</b>${md(s.example)}</p>` : ''}
+      </li>`).join('');
+  }
+
   // ------------------------------------------------------------------ projects
   function renderProjects(d) {
     const ps = list(d && d.projects);
@@ -200,7 +280,7 @@
         <div class="meta"><span>${esc(p.sponsor || '')}</span><span><b>${esc(p.amount || '')}</b>${p.amount ? ' · ' : ''}${esc(p.period || '')}</span></div>
       </article>`).join('');
     $('#proj-pending').innerHTML = ps.filter(p => p.status === 'pending').map(p =>
-      `<div class="pending"><span class="pill">Pending</span><b>${esc(p.title)}</b> — ${esc(p.sponsor || '')} · ${esc(p.role || '')}${p.amount ? ' · ' + esc(p.amount) : ''}</div>`).join('');
+      `<div class="pending"><span class="pill">${t('proj.pending', 'Pending')}</span><b>${esc(p.title)}</b> — ${esc(p.sponsor || '')} · ${esc(p.role || '')}${p.amount ? ' · ' + esc(p.amount) : ''}</div>`).join('');
     $('#proj-past').innerHTML = ps.filter(p => p.status === 'past').map(p =>
       `<li><b>${esc(p.title)}</b><span>${esc(p.sponsor || '')} · ${esc(p.role || '')} · ${esc(p.period || '')}</span></li>`).join('');
   }
@@ -209,7 +289,7 @@
   function renderPubs(d) {
     const papers = list(d && d.papers).map((p, i) => ({ ...p, _i: i }));
     const me = list(d && d.me);
-    const TYPES = [['all', 'All'], ['selected', 'Selected'], ['journal', 'Journal'], ['conference', 'Proceedings'], ['submitted', 'Under review'], ['report', 'Reports & thesis']];
+    const TYPES = [['all', 'All'], ['selected', 'Selected'], ['journal', 'Journal'], ['conference', 'Proceedings'], ['submitted', 'Under review'], ['report', 'Reports & thesis']].map(([k, l]) => [k, t('pub.' + k, l)]);
     const count = k => k === 'all' ? papers.length : k === 'selected' ? papers.filter(p => p.selected).length
       : k === 'report' ? papers.filter(p => p.type === 'report' || p.type === 'thesis').length : papers.filter(p => p.type === k).length;
     let filt = 'all', q = '';
@@ -221,7 +301,7 @@
     });
     $('#pub-search').addEventListener('input', e => { q = e.target.value.trim().toLowerCase(); draw(); });
     const bold = a => { let s = esc(a); me.forEach(n => { s = s.split(esc(n)).join(`<b>${esc(n)}</b>`); }); return s; };
-    const LBL = { journal: 'Journal', conference: 'Proceedings', submitted: 'Under review', report: 'Report', thesis: 'Thesis' };
+    const LBL = { journal: t('pub.b.journal', 'Journal'), conference: t('pub.b.conference', 'Proceedings'), submitted: t('pub.submitted', 'Under review'), report: t('pub.b.report', 'Report'), thesis: t('pub.b.thesis', 'Thesis') };
     function draw() {
       let ps = papers.filter(p => filt === 'all' || (filt === 'selected' ? p.selected : filt === 'report' ? (p.type === 'report' || p.type === 'thesis') : p.type === filt));
       if (q) ps = ps.filter(p => [p.title, p.authors, p.venue, p.year].join(' ').toLowerCase().includes(q));
@@ -230,7 +310,7 @@
       ps.sort((a, b) => rank(b) - rank(a) || (b.year || 0) - (a.year || 0) || a._i - b._i);
       const groups = [];
       ps.forEach(p => {
-        const key = p.type === 'submitted' ? 'In review' : String(p.year || '');
+        const key = p.type === 'submitted' ? t('pub.inreview', 'In review') : String(p.year || '');
         let g = groups.find(x => x.k === key); if (!g) groups.push(g = { k: key, items: [] }); g.items.push(p);
       });
       $('#pub-list').innerHTML = groups.length ? groups.map(g => `
@@ -240,10 +320,10 @@
             <p class="pub-title">${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(p.title)}</a>` : esc(p.title)}</p>
             <p class="pub-auth">${bold(p.authors || '')}</p>
             <p class="pub-venue"><i>${esc(p.venue || '')}</i>${p.details && p.type !== 'submitted' ? `<span>${esc(p.details)}</span>` : ''}
-              <span class="badge ${esc(p.type)}">${p.type === 'submitted' ? esc(p.details || 'Under review') : (LBL[p.type] || esc(p.type || ''))}</span>
-              ${p.selected ? '<span class="badge star">★ Selected</span>' : ''}
+              <span class="badge ${esc(p.type)}">${p.type === 'submitted' ? esc(t('st.' + String(p.details || 'under review').toLowerCase(), p.details || 'Under review')) : (LBL[p.type] || esc(p.type || ''))}</span>
+              ${p.selected ? `<span class="badge star">${t('pub.b.star', '★ Selected')}</span>` : ''}
               ${p.doi ? `<a class="doi" href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">DOI</a>` : ''}</p>
-          </div>`; }).join('')}</div></div>`).join('') : '<p class="pub-empty">No matching publications.</p>';
+          </div>`; }).join('')}</div></div>`).join('') : `<p class="pub-empty">${t('pub.empty', 'No matching publications.')}</p>`;
     }
     draw();
   }
@@ -254,10 +334,10 @@
     const items = list(d && d.news);
     const SHOW = 6;
     const box = $('#news-list');
-    const fmt = s => { const [y, m] = String(s).split('-'); const M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; return m ? `${M[+m - 1] || m} ${y}` : y; };
-    box.innerHTML = items.map((n, i) => `<li ${i >= SHOW ? 'hidden' : ''} style="--c:${TAGC[n.tag] || '#38bdf8'}"><time>${esc(fmt(n.date))}<span class="ntag">${esc(n.tag || '')}</span></time><p>${md(n.text)}</p></li>`).join('');
+    const fmt = s => { const [y, m] = String(s).split('-'); const M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; if (LANG === 'ko') return m ? `${y}년 ${+m}월` : `${y}년`; return m ? `${M[+m - 1] || m} ${y}` : y; };
+    box.innerHTML = items.map((n, i) => `<li ${i >= SHOW ? 'hidden' : ''} style="--c:${TAGC[n.tag] || '#38bdf8'}"><time>${esc(fmt(n.date))}<span class="ntag">${esc(t('tag.' + n.tag, n.tag || ''))}</span></time><p>${md(n.text)}</p></li>`).join('');
     if (items.length > SHOW) {
-      const b = el('button', { class: 'news-more' }, `Show all ${items.length} →`);
+      const b = el('button', { class: 'news-more' }, t('news.all', 'Show all {n} →').replace('{n}', items.length));
       b.addEventListener('click', () => { box.querySelectorAll('li[hidden]').forEach(x => x.hidden = false); b.remove(); });
       box.after(b);
     }
@@ -285,6 +365,7 @@
     // ---- groups (Co-advising / Technical advising / Mentees ...)
     let groups = list(d.groups);
     if (!groups.length && list(d.mentees).length) groups = [{ title: 'Mentees', members: d.mentees }];  // old format
+    groups = groups.filter(g => list(g.members).length);
     const pal = Object.values(PILLAR);
     $('#people-groups').innerHTML = groups.map((g, gi) => {
       const col = g.color || pal[gi % pal.length] || '#38bdf8';
@@ -296,7 +377,7 @@
           <div><b>${m.url ? `<a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.name)}</a>` : esc(m.name)}</b>
           <span class="r">${esc(m.role || '')}</span>
           ${m.topic ? `<span class="t">${md(m.topic)}</span>` : ''}
-          ${(m.years || m.with || m.current === false) ? `<span class="pmeta">${m.current === false ? '<i>Alumni</i>' : ''}${esc([m.years, m.with ? 'with ' + m.with : ''].filter(Boolean).join(' · '))}</span>` : ''}</div>
+          ${(m.years || m.with || m.current === false) ? `<span class="pmeta">${m.current === false ? `<i>${t('team.alumni', 'Alumni')}</i>` : ''}${esc([m.years, m.with ? t('team.with', 'with') + ' ' + m.with : ''].filter(Boolean).join(' · '))}</span>` : ''}</div>
         </div>`;
       return `<section class="pgroup" style="--c:${esc(col)}">
         <div class="pgroup-head"><h3><i></i>${esc(g.title || '')}<small>${mem.length}</small></h3>${g.note ? `<p>${md(g.note)}</p>` : ''}</div>
@@ -316,7 +397,7 @@
     $('#talks').innerHTML = dated(d.talks, x => lnk(x, esc(x.text)));
     $('#media').innerHTML = dated(d.media, x => `<span class="outlet">${esc(x.outlet || '')}</span> — ${lnk(x, esc(x.text))}`);
     $('#service').innerHTML = list(d.service).map(s => `<li><b>${esc(s.label)}</b>${esc(s.text)}</li>`).join('')
-      + (list(d.memberships).length ? `<li><b>Memberships</b>${list(d.memberships).map(esc).join(' · ')}</li>` : '');
+      + (list(d.memberships).length ? `<li><b>${t('rec.members', 'Memberships')}</b>${list(d.memberships).map(esc).join(' · ')}</li>` : '');
     $('#skills').innerHTML = list(d.skills).map(g => `<div class="skill-g"><b>${esc(g.group)}</b>${list(g.items).map(i => `<span>${esc(i)}</span>`).join('')}</div>`).join('');
   }
 
@@ -340,14 +421,14 @@
     let filt = 'All', shown = PAGE;
     const fbox = $('#gal-filters');
     const chips = ['All', ...cats];
-    fbox.innerHTML = chips.length > 2 || cats.length > 1 ? chips.map(c => `<button class="chip" role="tab" data-c="${esc(c)}" aria-selected="${c === filt}" ${c !== 'All' ? `style="--c:${esc(catColor[c])}"` : ''}>${esc(c)}<small>${c === 'All' ? photos.length : photos.filter(p => p.category === c).length}</small></button>`).join('') : '';
+    fbox.innerHTML = chips.length > 2 || cats.length > 1 ? chips.map(c => `<button class="chip" role="tab" data-c="${esc(c)}" aria-selected="${c === filt}" ${c !== 'All' ? `style="--c:${esc(catColor[c])}"` : ''}>${esc(c === 'All' ? t('gal.all', 'All') : c)}<small>${c === 'All' ? photos.length : photos.filter(p => p.category === c).length}</small></button>`).join('') : '';
     fbox.addEventListener('click', e => {
       const b = e.target.closest('.chip'); if (!b) return;
       filt = b.dataset.c; shown = PAGE; fbox.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-selected', x === b)); draw();
     });
     const more = $('#gal-more');
     more.addEventListener('click', () => { shown += PAGE; draw(); });
-    const fmt = s => { if (!s) return ''; const [y, m] = String(s).split('-'); const M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; return m ? `${M[+m - 1] || m} ${y}` : y; };
+    const fmt = s => { if (!s) return ''; const [y, m] = String(s).split('-'); const M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; if (LANG === 'ko') return m ? `${y}년 ${+m}월` : `${y}년`; return m ? `${M[+m - 1] || m} ${y}` : y; };
     GAL = photos.map(p => ({ src: p.src, cap: [p.title, p.caption, [fmt(p.date), p.place].filter(Boolean).join(' · ')].filter(Boolean).join(' — ') }));
     function draw() {
       const list_ = photos.filter(p => filt === 'All' || p.category === filt);
