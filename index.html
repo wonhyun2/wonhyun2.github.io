@@ -25,14 +25,15 @@
   </a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
   <nav class="nav-links">
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#publications">Publications</a>
-    <a href="#news">News</a>
-    <a href="#team">Team</a>
-    <a href="#gallery" id="nav-gallery">Gallery</a>
-    <a href="#contact">Contact</a>
+    <a href="#research" data-i18n="nav.research">Research</a>
+    <a href="#projects" data-i18n="nav.projects">Projects</a>
+    <a href="#publications" data-i18n="nav.pubs">Publications</a>
+    <a href="#news" data-i18n="nav.news">News</a>
+    <a href="#team" data-i18n="nav.team">Team</a>
+    <a href="#gallery" id="nav-gallery" data-i18n="nav.gallery">Gallery</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
     <a class="btn btn-sm" data-bind="cv" href="assets/cv/Wonhyun_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>
+    <div class="lang-switch" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="ko">한국어</button></div>
   </nav>
 </header>
 
@@ -52,8 +53,8 @@
     <p class="hero-headline" id="hero-headline"></p>
     <ul class="pillars" id="hero-pillars"></ul>
     <div class="hero-cta">
-      <a class="btn btn-light" href="#overview"><svg viewBox="0 0 24 24" class="ic"><path d="M8 5v14l11-7z"/></svg>Watch the overview</a>
-      <a class="btn btn-ghost" href="#research">Explore research</a>
+      <a class="btn btn-light" href="#overview"><svg viewBox="0 0 24 24" class="ic"><path d="M8 5v14l11-7z"/></svg><span data-i18n="hero.watch">Watch the overview</span></a>
+      <a class="btn btn-ghost" href="#research" data-i18n="hero.explore">Explore research</a>
     </div>
   </div>
   <a class="scroll-cue" href="#about" aria-label="Scroll"><span></span></a>
@@ -67,12 +68,12 @@
       <div class="pillar-bar" id="pillar-bar"></div>
     </figure>
     <div class="about-text reveal">
-      <p class="kicker">About</p>
-      <h2 class="h2">Floods rarely come from one source.<br><em>Neither should their prediction.</em></h2>
+      <p class="kicker" data-i18n="about.kicker">About</p>
+      <h2 class="h2" data-i18n="about.h2">Floods rarely come from one source.<br><em>Neither should their prediction.</em></h2>
       <div id="bio" class="bio"></div>
       <div class="about-cols">
-        <div><h3 class="h4">Appointments</h3><ul class="mini" id="appointments"></ul></div>
-        <div><h3 class="h4">Education</h3><ul class="mini" id="education"></ul></div>
+        <div><h3 class="h4" data-i18n="about.appts">Appointments</h3><ul class="mini" id="appointments"></ul></div>
+        <div><h3 class="h4" data-i18n="about.edu">Education</h3><ul class="mini" id="education"></ul></div>
       </div>
       <div class="link-row" id="about-links"></div>
     </div>
@@ -83,7 +84,7 @@
 <!-- ============ VIDEO ============ -->
 <section class="section dark overview" id="overview">
   <div class="wrap">
-    <p class="kicker light">Research overview</p>
+    <p class="kicker light" data-i18n="ov.kicker">Research overview</p>
     <h2 class="h2 light" id="ov-title">Before the Water Rises</h2>
     <div class="player reveal" id="player"></div>
     <p class="ov-cap" id="ov-cap"></p>
@@ -93,24 +94,35 @@
 <!-- ============ RESEARCH ============ -->
 <section class="section research" id="research">
   <div class="wrap">
-    <p class="kicker">Research</p>
-    <h2 class="h2">Observe <span class="arrow">→</span> Simulate <span class="arrow">→</span> Learn <span class="arrow">→</span> Act</h2>
+    <p class="kicker" data-i18n="res.kicker">Research</p>
+    <h2 class="h2" data-i18n="res.h2">Observe <span class="arrow">→</span> Simulate <span class="arrow">→</span> Learn <span class="arrow">→</span> Act</h2>
     <p class="lead" id="research-intro"></p>
     <div id="themes"></div>
-    <h3 class="h3 also-h">Beyond flooding</h3>
+    <h3 class="h3 also-h" data-i18n="res.also">Beyond flooding</h3>
     <div class="also-grid" id="also"></div>
+  </div>
+</section>
+
+<!-- ============ IDEAS (research motto) ============ -->
+<section class="section dark ideas" id="ideas">
+  <div class="wrap">
+    <p class="kicker light" id="ideas-kicker">Research motto</p>
+    <h2 class="h2 light" id="ideas-title">Good IDEAS before the water rises</h2>
+    <p class="light-sub ideas-intro" id="ideas-intro"></p>
+    <ol class="ideas-steps" id="ideas-steps"></ol>
+    <p class="ideas-credit" id="ideas-credit"></p>
   </div>
 </section>
 
 <!-- ============ PROJECTS ============ -->
 <section class="section tint" id="projects">
   <div class="wrap">
-    <p class="kicker">Funded research</p>
-    <h2 class="h2">Projects</h2>
+    <p class="kicker" data-i18n="proj.kicker">Funded research</p>
+    <h2 class="h2" data-i18n="proj.h2">Projects</h2>
     <div class="proj-grid" id="proj-current"></div>
     <div id="proj-pending"></div>
     <details class="past">
-      <summary>Past projects</summary>
+      <summary data-i18n="proj.past">Past projects</summary>
       <ul class="past-list" id="proj-past"></ul>
     </details>
   </div>
@@ -119,14 +131,14 @@
 <!-- ============ PUBLICATIONS ============ -->
 <section class="section" id="publications">
   <div class="wrap">
-    <p class="kicker">Publications</p>
-    <h2 class="h2">Papers &amp; preprints</h2>
+    <p class="kicker" data-i18n="pub.kicker">Publications</p>
+    <h2 class="h2" data-i18n="pub.h2">Papers &amp; preprints</h2>
     <div class="pub-tools">
       <div class="chips" id="pub-filters" role="tablist"></div>
-      <input type="search" id="pub-search" placeholder="Search title, author, journal…" aria-label="Search publications">
+      <input type="search" id="pub-search" placeholder="Search title, author, journal…" data-i18n-ph="pub.search" aria-label="Search publications">
     </div>
     <div id="pub-list"></div>
-    <p class="pub-note">Mentored students are co-authors on several papers. Full list in the <a data-bind="cv" href="assets/cv/Wonhyun_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>.</p>
+    <p class="pub-note" data-i18n="pub.note">Mentored students are co-authors on several papers. Full list in the <a data-bind="cv" href="assets/cv/Wonhyun_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>.</p>
   </div>
 </section>
 
@@ -134,8 +146,8 @@
 <section class="section tint" id="news">
   <div class="wrap news-wrap">
     <div>
-      <p class="kicker">News</p>
-      <h2 class="h2">Latest</h2>
+      <p class="kicker" data-i18n="news.kicker">News</p>
+      <h2 class="h2" data-i18n="news.h2">Latest</h2>
     </div>
     <div><ol class="news" id="news-list"></ol></div>
   </div>
@@ -144,8 +156,8 @@
 <!-- ============ TEAM ============ -->
 <section class="section" id="team">
   <div class="wrap">
-    <p class="kicker">Team</p>
-    <h2 class="h2">People</h2>
+    <p class="kicker" data-i18n="team.kicker">Team</p>
+    <h2 class="h2" data-i18n="team.h2">People</h2>
     <article class="pi-card reveal" id="pi-card"></article>
     <p class="lead team-intro" id="mentoring-intro"></p>
     <div id="people-groups"></div>
@@ -157,28 +169,28 @@
 <!-- ============ GALLERY ============ -->
 <section class="section dark gallery" id="gallery">
   <div class="wrap">
-    <p class="kicker light">Gallery</p>
+    <p class="kicker light" data-i18n="gal.kicker">Gallery</p>
     <h2 class="h2 light" id="gal-title">Moments</h2>
     <p class="light-sub gal-intro" id="gal-intro"></p>
     <div class="chips gal-chips" id="gal-filters" role="tablist"></div>
     <div class="gal-grid" id="gal-grid"></div>
-    <div class="gal-more-wrap"><button class="btn btn-ghost" id="gal-more" hidden>Show more photos</button></div>
+    <div class="gal-more-wrap"><button class="btn btn-ghost" id="gal-more" hidden data-i18n="gal.more">Show more photos</button></div>
   </div>
 </section>
 
 <!-- ============ RECOGNITION ============ -->
 <section class="section tint" id="recognition">
   <div class="wrap">
-    <p class="kicker">Recognition &amp; service</p>
-    <h2 class="h2">Awards, talks &amp; service</h2>
+    <p class="kicker" data-i18n="rec.kicker">Recognition &amp; service</p>
+    <h2 class="h2" data-i18n="rec.h2">Awards, talks &amp; service</h2>
     <div class="rec-grid">
-      <div><h3 class="h4">Awards</h3><ul class="dated" id="awards"></ul></div>
-      <div><h3 class="h4">Invited talks</h3><ul class="dated" id="talks"></ul></div>
-      <div><h3 class="h4">Service</h3><ul class="svc" id="service"></ul></div>
+      <div><h3 class="h4" data-i18n="rec.awards">Awards</h3><ul class="dated" id="awards"></ul></div>
+      <div><h3 class="h4" data-i18n="rec.talks">Invited talks</h3><ul class="dated" id="talks"></ul></div>
+      <div><h3 class="h4" data-i18n="rec.service">Service</h3><ul class="svc" id="service"></ul></div>
     </div>
     <div class="rec-grid two">
-      <div><h3 class="h4">In the media</h3><ul class="dated" id="media"></ul></div>
-      <div><h3 class="h4">Toolbox</h3><div id="skills"></div></div>
+      <div><h3 class="h4" data-i18n="rec.media">In the media</h3><ul class="dated" id="media"></ul></div>
+      <div><h3 class="h4" data-i18n="rec.toolbox">Toolbox</h3><div id="skills"></div></div>
     </div>
   </div>
 </section>
@@ -187,9 +199,9 @@
 <section class="section dark contact" id="contact">
   <div class="wrap contact-grid">
     <div>
-      <p class="kicker light">Contact</p>
-      <h2 class="h2 light">Let's work on the next flood<br><em>before it arrives.</em></h2>
-      <p class="light-sub">Students, collaborators, agencies and journalists are welcome to reach out.</p>
+      <p class="kicker light" data-i18n="contact.kicker">Contact</p>
+      <h2 class="h2 light" data-i18n="contact.h2">Let's work on the next flood<br><em>before it arrives.</em></h2>
+      <p class="light-sub" data-i18n="contact.sub">Students, collaborators, agencies and journalists are welcome to reach out.</p>
     </div>
     <div class="contact-card">
       <img id="avatar" src="assets/img/profile.jpg" alt="" class="avatar">
@@ -202,7 +214,7 @@
   <div class="wrap foot">
     <span id="foot-copy">© Wonhyun Lee</span>
     <span class="foot-pillars" id="foot-pillars"></span>
-    <a href="#top">Back to top ↑</a>
+    <a href="#top" data-i18n="foot.top">Back to top ↑</a>
   </div>
 </footer>
 
