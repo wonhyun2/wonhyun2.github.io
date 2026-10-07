@@ -13,7 +13,9 @@
 # =====================================================================
 
 title: "Moments"
+title_ko: "순간들"
 intro: "Conferences, fieldwork, the team, and life in between."
+intro_ko: "학회, 현장, 연구실, 그리고 그 사이의 일상."
 show: 12            # 처음에 보여줄 사진 수 (나머지는 'Show more')
 
 # 카테고리 표시 순서와 색 (photos 의 category 와 이름이 같아야 함)

@@ -2,33 +2,43 @@
 #  news.yml  —  최근 소식 (맨 위에 추가하세요. date는 "2026-10" 또는 "2026-10-02")
 #  text 안에서 **굵게**, [링크 글자](https://...) 사용 가능
 #  tag: award | paper | grant | talk | media | service  (색상 아이콘)
+#  한국어판: text_ko 줄을 추가하면 한국어 화면에서 사용 (없으면 영어 표시)
 # =====================================================================
 
 news:
   - date: "2026-12"
     tag: talk
     text: "Five presentations at **AGU Fall Meeting 2026** (San Francisco): multi-domain SFINCS across the Gulf, LRGV pluvial flood adaptation, PlanetScope colonias monitoring, LiDAR building-level flash-flood vulnerability in Kerrville and drought and hydrologic variablity in Central Texas Hill County using high-resolution data and ML ."
+    text_ko: "**AGU Fall Meeting 2026**(샌프란시스코)에서 5편 발표: 멕시코만 다중 영역 SFINCS, 로어 리오그란데 밸리 내수침수 적응, PlanetScope 콜로니아 모니터링, LiDAR 기반 커빌 건물 단위 돌발홍수 취약성, 고해상도 자료와 머신러닝을 활용한 텍사스 힐 컨트리 중부의 가뭄·수문 변동성."
   - date: "2026-09"
     tag: grant
     text: "**COAST-NISAR** selected by NASA's NISAR Data **$975,000**, Applications, Research & Technology program (Co-PI) — compound-flood assessment from space."
+    text_ko: "**COAST-NISAR** 과제가 NASA NISAR Data, Applications, Research & Technology 프로그램에 선정 (Co-PI, **$975,000**) — 우주에서 보는 복합홍수 평가."
   - date: "2026-05"
     tag: service
     text: "Organizing Committee and presenter at **HydroML 2026**, Austin."
+    text_ko: "**HydroML 2026**(오스틴) 조직위원 및 발표."
   - date: "2026-04"
     tag: award
     text: "**First Author Achievement Award** (2025), Bureau of Economic Geology — second year in a row."
+    text_ko: "경제지질연구소(BEG) **First Author Achievement Award** (2025) 수상 — 2년 연속."
   - date: "2026"
     tag: paper
     text: "New in *Earth's Future*: rapid intensification and relative sea-level rise amplify compound flooding from Hurricanes Harvey and Beryl. [doi](https://doi.org/10.1029/2025EF007678)"
+    text_ko: "*Earth's Future* 게재: 급속강화와 상대 해수면 상승이 허리케인 하비·베릴의 복합홍수를 증폭시킴. [doi](https://doi.org/10.1029/2025EF007678)"
   - date: "2026"
     tag: media
     text: "Interviewed by KXAN / The Hill on AI-assisted flash-flood prediction. [story](https://www.kxan.com/weather-traffic-qas/google-rolls-out-ai-tool-to-predict-flash-floods-up-to-24-hours-ahead/)"
+    text_ko: "KXAN / The Hill과 AI 기반 돌발홍수 예측에 관해 인터뷰. [기사](https://www.kxan.com/weather-traffic-qas/google-rolls-out-ai-tool-to-predict-flash-floods-up-to-24-hours-ahead/)"
   - date: "2025-10"
     tag: grant
     text: "Awarded **$1.5M** from the NASEM Gulf Research Program (PI) to predict submonthly Gulf sea-level variability and its effect on flooding."
+    text_ko: "미국 국립학술원(NASEM) 멕시코만 연구프로그램 과제 선정 (PI, **$1.5M**) — 멕시코만 월 이하 해수면 변동과 홍수 영향 예측."
   - date: "2025-03"
     tag: talk
     text: "Invited seminars at BEG and UT Austin EWRE / Center for Water and the Environment: *Coastal Resilience through Integrated Modeling of Compound Flooding Events*. [watch](https://www.beg.utexas.edu/presentations/coastal-resilience-through-integrated-modeling-of-compound-flooding-events)"
+    text_ko: "BEG와 UT Austin EWRE / 물환경센터 초청 세미나: *Coastal Resilience through Integrated Modeling of Compound Flooding Events*. [영상](https://www.beg.utexas.edu/presentations/coastal-resilience-through-integrated-modeling-of-compound-flooding-events)"
   - date: "2025-01"
     tag: award
     text: "**Best Research and Best Poster** awards, Climate Health Frontiers 2025 Symposium, University of Houston."
+    text_ko: "휴스턴 대학교 Climate Health Frontiers 2025 심포지엄 **최우수 연구상 및 최우수 포스터상** 수상."

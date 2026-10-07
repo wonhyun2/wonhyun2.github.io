@@ -2,72 +2,104 @@
 #  profile.yml  —  이름, 소개, 연락처, 링크, 핵심 숫자 (사이트 상단/소개)
 #  ▸ 문자열에 콜론(:)이 들어가면 반드시 "따옴표"로 감싸 주세요.
 #  ▸ 들여쓰기는 스페이스 2칸 (Tab 금지).
+#  ▸ 한국어판: 어떤 항목이든 이름 뒤에 _ko 를 붙인 줄을 추가하면 (예: headline_ko)
+#    한국어 화면에서 그 값이 쓰입니다. _ko 가 없으면 영어가 그대로 나옵니다.
 # =====================================================================
 
 name: "Wonhyun Lee"
 credentials: "Ph.D."
 title: "Research Assistant Professor · Principal Investigator"
+title_ko: "연구조교수 · 책임연구자(PI)"
 affiliation: "Bureau of Economic Geology, Jackson School of Geosciences"
+affiliation_ko: "경제지질연구소(BEG) · 잭슨 지구과학대학"
 institution: "The University of Texas at Austin"
+institution_ko: "텍사스 오스틴 대학교"
 location: "Austin, Texas"
 
 # 히어로(첫 화면) 문구
 tagline: "Before the Water Rises"
+tagline_ko: "물이 차오르기 전에"
 headline: "Predicting compound floods fast enough — and honestly enough — to change what communities do before the storm."
+headline_ko: "폭풍이 오기 전 지역사회의 대응을 바꿀 수 있을 만큼 빠르고, 불확실성까지 정직하게 — 복합홍수를 예측합니다."
 
 # 연구의 네 기둥 (색상은 사이트 전체의 테마 색으로 사용됩니다)
 pillars:
   - name: "Physics"
     color: "#38bdf8"
     short: "Coupled surge · rain · river · wave models"
+    short_ko: "해일 · 강우 · 하천 · 파랑 결합 모델"
   - name: "Probability"
     color: "#2dd4bf"
     short: "Ensembles that quantify what could happen"
+    short_ko: "일어날 수 있는 경우를 정량화하는 앙상블"
   - name: "AI"
     color: "#a78bfa"
     short: "Neural-operator surrogates in seconds"
+    short_ko: "수 초 만에 계산하는 신경연산자 대리모델"
   - name: "People"
     color: "#fb923c"
     short: "Digital twins & adaptation for communities"
+    short_ko: "지역사회를 위한 디지털 트윈과 적응 전략"
 
 # 소개 (About) — 문단은 리스트 항목 하나씩
 bio:
   - "I am a Research Assistant Professor and Principal Investigator at the Bureau of Economic Geology, The University of Texas at Austin. I study how hurricanes, extreme rainfall, rivers and rising seas combine into **compound floods** — and how to forecast them quickly and with uncertainty quantification, so that people can act before the water rises."
   - "My group couples physics-based coastal and hydrologic models (Delft3D-FM, SFINCS, SWAN) with large **probabilistic ensembles**, **AI surrogates** such as Fourier and latent-spectral neural operators, and decision tools like **FloodAdapt** — building toward a flood **digital twin** for the Gulf of America coast and the overland areas (e.g., Texas Hill Country, Lower Rio Grande Valley)."
   - "Before UT Austin I was a National Research Council Postdoctoral Fellow at the U.S. Naval Research Laboratory (NASA Stennis Space Center), working on probabilistic surge and inundation prediction and the ocean's thermohaline response to hurricanes. I received my Ph.D. in Civil Engineering from Texas A&M University, where I modeled 3-D hydrodynamics and desalination impacts in the Arabian/Persian Gulf."
+bio_ko:
+  - "텍사스 오스틴 대학교(UT Austin) 경제지질연구소(Bureau of Economic Geology)의 연구조교수이자 책임연구자(PI)입니다. 허리케인, 극한 강우, 하천 범람, 해수면 상승이 함께 만들어내는 **복합홍수(compound flooding)**를 연구하며, 물이 차오르기 전에 사람들이 행동할 수 있도록 홍수를 빠르게, 그리고 불확실성을 정량화하여 예측하는 방법을 개발합니다."
+  - "물리 기반 연안·수문 모델(Delft3D-FM, SFINCS, SWAN)에 대규모 **확률 앙상블**, 푸리에·잠재스펙트럴 신경연산자 같은 **AI 대리모델**, 그리고 **FloodAdapt** 같은 의사결정 도구를 결합하여, 멕시코만(Gulf of America) 연안과 내륙 지역(텍사스 힐 컨트리, 로어 리오그란데 밸리 등)을 위한 홍수 **디지털 트윈**을 구축하고 있습니다."
+  - "UT Austin 이전에는 미 해군연구소(NRL, NASA 스테니스 우주센터)에서 미국 국립연구위원회(NRC) 박사후연구원으로 확률론적 폭풍해일·침수 예측과 허리케인에 대한 해양 열염분 반응을 연구했습니다. 텍사스 A&M 대학교에서 토목공학 박사학위를 받았으며, 아라비아(페르시아)만의 3차원 해수유동과 담수화 배출수 영향을 모델링했습니다."
 
 education:
   - degree: "Ph.D., Civil Engineering"
+    degree_ko: "토목공학 박사"
     school: "Texas A&M University"
+    school_ko: "텍사스 A&M 대학교"
     year: "2018"
   - degree: "M.E., Civil Engineering"
+    degree_ko: "토목공학 석사"
     school: "Seoul National University of Science & Technology"
+    school_ko: "서울과학기술대학교"
     year: "2012"
   - degree: "B.S., Civil Engineering"
+    degree_ko: "토목공학 학사"
     school: "Seoul National University of Science & Technology"
+    school_ko: "서울과학기술대학교"
     year: "2010"
 
 appointments:
   - role: "Research Assistant Professor (PI)"
+    role_ko: "연구조교수 (책임연구자)"
     org: "Bureau of Economic Geology, UT Austin"
+    org_ko: "UT Austin 경제지질연구소"
     years: "2022 – present"
+    years_ko: "2022 – 현재"
   - role: "NRC Postdoctoral Fellow"
+    role_ko: "NRC 박사후연구원"
     org: "U.S. Naval Research Laboratory, Stennis Space Center"
+    org_ko: "미 해군연구소(NRL), 스테니스 우주센터"
     years: "2018 – 2021"
   - role: "Graduate Research Assistant"
+    role_ko: "대학원 연구조교"
     org: "Zachry Dept. of Civil Engineering, Texas A&M"
+    org_ko: "텍사스 A&M 대학교 토목공학과"
     years: "2014 – 2018"
 
 # 첫 화면 아래 '숫자로 보는 연구' — 직접 고쳐서 최신화하세요
 stats:
   - value: "12"
     label: "peer-reviewed papers & proceedings"
+    label_ko: "심사 논문 및 프로시딩"
   - value: "$2.5M"
     label: "active awards as PI / Co-PI (NASEM GRP · NASA)"
+    label_ko: "PI / Co-PI로 수행 중인 연구비 (NASEM GRP · NASA)"
   - value: "35+"
     label: "conference presentations (AGU · EGU · HydroML)"
+    label_ko: "학회 발표 (AGU · EGU · HydroML)"
   - value: "14"
     label: "students & early-career researchers advised"
+    label_ko: "지도한 학생 및 신진연구자"
 
 # 연락처 / 링크  (비워두거나 줄을 지우면 버튼이 사라집니다)
 contact:
@@ -82,6 +114,7 @@ links:
     url: "https://zprivf.github.io/applied-water-research-lab/index.html"
     icon: "lab"
   - label: "BEG profile"
+    label_ko: "BEG 프로필"
     url: "https://www.beg.utexas.edu/people/wonhyun-lee"
     icon: "uni"
   # 아래 줄의 # 을 지우고 주소를 넣으면 버튼이 생깁니다
@@ -106,4 +139,6 @@ media:
   # YouTube에 올렸다면 ID만 넣으세요 (예: tAHxNV_VG94). 넣으면 mp4 대신 YouTube가 재생됩니다.
   overview_youtube: ""
   overview_title: "Before the Water Rises — Outsmarting Floods with Science and AI"
+  overview_title_ko: "물이 차오르기 전에 — 과학과 AI로 홍수보다 한발 앞서기"
   overview_caption: "Physics → Probability → AI → People. Hill Country flash floods, Gulf-wide hurricane ensembles, neural-operator surrogates, FloodAdapt, NISAR, nature-based solutions and more. Original soundtrack."
+  overview_caption_ko: "물리 → 확률 → AI → 사람. 힐 컨트리 돌발홍수, 멕시코만 전역 허리케인 앙상블, 신경연산자 대리모델, FloodAdapt, NISAR, 자연기반해법 등. 오리지널 사운드트랙."

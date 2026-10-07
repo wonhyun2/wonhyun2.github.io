@@ -9,48 +9,69 @@
 #      photo: "assets/img/team/이름.jpg" (선택, 없으면 이니셜 원)
 #      url: 개인 페이지/LinkedIn (선택)
 #  ▸ 들여쓰기는 스페이스 2칸, 문장은 "따옴표"로.
+#  ▸ 한국어판: 항목 이름 뒤에 _ko 를 붙인 줄을 추가 (예: note_ko). 없으면 영어 표시.
+#  ▸ 멤버가 하나도 없는 그룹은 자동으로 숨겨집니다.
 # =====================================================================
 
 # ---------------- Principal Investigator
 pi:
   name: "Wonhyun Lee, Ph.D."
   role: "Principal Investigator"
+  role_ko: "책임연구자 (Principal Investigator)"
   photo: "assets/img/profile-portrait.jpg"
   positions:
     - "Research Assistant Professor"
     - "Bureau of Economic Geology, Jackson School of Geosciences, The University of Texas at Austin"
+  positions_ko:
+    - "연구조교수"
+    - "텍사스 오스틴 대학교 잭슨 지구과학대학 경제지질연구소(BEG)"
   bio: "I lead research on **compound flooding** — coupling physics-based coastal and hydrologic models, large probabilistic ensembles and physics-aware AI to predict where, how deep and how soon floods arrive, and to support adaptation in Texas and U.S. Gulf communities."
+  bio_ko: "**복합홍수** 연구를 이끌고 있습니다. 물리 기반 연안·수문 모델, 대규모 확률 앙상블, 물리 인식 AI를 결합해 홍수가 어디에, 얼마나 깊게, 얼마나 빨리 오는지 예측하고, 텍사스와 미국 멕시코만 지역사회의 적응을 지원합니다."
   background:
     - years: "2022–now"
+      years_ko: "2022–현재"
       title: "Research Assistant Professor (PI)"
+      title_ko: "연구조교수 (책임연구자)"
       org: "Bureau of Economic Geology, UT Austin"
+      org_ko: "UT Austin 경제지질연구소"
     - years: "2018–2021"
       title: "NRC Postdoctoral Fellow"
+      title_ko: "NRC 박사후연구원"
       org: "U.S. Naval Research Laboratory, Stennis Space Center"
+      org_ko: "미 해군연구소(NRL), 스테니스 우주센터"
     - years: "2018"
       title: "Ph.D., Civil Engineering"
+      title_ko: "토목공학 박사"
       org: "Texas A&M University"
+      org_ko: "텍사스 A&M 대학교"
     - years: "2012 · 2010"
       title: "M.E. · B.S., Civil Engineering"
+      title_ko: "토목공학 석사 · 학사"
       org: "Seoul National University of Science & Technology"
+      org_ko: "서울과학기술대학교"
   links:
     - label: "Email"
+      label_ko: "이메일"
       url: "mailto:wonhyun.lee@beg.utexas.edu"
       icon: "mail"
     - label: "CV"
       url: "assets/cv/Wonhyun_Lee_CV.pdf"
       icon: "doc"
     - label: "BEG profile"
+      label_ko: "BEG 프로필"
       url: "https://www.beg.utexas.edu/people/wonhyun-lee"
       icon: "uni"
 
 mentoring_intro: "I enjoy helping students turn models into insight — from setting up their first modeling and its study domain to publishing their first paper."
+mentoring_intro_ko: "학생들이 모델을 통찰로 바꾸어 가는 과정을 돕는 일을 좋아합니다 — 첫 모델과 연구 영역 구축부터 첫 논문 출판까지."
 
 # ---------------- Students & researchers
 groups:
   - title: "Ph.D Dissertation Committee"
+    title_ko: "박사학위 논문 심사위원"
     color: "#a78bfa"
     note: "Ph.D. research co-advised with UT Austin faculty."
+    note_ko: "UT Austin 교수진과 함께 지도하는 박사 연구."
     members:
       - name: "Hyunje Yang"
         role: "Ph.D. student, UT Austin CAEE"
@@ -59,8 +80,10 @@ groups:
         with: "Dr. Jun-Whan Lee"
 
   - title: "Technical Advising"
+    title_ko: "기술 자문 · 지도"
     color: "#2dd4bf"
     note: "Hands-on guidance on modeling, HPC and analysis for students and early-career researchers."
+    note_ko: "학생과 신진연구자에게 모델링, 고성능 컴퓨팅(HPC), 분석을 실무 중심으로 지도합니다."
     members:
       - name: "M. Enayet Chowdhury"
         role: "Ph.D. student, UT Austin CAEE"
@@ -90,8 +113,10 @@ groups:
         # current: false
 
   - title: "Mentees"
+    title_ko: "멘티"
     color: "#fb923c"
     note: "Students I mentored on modeling projects at UT Austin, Texas A&M and abroad."
+    note_ko: "UT Austin, 텍사스 A&M, 해외에서 모델링 프로젝트를 함께한 학생들."
     members:
       # - name: "William S. Bailey"
       #   role: "Ph.D. student, UT Austin Jackson School"
@@ -131,10 +156,14 @@ groups:
 
 # ---------------- 협력 기관 (이름만 바꾸거나 추가하면 됩니다)
 collaborators_intro: "Built together with agencies, labs and industry partners."
+collaborators_intro_ko: "정부기관, 연구실, 산업 파트너와 함께 만들어 갑니다."
 collaborators:
   - group: "Agencies & stakeholders"
+    group_ko: "정부기관 · 이해관계자"
     names: ["Texas General Land Office", "Texas Water Development Board", "TCEQ", "Harris County Flood Control District", "Harris–Galveston Subsidence District", "U.S. Army Corps of Engineers ERDC"]
   - group: "Research partners"
+    group_ko: "연구 협력"
     names: ["Coastal Hazards Lab, UT Austin", "UT Marine Science Institute", "Texas Advanced Computing Center (TACC)","NVIDIA Research", "Deltares", "U.S. Naval Research Laboratory", "U.S. Geological Survey", "LSU", "Coastal Emergency Risks Assessment (CERA)", "University of Notre Dame", "Pacific Northwest National Laboratory"]
   - group: "Funding"
+    group_ko: "연구비 지원"
     names: ["NASEM Gulf Research Program", "NASA", "U.S. Department of Energy", "Office of Naval Research", "National Research Council", "Qatar National Research Fund"]

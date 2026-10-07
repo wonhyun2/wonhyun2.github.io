@@ -3,113 +3,212 @@
 #  pillar: Physics / Probability / AI / People 중 하나 → 색상이 자동 적용
 #  media.type: image 또는 video   (src는 assets/ 아래 파일 경로)
 #  gallery: 클릭하면 크게 보이는 추가 그림 (선택)
+#  한국어판: title_ko, summary_ko, bullets_ko, caption_ko, text_ko ... (_ko 가 없으면 영어 표시)
 # =====================================================================
 
 intro: "One question runs through my work: **when several flood drivers arrive together, what will happen, how sure are we, and what should we do about it?** Each pillar below answers part of it — and together they form a flood digital twin: Observe → Simulate → Learn → Act."
+intro_ko: "제 연구를 관통하는 질문은 하나입니다: **여러 홍수 요인이 한꺼번에 닥칠 때 무슨 일이 일어나고, 그 예측을 얼마나 확신할 수 있으며, 우리는 무엇을 해야 하는가?** 아래 네 기둥이 각각 그 일부에 답하고, 함께 모여 홍수 디지털 트윈 — 관측 → 모의 → 학습 → 실행 — 을 이룹니다."
 
 themes:
   - id: physics
     pillar: "Physics"
     kicker: "01 · Physics"
     title: "Compound-flood physics, from hillslope to shelf"
+    title_ko: "산지 사면에서 대륙붕까지, 복합홍수의 물리"
     summary: "Coupled hydrodynamic–wave–land models that resolve how storm surge, extreme rainfall and river flow interact — validated against gauges and high-water marks, and pushed into future climates with relative sea-level rise and land subsidence."
+    summary_ko: "폭풍해일, 극한 강우, 하천 유량이 어떻게 상호작용하는지 해석하는 해수유동–파랑–육상 결합 모델을 개발합니다. 관측소와 흔적수위로 검증하고, 상대 해수면 상승과 지반 침하를 반영해 미래 기후로 확장합니다."
     bullets:
       - "Hurricane Harvey (2017) and Beryl (2024) hindcasts with Delft3D-FM and SFINCS: rapid intensification and relative sea-level rise amplify compound flooding."
       - "Texas Hill Country flash floods: building-level exposure in Kerrville, July 2025 vs. 2026, with airborne LiDAR."
       - "Gulf-wide relative sea-level rise and subsidence drivers (1900–2024) and their effect on future flood depth."
+    bullets_ko:
+      - "Delft3D-FM과 SFINCS를 이용한 허리케인 하비(2017)·베릴(2024) 재현: 급속강화와 상대 해수면 상승이 복합홍수를 증폭시킴."
+      - "텍사스 힐 컨트리 돌발홍수: 항공 LiDAR로 분석한 커빌(Kerrville)의 2025년 vs. 2026년 7월 건물 단위 노출."
+      - "멕시코만 전역의 상대 해수면 상승·지반 침하 요인(1900–2024)과 미래 침수심에 미치는 영향."
     tags: ["Delft3D-FM", "SFINCS", "SWAN", "LiDAR", "RSLR"]
     media:
       type: video
       src: "assets/video/camp3d.mp4"
       caption: "Guadalupe River currents near Camp Mystic, July 4 2025 — 3-D SFINCS visualization."
+      caption_ko: "2025년 7월 4일 캠프 미스틱 인근 과달루페강의 흐름 — SFINCS 3D 시각화."
     gallery:
       - src: "assets/img/kerrville-2025-2026.jpg"
         caption: "Kerrville, Texas — flooded buildings in the 2025 vs. 2026 events, same 48-hour model window."
+        caption_ko: "텍사스 커빌 — 2025년과 2026년 홍수의 침수 건물 비교 (동일한 48시간 모의 구간)."
       - src: "assets/img/galveston-ike.jpg"
         caption: "Galveston Bay at the peak of Hurricane Ike (2008) — compound water level."
+        caption_ko: "허리케인 아이크(2008) 정점 시각의 갤버스턴만 — 복합 수위."
       - src: "assets/img/rslr-trend.jpg"
         caption: "Relative sea-level rise trends along the Gulf of America coast."
+        caption_ko: "멕시코만(Gulf of America) 연안의 상대 해수면 상승 추세."
     papers: ["10.1029/2025EF007678", "10.1007/s11069-023-06247-9","10.1016/j.jhydrol.2026.135808","10.1016/j.envsoft.2026.107010","10.3390/jmse12040678"]
 
   - id: probability
     pillar: "Probability"
     kicker: "02 · Probability"
     title: "Probabilistic flood hazard at regional scale"
+    title_ko: "광역 규모의 확률론적 홍수 위험"
     summary: "Fast reduced-complexity models make it possible to run thousands of plausible storms instead of one. I built a 17-domain SFINCS framework spanning the U.S. Gulf coast and drive it with synthetic and perturbed hurricane tracks to map exceedance probabilities."
+    summary_ko: "빠른 축소복잡도 모델 덕분에 폭풍 하나가 아니라 가능한 수천 개의 폭풍을 모의할 수 있습니다. 미국 멕시코만 연안 전체를 덮는 17개 영역의 SFINCS 체계를 구축하고, 합성·섭동 허리케인 경로로 구동하여 초과확률 지도를 만듭니다."
     bullets:
       - "A multi-domain SFINCS framework tested for transferability and forcing sensitivity, with track ensembles for storms such as Ike, Katrina, Michael and Ian."
       - "Maximum-depth exceedance probability maps for coastal Texas and the Hill Country."
       - "Shapley-value attribution of the relative contribution of each compound-flood driver in space and time."
+    bullets_ko:
+      - "아이크, 카트리나, 마이클, 이언 등 허리케인 경로 앙상블로 이식성과 외력 민감도를 검증한 다중 영역 SFINCS 체계."
+      - "텍사스 연안과 힐 컨트리의 최대 침수심 초과확률 지도."
+      - "섀플리(Shapley) 값으로 각 복합홍수 요인의 시공간적 상대 기여도 분석."
     tags: ["Ensembles", "Exceedance probability", "Uncertainty", "Shapley"]
     media:
       type: video
       src: "assets/video/s03.mp4"
       caption: "Hurricane-track ensembles crossing the 17 Gulf-coast SFINCS domains."
+      caption_ko: "멕시코만 연안 17개 SFINCS 영역을 지나는 허리케인 경로 앙상블."
     gallery:
       - src: "assets/img/hill-exceedance.jpg"
         caption: "Probability that maximum flood depth exceeds 0.1, 0.3, 0.5 and 1.0 m."
+        caption_ko: "최대 침수심이 0.1, 0.3, 0.5, 1.0 m를 넘을 확률."
     papers: ["10.1016/j.coastaleng.2025.104721", "10.2139/ssrn.7545121"]
 
   - id: ai
     pillar: "AI"
     kicker: "03 · AI"
     title: "Neural operators & physics-aware deep learning"
+    title_ko: "신경연산자와 물리 인식 딥러닝"
     summary: "AI surrogates learn the solution operator of the flood model and reproduce full inundation maps in seconds instead of hours — fast enough for large ensembles and real-time forecasting, with physics kept in the loop."
+    summary_ko: "AI 대리모델이 홍수 모델의 해 연산자(solution operator)를 학습하여, 몇 시간 걸리던 전체 침수 지도를 수 초 만에 재현합니다. 물리를 유지한 채 대규모 앙상블과 실시간 예보가 가능한 속도입니다."
     bullets:
       - "Fourier and latent-spectral neural operators (FNO, LSM) trained on SFINCS ensembles; tested on unseen storms such as Beryl (2024)."
       - "Where, when and how physics-informed deep learning improves hurricane compound-flood prediction."
       - "Multi-model benchmark of physics-aware neural operators with AI/SciML research collaborators."
+    bullets_ko:
+      - "SFINCS 앙상블로 학습한 푸리에·잠재스펙트럴 신경연산자(FNO, LSM)를 학습에 쓰지 않은 허리케인 베릴(2024)로 검증."
+      - "물리 정보 딥러닝이 허리케인 복합홍수 예측을 어디서, 언제, 어떻게 개선하는지 분석."
+      - "AI/SciML 공동연구자들과 함께하는 물리 인식 신경연산자 다중 모델 벤치마크."
     tags: ["FNO", "LSM", "PINN", "Surrogates", "SciML"]
     media:
       type: video
       src: "assets/video/ai_lsm_fno.mp4"
       poster: "assets/img/ai-lsm.jpg"
       caption: "Hurricane Beryl (2024), an unseen event: SFINCS physics vs. LSM neural-operator prediction and absolute error."
+      caption_ko: "학습에 쓰지 않은 허리케인 베릴(2024): SFINCS 물리 모델 vs. LSM 신경연산자 예측과 절대오차."
     papers: ["10.48550/arXiv.2307.16090","10.22541/essoar.15005345/v1"]
 
   - id: people
     pillar: "People"
     kicker: "04 · People"
     title: "Flood digital twins & adaptation for communities"
+    title_ko: "지역사회를 위한 홍수 디지털 트윈과 적응"
     summary: "Predictions matter when they reach decisions. I connect hazard models to buildings, roads and people — testing adaptation measures with FloodAdapt and Delft-FIAT for underserved colonias in the Lower Rio Grande Valley, and linking satellites, sensors, models and AI into a digital twin."
+    summary_ko: "예측은 의사결정에 닿을 때 의미가 있습니다. 위험 모델을 건물·도로·사람과 연결하여, 로어 리오그란데 밸리의 취약 지역(콜로니아)을 대상으로 FloodAdapt와 Delft-FIAT로 적응 대책을 평가하고, 위성·센서·모델·AI를 하나의 디지털 트윈으로 엮고 있습니다."
     bullets:
       - "Multi-event flood risk and adaptation prioritization for border colonias (Texas General Land Office)."
       - "FloodAdapt scenarios: floodproofing, elevation, pump stations — damages avoided per measure."
       - "Observe → Simulate → Learn → Act: a digital-twin loop for coastal and urban flood resilience."
+    bullets_ko:
+      - "국경 지역 콜로니아의 다중 사상 홍수 위험 평가와 적응 우선순위 (텍사스 토지관리청)."
+      - "FloodAdapt 시나리오: 방수화, 건물 상승, 배수펌프장 — 대책별 피해 저감 효과."
+      - "관측 → 모의 → 학습 → 실행: 연안·도시 홍수 회복력을 위한 디지털 트윈 순환."
     tags: ["FloodAdapt", "Delft-FIAT", "Digital twin", "Equity"]
     media:
       type: image
       src: "assets/img/floodadapt-measures.jpg"
       caption: "FloodAdapt: building damages under current conditions vs. floodproofing and pump-station measures."
+      caption_ko: "FloodAdapt: 현재 조건과 방수화·배수펌프장 대책 적용 시의 건물 피해 비교."
     gallery:
       - src: "assets/img/floodadapt-workflow.jpg"
         caption: "End-to-end workflow: data → HydroMT → FloodAdapt scenarios → SFINCS → FIAT → decision support."
+        caption_ko: "전체 흐름: 자료 → HydroMT → FloodAdapt 시나리오 → SFINCS → FIAT → 의사결정 지원."
       - src: "assets/img/nisar-workflow.jpg"
         caption: "COAST-NISAR: satellite land-motion data feeding an AI-driven coastal resilience workflow."
+        caption_ko: "COAST-NISAR: 위성 지반변위 자료를 AI 기반 연안 회복력 체계에 연결."
     papers: ["10.2139/ssrn.7228030","10.3390/su18168603"]
 
 # '그 밖의 연구' 작은 카드들  (fit: contain → 그림 전체가 흰 배경에, contain-dark → 어두운 배경에, 생략하면 꽉 채움)
 also:
   - title: "Nature-based solutions"
+    title_ko: "자연기반해법"
     color: "#4ade80"
     text: "Mangrove and marsh wave & surge attenuation with a BMI Dynamic Vegetation model coupled to SFINCS in the NOAA NextGen framework."
+    text_ko: "NOAA NextGen 프레임워크에서 SFINCS와 결합한 BMI 동적 식생 모델로 맹그로브·습지의 파랑과 해일 저감 효과를 분석합니다."
     image: "assets/img/nextgen-bmi.jpg"
     fit: contain-dark
     gallery:
       - src: "assets/img/mangrove-concept.jpg"
         caption: "Concept animation: wave height at the shore with a mangrove forest vs. a bare shoreline."
+        caption_ko: "개념 애니메이션: 맹그로브 숲이 있을 때와 없을 때 해안의 파고 비교."
   - title: "Space geodesy · NASA NISAR"
+    title_ko: "우주측지 · NASA NISAR"
     color: "#38bdf8"
     text: "COAST-NISAR (Co-PI): tracking natural and human-driven land subsidence from space and feeding it into compound-flood models."
+    text_ko: "COAST-NISAR (Co-PI): 자연적·인위적 지반 침하를 우주에서 추적하여 복합홍수 모델에 반영합니다."
     image: "assets/img/nisar-vlm.jpg"
   - title: "Desalination & coastal water quality"
+    title_ko: "해수담수화와 연안 수질"
     color: "#fbbf24"
     text: "3-D thermohaline modeling of brine discharge from 12 desalination plants in the Arabian/Persian Gulf; scenarios for the Texas coast."
+    text_ko: "아라비아(페르시아)만 12개 담수화 시설 농축수 배출의 3차원 열염분 모델링과 텍사스 연안 시나리오."
     image: "assets/img/desal-gulf.jpg"
     fit: contain
     papers: ["10.9753/icce.v36.papers.3"]
   - title: "Climate & coastal ecology"
+    title_ko: "기후와 연안 생태"
     color: "#f472b6"
     text: "With UT Marine Science Institute: salinity–temperature projections of fish spawning habitat through 2176.: **Nature Climate Change** (UNDER REVIEW)"
+    text_ko: "UT 해양과학연구소와 함께: 2176년까지 어류 산란 서식지의 염분–수온 전망 — **Nature Climate Change** (심사 중)"
     image: "assets/img/msi-habitat.jpg"
     fit: contain
+
+# ---------------------------------------------------------------------
+# 연구 모토 — IDEAS  (Research 섹션 바로 아래 어두운 띠로 표시, 지우면 섹션이 사라짐)
+# ---------------------------------------------------------------------
+approach:
+  kicker: "Research motto"
+  kicker_ko: "연구 모토"
+  title: "Good IDEAS before the water rises"
+  title_ko: "물이 차오르기 전에, 좋은 IDEAS를"
+  intro: "A leadership framework I learned in the Texas Executive Education Program and now use as my research motto — for every project, every student and every partnership."
+  intro_ko: "텍사스 경영자 교육 프로그램에서 배운 리더십 프레임워크로, 이제는 모든 과제와 학생 지도, 협력에 적용하는 연구 모토입니다."
+  steps:
+    - letter: "I"
+      color: "#38bdf8"
+      name: "Identify"
+      name_ko: "Identify · 파악"
+      text: "Who and what is at risk — and which flood drivers matter?"
+      text_ko: "누가, 무엇이 위험에 처해 있고 어떤 홍수 요인이 중요한가?"
+      example: "July 2025 Hill Country flood (river rose ~8 m in 45 min); colonias flooding outside FEMA zones."
+      example_ko: "2025년 7월 힐 컨트리 홍수(45분 만에 수위 약 8 m 상승), FEMA 구역 밖에서 반복 침수되는 콜로니아."
+    - letter: "D"
+      color: "#2dd4bf"
+      name: "Define"
+      name_ko: "Define · 정의"
+      text: "Turn the problem into a precise, answerable question."
+      text_ko: "문제를 정확하고 답할 수 있는 질문으로 바꾼다."
+      example: "Where will it flood, how deep, how likely, and how soon — fast enough to act?"
+      example_ko: "어디가, 얼마나 깊게, 얼마나 높은 확률로, 얼마나 빨리 잠기는가 — 행동할 수 있을 만큼 빠르게?"
+    - letter: "E"
+      color: "#a78bfa"
+      name: "Explore solutions"
+      name_ko: "Explore solutions · 탐색"
+      text: "Test many paths, not just one."
+      text_ko: "하나가 아닌 여러 해법을 시험한다."
+      example: "Physics (Delft3D-FM), fast ensembles (SFINCS), AI surrogates (LSM/FNO), nature-based and engineered measures."
+      example_ko: "물리 모델(Delft3D-FM), 빠른 앙상블(SFINCS), AI 대리모델(LSM/FNO), 자연기반·공학적 대책."
+    - letter: "A"
+      color: "#fb923c"
+      name: "Anticipate"
+      name_ko: "Anticipate · 대비"
+      text: "Plan for uncertainty and for what could go wrong."
+      text_ko: "불확실성과 예상치 못한 상황에 미리 대비한다."
+      example: "Rainfall ensembles, sea-level rise and subsidence, rapid intensification, storms the model has never seen."
+      example_ko: "강우 앙상블, 해수면 상승과 지반 침하, 급속강화, 학습에 없던 폭풍."
+    - letter: "S"
+      color: "#4ade80"
+      name: "Select"
+      name_ko: "Select · 선택"
+      text: "Choose and deliver what decision-makers can use."
+      text_ko: "의사결정자가 실제로 쓸 수 있는 것을 골라 전달한다."
+      example: "Probability and time-to-danger maps; FloodAdapt measures that cut damage by >90% at shallow hotspots."
+      example_ko: "확률·위험 도달 시간 지도, 얕은 침수 지점의 피해를 90% 이상 줄이는 FloodAdapt 대책."
+  credit: "Framework from the Texas Executive Education Program — Bureau of Economic Geology & McCombs School of Business Leadership Program (2025)."
+  credit_ko: "텍사스 경영자 교육 프로그램 — 경제지질연구소(BEG) · McCombs 경영대학 리더십 프로그램(2025)에서 배운 프레임워크입니다."
