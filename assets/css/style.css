@@ -428,6 +428,8 @@ a:hover { color: #0284c7; }
 .lang-switch { display: inline-flex; align-items: center; border: 1px solid currentColor; border-radius: 999px; overflow: hidden; margin-left: 4px; }
 .lang-switch button { background: none; border: 0; color: inherit; font: 600 12.5px/1 var(--f-body); padding: 7px 11px; cursor: pointer; opacity: .55; }
 .lang-switch button:hover { opacity: .9; }
+.lang-switch button { display: inline-flex; align-items: center; gap: 6px; letter-spacing: .04em; }
+.lang-switch img { width: 20px; height: 13px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.18); display: block; }
 .lang-switch button[aria-pressed="true"] { opacity: 1; background: rgba(127, 140, 160, .22); }
 @media (max-width: 860px) { .lang-switch { margin: 10px 0 0; } }
 
