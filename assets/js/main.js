@@ -5,6 +5,9 @@
 (() => {
   'use strict';
   const FILES = ['profile', 'research', 'publications', 'projects', 'news', 'people', 'honors', 'gallery'];
+  // optional files: missing = section simply stays hidden (no error banner)
+  const OPTIONAL = ['features', 'media', 'sites', 'software', 'explorer', 'stories', 'teaching', 'join'];
+  const PREVIEW = new URLSearchParams(location.search).has('preview');
   const $ = (s, r = document) => r.querySelector(s);
   const el = (tag, attrs = {}, html = '') => {
     const e = document.createElement(tag);
@@ -66,6 +69,15 @@
     'gal.kicker': '갤러리', 'gal.all': '전체', 'gal.more': '사진 더 보기',
     'rec.kicker': '수상 및 학술 활동', 'rec.h2': '수상 · 초청강연 · 학술봉사', 'rec.awards': '수상', 'rec.talks': '초청 강연', 'rec.service': '학술 봉사', 'rec.media': '언론 보도', 'rec.toolbox': '도구', 'rec.members': '학회 회원',
     'contact.kicker': '연락처', 'contact.h2': '다음 홍수가 닥치기 전에,<br><em>함께 준비합시다.</em>', 'contact.sub': '학생, 공동연구자, 기관, 언론 관계자 모두 편하게 연락 주세요.',
+    'nav.software': '도구 · 데이터', 'nav.teaching': '강의', 'nav.join': '합류',
+    'sites.kicker': '물이 있는 곳', 'sites.tour': '홍수 투어', 'map.stop': '정지', 'map.texas': '텍사스', 'map.gulf': '멕시코만', 'map.world': '세계', 'map.close': '닫기',
+    'k.physics': '물리', 'k.probability': '빠른 확률 모의', 'k.ai': 'AI', 'k.people': '사람 · 적응',
+    'exp.kicker': '인터랙티브', 'exp.empty': '아직 프레임이 없습니다 — explorer.yml 에 이미지를 추가하세요.', 'st.kicker': '연구 이야기',
+    'sw.kicker': '오픈 사이언스', 'sw.site': '홈페이지', 'sw.code': '코드', 'sw.docs': '문서', 'sw.paper': '논문', 'sw.materials': '자료',
+    'media.play': '영상 재생', 'media.read': '기사 보기', 'preview.tag': '미리보기 — 실제 사이트에서는 숨김 (features.yml)',
+    'teach.kicker': '강의', 'teach.courses': '과목', 'teach.exp': '경험', 'teach.new': '신설',
+    'join.kicker': '예비 학생', 'join.who': '이런 분을 찾습니다', 'join.projects': '가능한 연구 주제', 'join.culture': '일하는 방식', 'join.email': '이메일 보내기',
+    'visits': '방문 {n}회',
     'ideas.ex': '적용 예', 'cv.download': 'CV 다운로드', 'copy': '복사', 'copied': '복사됨', 'foot.top': '맨 위로 ↑'
   } };
   const t = (k, en) => (UI[LANG] && UI[LANG][k] != null) ? UI[LANG][k] : en;
@@ -112,9 +124,10 @@
     }
     if (!window.jsyaml) { showError('js-yaml 라이브러리를 불러오지 못했습니다 (인터넷 연결 확인).'); return; }
     const data = {}, errs = [];
-    await Promise.all(FILES.map(async f => {
+    await Promise.all([...FILES, ...OPTIONAL].map(async f => {
       try {
         const r = await fetch(`content/${f}.yml?v=${Date.now()}`);
+        if (!r.ok && OPTIONAL.includes(f)) { data[f] = {}; return; }
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         data[f] = localize(jsyaml.load(await r.text()) || {});
       } catch (e) {
@@ -133,6 +146,15 @@
     safe(renderPeople, data.people, 'people');
     safe(renderHonors, data.honors, 'honors');
     safe(renderGallery, data.gallery, 'gallery');
+    const on = applyFeatures(data.features);
+    if (on.sites) safe(renderSites, data.sites, 'sites');
+    if (on.explorer) safe(renderExplorer, data.explorer, 'explorer');
+    if (on.stories) safe(renderStories, data.stories, 'stories');
+    if (on.software) safe(renderSoftware, data.software, 'software');
+    if (on.media_video) safe(renderMedia, data.media, 'media');
+    if (on.teaching) safe(renderTeaching, data.teaching, 'teaching');
+    if (on.join) safe(renderJoin, data.join, 'join');
+    safe(setupAnalytics, data.features && data.features.analytics, 'analytics');
     setupReveal();
   }
   function showError(html) { const b = $('#load-error'); b.innerHTML = html; b.hidden = false; }
@@ -482,6 +504,263 @@
     const multi = galView.length > 1;
     document.querySelectorAll('.lb-nav').forEach(b => b.hidden = !multi);
     $('#lightbox').classList.add('photo'); $('#lightbox').showModal();
+  }
+
+  // ------------------------------------------------------------------ features (show / hide / preview)
+  const doiUrl = d => !d ? '' : /^https?:/.test(d) ? d : `https://doi.org/${d}`;
+  const KCOL = { physics: '#38bdf8', probability: '#2dd4bf', ai: '#a78bfa', people: '#fb923c' };
+  function applyFeatures(f) {
+    const sec = (f && f.sections) || {};
+    const on = {};
+    document.querySelectorAll('[data-feature]').forEach(e => {
+      const k = e.dataset.feature, live = sec[k] === true;
+      on[k] = live || PREVIEW;
+      e.hidden = !on[k];
+      if (!live && PREVIEW && e.tagName === 'SECTION') {
+        e.classList.add('is-preview');
+        e.prepend(el('div', { class: 'preview-tag' }, esc(t('preview.tag', 'Preview — hidden on the live site (features.yml)'))));
+      }
+      if (!live && PREVIEW && e.id === 'media-feature') e.classList.add('is-preview');
+    });
+    return on;
+  }
+
+  // ------------------------------------------------------------------ study-sites map
+  function renderSites(d) {
+    $('#sites-title').textContent = d.title || 'From the ocean to the hills';
+    $('#sites-intro').innerHTML = md(d.intro || '');
+    const box = $('#site-map');
+    if (!window.L) { box.innerHTML = '<p class="map-fallback">Map library failed to load.</p>'; return; }
+    const views = d.views || { texas: { center: [29.3, -97.4], zoom: 6 } };
+    const startKey = d.start && views[d.start] ? d.start : Object.keys(views)[0];
+    const map = L.map(box, { scrollWheelZoom: false, worldCopyJump: true, zoomSnap: 0.25, attributionControl: true })
+      .setView(views[startKey].center, views[startKey].zoom);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd', maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'
+    }).addTo(map);
+    box.addEventListener('click', () => map.scrollWheelZoom.enable(), { once: true });
+
+    // flowing water lines (coast, rivers)
+    list(d.paths).forEach(pth => {
+      const c = KCOL[pth.kind] || '#38bdf8';
+      L.polyline(pth.points, { color: c, weight: 9, opacity: .16, interactive: false }).addTo(map);
+      L.polyline(pth.points, { color: c, weight: 2.6, opacity: .95, dashArray: '3 13', lineCap: 'round', className: 'flow-line' })
+        .bindTooltip(esc(pth.name || ''), { sticky: true, className: 'map-tip' }).addTo(map);
+    });
+
+    // ripple markers
+    const card = $('#map-card');
+    const sites = list(d.sites);
+    const markers = sites.map((st, i) => {
+      const c = KCOL[st.kind] || '#38bdf8', sz = Math.max(1, Math.min(3, +st.size || 2));
+      const px = 14 + sz * 8;
+      const icon = L.divIcon({
+        className: 'rp-wrap', iconSize: [px * 3, px * 3], iconAnchor: [px * 1.5, px * 1.5],
+        html: `<span class="rp dry" style="--c:${c};--px:${px}px;--d:${(i % 5) * .45}s"><i></i><i></i><i></i><b></b></span>`
+      });
+      const m = L.marker([st.lat, st.lon], { icon, title: st.name, keyboard: true, riseOnHover: true }).addTo(map);
+      m.bindTooltip(`<b>${esc(st.name)}</b> · ${esc(st.year || '')}`, { direction: 'top', offset: [0, -px * .6], className: 'map-tip' });
+      m.on('click', () => { stopTour(); show(st, true); });
+      return m;
+    });
+    function show(st, fly) {
+      const c = KCOL[st.kind] || '#38bdf8', url = st.url || doiUrl(st.doi);
+      card.style.setProperty('--c', c);
+      card.innerHTML = `<button class="mc-x" type="button" aria-label="${esc(t('map.close', 'Close'))}">×</button>
+        ${st.image ? `<div class="mc-img" data-full="${esc(st.image)}" data-cap="${esc(st.title || '')}"><img src="${esc(st.image)}" alt="" loading="lazy"></div>` : ''}
+        <div class="mc-body"><p class="mc-k"><span>${esc(st.year || '')}</span> ${esc(st.name || '')}</p>
+        <h3>${esc(st.title || '')}</h3><p>${md(st.text || '')}</p>
+        ${st.stat ? `<p class="mc-stat">${esc(st.stat)}</p>` : ''}
+        ${url ? `<a class="mc-link" href="${esc(url)}" target="_blank" rel="noopener">${esc(t('sw.paper', 'Paper'))} ↗</a>` : ''}</div>`;
+      card.hidden = false;
+      card.querySelector('.mc-x').onclick = () => { card.hidden = true; stopTour(); };
+      if (fly) {
+        const far = Math.abs(st.lon + 95) > 25 || Math.abs(st.lat - 29) > 12;
+        map.flyTo([st.lat, st.lon], far ? 5 : (st.size >= 3 ? 7.5 : 8), { duration: 1.6 });
+      }
+    }
+
+    // view buttons
+    const vb = $('#map-views');
+    vb.innerHTML = Object.keys(views).map(k => `<button type="button" data-v="${esc(k)}" aria-pressed="${k === startKey}">${esc(t('map.' + k, k[0].toUpperCase() + k.slice(1)))}</button>`).join('');
+    vb.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      stopTour(); card.hidden = true;
+      vb.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+      const v = views[b.dataset.v]; map.flyTo(v.center, v.zoom, { duration: 1.4 });
+    });
+
+    // legend
+    const used = [...new Set(sites.map(s => s.kind))];
+    $('#map-legend').innerHTML = used.map(k => `<span style="--c:${KCOL[k] || '#38bdf8'}">${esc(t('k.' + k, { physics: 'Physics', probability: 'Fast & probabilistic', ai: 'AI', people: 'People & adaptation' }[k] || k))}</span>`).join('');
+
+    // flood tour: ocean → hills
+    const order = sites.map((s, i) => ({ s, i })).sort((a, b) => (+a.s.order || 99) - (+b.s.order || 99));
+    let tour = null, step = 0;
+    const tb = $('#map-tour');
+    function stopTour() { if (tour) { clearTimeout(tour); tour = null; } tb.classList.remove('on'); tb.querySelector('.tour-ic').textContent = '▶'; }
+    function next() {
+      if (step >= order.length) { stopTour(); const v = views[startKey]; map.flyTo(v.center, v.zoom, { duration: 1.6 }); return; }
+      const { s, i } = order[step++]; show(s, true);
+      const ic = markers[i].getElement(); if (ic) { const r = ic.querySelector('.rp'); r.classList.remove('hit'); void r.offsetWidth; r.classList.add('hit'); }
+      tour = setTimeout(next, 5200);
+    }
+    tb.addEventListener('click', () => {
+      if (tour) return stopTour();
+      tb.classList.add('on'); tb.querySelector('.tour-ic').textContent = '■'; step = 0;
+      vb.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', false));
+      if (map.getZoom() > 3) { map.flyTo([24, -20], 2, { duration: 1.2 }); tour = setTimeout(next, 1300); } else next();
+    });
+
+    // "rising water": ripples fill in one by one when the map scrolls into view
+    const wet = () => markers.forEach((m, i) => setTimeout(() => { const e = m.getElement(); e && e.querySelector('.rp').classList.replace('dry', 'wet'); }, 140 * i));
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { wet(); io.disconnect(); } }, { threshold: .35 });
+      io.observe(box);
+    } else wet();
+    setTimeout(() => map.invalidateSize(), 300);
+  }
+
+  // ------------------------------------------------------------------ flood explorer (scrub through time)
+  function renderExplorer(d) {
+    $('#exp-title').textContent = d.title || 'Flood explorer';
+    $('#exp-intro').innerHTML = md(d.intro || '');
+    const sc = list(d.scenarios); if (!sc.length) return;
+    const tabs = $('#exp-tabs'), stage = $('#exp-stage'), rng = $('#exp-range'), play = $('#exp-play');
+    let cur = null, timer = null;
+    tabs.innerHTML = sc.map((s, i) => `<button class="chip" role="tab" data-i="${i}" aria-selected="${i === 0}">${esc(s.name)}</button>`).join('');
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } if (cur && cur.v) cur.v.pause(); play.textContent = '▶'; };
+    function loadSc(i) {
+      stop(); const s = sc[i]; rng.value = 0;
+      $('#exp-start').textContent = s.start_label || ''; $('#exp-end').textContent = s.end_label || '';
+      $('#exp-cap').innerHTML = md(s.caption || '') + (s.legend ? ` <span class="exp-legend">${esc(s.legend)}</span>` : '');
+      if (s.type === 'video') {
+        stage.innerHTML = `<video muted playsinline preload="metadata" src="${esc(s.src)}"></video>`;
+        const v = stage.querySelector('video');
+        v.addEventListener('timeupdate', () => { if (v.duration) rng.value = Math.round(1000 * v.currentTime / v.duration); });
+        v.addEventListener('ended', () => { play.textContent = '▶'; });
+        cur = { v };
+      } else {
+        const fr = list(s.frames);
+        if (!fr.length) { stage.innerHTML = `<div class="exp-empty">${esc(t('exp.empty', 'No frames yet — add images in explorer.yml.'))}</div>`; cur = { fr: [] }; return; }
+        stage.innerHTML = fr.map((f, k) => `<img src="${esc(f.src)}" alt="" ${k ? 'loading="lazy"' : ''} class="${k ? '' : 'on'}">`).join('') + `<span class="exp-t" id="exp-t">${esc(fr[0].label || '')}</span>`;
+        cur = { fr };
+      }
+    }
+    function seek(val) {
+      if (!cur) return;
+      if (cur.v) { if (cur.v.duration) cur.v.currentTime = cur.v.duration * val / 1000; return; }
+      if (!cur.fr.length) return;
+      const k = Math.min(cur.fr.length - 1, Math.floor(val / 1000 * cur.fr.length));
+      stage.querySelectorAll('img').forEach((im, j) => im.classList.toggle('on', j === k));
+      const lab = $('#exp-t'); if (lab) lab.textContent = cur.fr[k].label || '';
+    }
+    rng.addEventListener('input', () => { stop(); seek(+rng.value); });
+    play.addEventListener('click', () => {
+      if (!cur) return;
+      if (cur.v) { if (cur.v.paused) { if (+rng.value >= 999) cur.v.currentTime = 0; cur.v.play(); play.textContent = '❚❚'; } else stop(); return; }
+      if (timer) return stop();
+      if (!cur.fr.length) return;
+      play.textContent = '❚❚';
+      timer = setInterval(() => { let v = +rng.value + Math.ceil(1000 / cur.fr.length); if (v > 1000) v = 0; rng.value = v; seek(v); }, 700);
+    });
+    tabs.addEventListener('click', e => {
+      const b = e.target.closest('.chip'); if (!b) return;
+      tabs.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-selected', x === b)); loadSc(+b.dataset.i);
+    });
+    loadSc(0);
+  }
+
+  // ------------------------------------------------------------------ research stories
+  function renderStories(d) {
+    $('#stories-title').textContent = d.title || 'Research stories';
+    $('#stories-intro').innerHTML = md(d.intro || '');
+    $('#story-grid').innerHTML = list(d.stories).map(s => {
+      const url = s.url || doiUrl(s.doi);
+      return `<article class="story reveal" style="--c:${esc(s.color || '#38bdf8')}">
+        ${s.image ? `<div class="story-img" data-full="${esc(s.image)}" data-cap="${esc(s.title)}"><img src="${esc(s.image)}" alt="" loading="lazy"></div>` : '<div class="story-band"></div>'}
+        <div class="story-body"><p class="story-num">${esc(s.number || '')}</p><p class="story-lab">${esc(s.label || '')}</p>
+        <h3>${esc(s.title || '')}</h3><p>${md(s.text || '')}</p>
+        <p class="story-venue">${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(s.venue || 'Paper')} ↗</a>` : esc(s.venue || '')}</p></div></article>`;
+    }).join('');
+  }
+
+  // ------------------------------------------------------------------ software & data
+  function renderSoftware(d) {
+    $('#sw-title').textContent = d.title || 'Software & data';
+    $('#sw-intro').innerHTML = md(d.intro || '');
+    const btn = (href, label, ic) => href ? `<a class="sw-btn" href="${esc(href)}" target="_blank" rel="noopener">${ic ? icon(ic) : ''}${esc(label)}</a>` : '';
+    const mo = d.models || {};
+    $('#sw-models-title').textContent = mo.title || '';
+    $('#sw-models').innerHTML = list(mo.items).map(m => `<article class="sw-card reveal">
+        <header><h4>${esc(m.name)}</h4><span class="sw-by">${esc(m.by || '')}</span></header>
+        <p class="sw-tag">${esc(m.tag || '')}</p>${m.use ? `<p class="sw-use">${md(m.use)}</p>` : ''}
+        <div class="sw-links">${btn(m.site, t('sw.site', 'Website'), 'link')}${btn(m.code, t('sw.code', 'Code'), 'github')}${btn(m.docs, t('sw.docs', 'Docs'), 'doc')}${m.doi ? btn(doiUrl(m.doi), 'DOI', '') : ''}</div></article>`).join('');
+    const tr = d.training || {};
+    $('#sw-train-title').textContent = tr.title || '';
+    $('#sw-train').innerHTML = list(tr.items).map(x => `<li><b>${esc(x.title)}</b><span class="sw-where">${esc(x.where || '')}</span><p>${md(x.text || '')}</p>${x.materials ? btn(x.materials, t('sw.materials', 'Materials'), 'doc') : ''}</li>`).join('');
+    const da = d.data || {};
+    $('#sw-data-title').textContent = da.title || '';
+    $('#sw-data').innerHTML = list(da.items).map(x => `<li><span class="sw-type">${esc(x.type || '')}</span><b>${esc(x.title)}</b><span class="sw-where">${esc(x.authors || '')}</span>
+      <div class="sw-links">${x.doi ? btn(doiUrl(x.doi), /zenodo/.test(x.doi) ? 'Zenodo' : 'DOI', '') : ''}${x.paper ? btn(doiUrl(x.paper), x.paper_label || t('sw.paper', 'Paper'), 'doc') : ''}</div></li>`).join('');
+  }
+
+  // ------------------------------------------------------------------ featured media (click-to-load video)
+  function renderMedia(d) {
+    const items = list(d && d.featured); const box = $('#media-feature');
+    if (!items.length) { box.hidden = true; return; }
+    box.innerHTML = items.map((m, i) => `<article class="media-card reveal">
+      <div class="media-vid" data-i="${i}">
+        <button class="media-poster" type="button" style="background-image:url('${esc(m.poster || '')}')" aria-label="${esc(t('media.play', 'Play video'))}">
+          <span class="media-play">▶</span><span class="media-brand">${esc((m.kicker || '').split('·').pop().trim())}</span></button></div>
+      <div class="media-body"><p class="kicker">${esc(m.kicker || '')}</p><h3>${esc(m.title || '')}</h3>
+        <p>${md(m.text || '')}</p>${m.quote ? `<blockquote>“${esc(m.quote)}”</blockquote>` : ''}
+        <p class="media-links">${m.url ? `<a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(t('media.read', 'Read the story'))} ↗</a>` : ''}${m.also ? `<span>${esc(m.also)}</span>` : ''}</p></div></article>`).join('');
+    box.addEventListener('click', e => {
+      const b = e.target.closest('.media-poster'); if (!b) return;
+      const w = b.parentElement, m = items[+w.dataset.i];
+      w.innerHTML = `<iframe src="${esc(m.embed)}" title="${esc(m.title || 'video')}" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+    });
+  }
+
+  // ------------------------------------------------------------------ teaching
+  function renderTeaching(d) {
+    $('#teach-title').textContent = d.title || 'Teaching';
+    $('#teach-phil').innerHTML = md(d.philosophy || '');
+    $('#teach-principles').innerHTML = list(d.principles).map((p, i) => `<div class="tp reveal" style="--c:${['#38bdf8', '#2dd4bf', '#a78bfa', '#fb923c'][i % 4]}"><h4>${esc(p.title)}</h4><p>${md(p.text || '')}</p></div>`).join('');
+    const lv = [...new Set(list(d.courses).map(c => c.level))];
+    $('#teach-courses').innerHTML = lv.map(l => `<p class="course-lv">${esc(l)}</p>` + list(d.courses).filter(c => c.level === l).map(c =>
+      `<div class="course"><b>${esc(c.name)}${c.new ? ` <span class="badge st-inpress">${esc(t('teach.new', 'New'))}</span>` : ''}</b><span>${md(c.text || '')}</span>${c.syllabus ? `<a href="${esc(c.syllabus)}" target="_blank" rel="noopener">Syllabus ↗</a>` : ''}</div>`).join('')).join('');
+    $('#teach-exp').innerHTML = list(d.experience).map(x => `<li>${md(x)}</li>`).join('');
+  }
+
+  // ------------------------------------------------------------------ join the lab
+  function renderJoin(d) {
+    $('#join-title').textContent = d.title || 'Join the lab';
+    $('#join-status').textContent = d.status || ''; $('#join-status').hidden = !d.status;
+    $('#join-intro').innerHTML = md(d.intro || '');
+    $('#join-who').innerHTML = list(d.looking_for).map(x => `<div class="jw"><h4>${esc(x.title)}</h4><p>${md(x.text || '')}</p></div>`).join('');
+    $('#join-proj').innerHTML = list(d.projects).map(x => `<li>${md(x)}</li>`).join('');
+    $('#join-culture').innerHTML = list(d.culture).map(x => `<p><b>${esc(x.title)}</b> — ${md(x.text || '')}</p>`).join('');
+    const a = d.apply || {};
+    $('#join-apply').innerHTML = `<p>${md(a.text || '')}</p>${a.email ? `<a class="btn btn-sm" href="mailto:${esc(a.email)}?subject=${encodeURIComponent(a.subject || '')}">${icon('mail')} ${esc(t('join.email', 'Email me'))}</a>` : ''}`;
+  }
+
+  // ------------------------------------------------------------------ visit statistics (GoatCounter, cookie-free)
+  function setupAnalytics(a) {
+    const code = a && String(a.goatcounter || '').trim();
+    if (!code || PREVIEW || /^(localhost|127\.|0\.0\.0\.0)/.test(location.hostname)) return;
+    const base = `https://${encodeURIComponent(code)}.goatcounter.com`;
+    const sc = document.createElement('script');
+    sc.async = true; sc.src = 'https://gc.zgo.at/count.js'; sc.dataset.goatcounter = `${base}/count`;
+    document.body.append(sc);
+    if (a.show_counter) {
+      fetch(`${base}/counter/TOTAL.json`).then(r => r.ok ? r.json() : null).then(j => {
+        if (!j || j.count == null) return;
+        const e = $('#visit-count'); e.textContent = t('visits', '{n} visits').replace('{n}', String(j.count).trim()); e.hidden = false;
+      }).catch(() => {});
+    }
   }
 
   // ------------------------------------------------------------------ UI: nav, lightbox, reveal
