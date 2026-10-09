@@ -14,7 +14,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261009">
+  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261010">
 </head>
 <body>
 
@@ -29,7 +30,10 @@
     <a href="#projects" data-i18n="nav.projects">Projects</a>
     <a href="#publications" data-i18n="nav.pubs">Publications</a>
     <a href="#news" data-i18n="nav.news">News</a>
+    <a href="#software" data-i18n="nav.software" data-feature="software" hidden>Tools &amp; Data</a>
     <a href="#team" data-i18n="nav.team">Team</a>
+    <a href="#teaching" data-i18n="nav.teaching" data-feature="teaching" hidden>Teaching</a>
+    <a href="#join" data-i18n="nav.join" data-feature="join" hidden>Join</a>
     <a href="#gallery" id="nav-gallery" data-i18n="nav.gallery">Gallery</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
     <a class="btn btn-sm" data-bind="cv" href="assets/cv/Wonhyun_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>
@@ -103,6 +107,24 @@
   </div>
 </section>
 
+<!-- ============ STUDY SITES MAP (features.yml: sites) ============ -->
+<section class="section tint sites" id="sites" data-feature="sites" hidden>
+  <div class="wrap">
+    <p class="kicker" data-i18n="sites.kicker">Where the water is</p>
+    <h2 class="h2" id="sites-title">From the ocean to the hills</h2>
+    <p class="lead" id="sites-intro"></p>
+    <div class="map-shell reveal">
+      <div class="map" id="site-map" role="region" aria-label="Map of study sites"></div>
+      <div class="map-ui">
+        <div class="map-views" id="map-views"></div>
+        <button class="map-tour" id="map-tour" type="button"><span class="tour-ic">▶</span><span data-i18n="sites.tour">Flood tour</span></button>
+      </div>
+      <aside class="map-card" id="map-card" hidden></aside>
+      <div class="map-legend" id="map-legend"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ IDEAS (research motto) ============ -->
 <section class="section dark ideas" id="ideas">
   <div class="wrap">
@@ -111,6 +133,24 @@
     <p class="light-sub ideas-intro" id="ideas-intro"></p>
     <ol class="ideas-steps" id="ideas-steps"></ol>
     <p class="ideas-credit" id="ideas-credit"></p>
+  </div>
+</section>
+
+<!-- ============ FLOOD EXPLORER (features.yml: explorer) ============ -->
+<section class="section explorer" id="explorer" data-feature="explorer" hidden>
+  <div class="wrap">
+    <p class="kicker" data-i18n="exp.kicker">Interactive</p>
+    <h2 class="h2" id="exp-title">Flood explorer</h2>
+    <p class="lead" id="exp-intro"></p>
+    <div class="exp-tabs chips" id="exp-tabs" role="tablist"></div>
+    <div class="exp-stage" id="exp-stage"></div>
+    <div class="exp-controls">
+      <button class="exp-play" id="exp-play" type="button" aria-label="Play">▶</button>
+      <span class="exp-lab" id="exp-start"></span>
+      <input type="range" id="exp-range" min="0" max="1000" value="0" aria-label="Time">
+      <span class="exp-lab" id="exp-end"></span>
+    </div>
+    <p class="exp-cap" id="exp-cap"></p>
   </div>
 </section>
 
@@ -142,8 +182,34 @@
   </div>
 </section>
 
+<!-- ============ RESEARCH STORIES (features.yml: stories) ============ -->
+<section class="section tint stories" id="stories" data-feature="stories" hidden>
+  <div class="wrap">
+    <p class="kicker" data-i18n="st.kicker">Research stories</p>
+    <h2 class="h2" id="stories-title">Research stories</h2>
+    <p class="lead" id="stories-intro"></p>
+    <div class="story-grid" id="story-grid"></div>
+  </div>
+</section>
+
+<!-- ============ SOFTWARE & DATA (features.yml: software) ============ -->
+<section class="section dark software" id="software" data-feature="software" hidden>
+  <div class="wrap">
+    <p class="kicker light" data-i18n="sw.kicker">Open science</p>
+    <h2 class="h2 light" id="sw-title">Software &amp; data</h2>
+    <p class="light-sub sw-intro" id="sw-intro"></p>
+    <h3 class="sw-h" id="sw-models-title"></h3>
+    <div class="sw-grid" id="sw-models"></div>
+    <div class="sw-two">
+      <div><h3 class="sw-h" id="sw-train-title"></h3><ul class="sw-train" id="sw-train"></ul></div>
+      <div><h3 class="sw-h" id="sw-data-title"></h3><ul class="sw-data" id="sw-data"></ul></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ NEWS ============ -->
 <section class="section tint" id="news">
+  <div class="wrap media-wrap" id="media-feature" data-feature="media_video" hidden></div>
   <div class="wrap news-wrap">
     <div>
       <p class="kicker" data-i18n="news.kicker">News</p>
@@ -163,6 +229,36 @@
     <div id="people-groups"></div>
     <h3 class="h3" id="collab-intro">Built together</h3>
     <div id="collabs"></div>
+  </div>
+</section>
+
+<!-- ============ TEACHING (features.yml: teaching) ============ -->
+<section class="section tint teaching" id="teaching" data-feature="teaching" hidden>
+  <div class="wrap">
+    <p class="kicker" data-i18n="teach.kicker">Teaching</p>
+    <h2 class="h2" id="teach-title">Teaching</h2>
+    <p class="lead" id="teach-phil"></p>
+    <div class="teach-principles" id="teach-principles"></div>
+    <div class="teach-grid">
+      <div><h3 class="h4" data-i18n="teach.courses">Courses</h3><div class="course-list" id="teach-courses"></div></div>
+      <div><h3 class="h4" data-i18n="teach.exp">Experience</h3><ul class="mini teach-exp" id="teach-exp"></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOIN THE LAB (features.yml: join) ============ -->
+<section class="section join" id="join" data-feature="join" hidden>
+  <div class="wrap">
+    <p class="kicker" data-i18n="join.kicker">Prospective students</p>
+    <h2 class="h2" id="join-title">Join the lab</h2>
+    <p class="join-status" id="join-status"></p>
+    <p class="lead" id="join-intro"></p>
+    <div class="join-grid">
+      <div><h3 class="h4" data-i18n="join.who">Who we're looking for</h3><div id="join-who"></div></div>
+      <div><h3 class="h4" data-i18n="join.projects">Possible projects</h3><ul class="join-proj" id="join-proj"></ul>
+        <h3 class="h4" data-i18n="join.culture">How we work</h3><div class="join-culture" id="join-culture"></div></div>
+    </div>
+    <div class="join-apply" id="join-apply"></div>
   </div>
 </section>
 
@@ -214,6 +310,7 @@
   <div class="wrap foot">
     <span id="foot-copy">© Wonhyun Lee</span>
     <span class="foot-pillars" id="foot-pillars"></span>
+    <span class="visit-count" id="visit-count" hidden></span>
     <a href="#top" data-i18n="foot.top">Back to top ↑</a>
   </div>
 </footer>
@@ -227,6 +324,7 @@
 </dialog>
 
 <script src="assets/js/js-yaml.min.js"></script>
-<script src="assets/js/main.js?v=20261009"></script>
+<script src="assets/vendor/leaflet/leaflet.js"></script>
+<script src="assets/js/main.js?v=20261010"></script>
 </body>
 </html>
