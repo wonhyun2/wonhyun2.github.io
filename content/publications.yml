@@ -1,25 +1,49 @@
 # =====================================================================
-#  publications.yml  —  논문 목록 (사이트에서 자동으로 연도별 정렬/필터)
-#  type: journal | conference | submitted | report | thesis
-#        (submitted 는 details 에 "under review" / "in preparation" 등을 쓰면 배지로 표시)
+#  publications.yml  —  논문 목록 (사이트에서 자동으로 정렬/필터)
+#
+#  type:  journal | conference | report | thesis      ← 출판된 논문
+#         inpress                                    ← 게재 승인(accepted), 출판 전  → "In press" 그룹/배지(초록)
+#         submitted                                  ← 아직 심사/준비 중 — details 에 단계를 적습니다
+#
+#  submitted 의 details (아래 중 하나, 대소문자 무관)
+#     "in revision"     → In revision    (수정 후 재제출 단계, 주황)
+#     "under review"    → Under review   (심사 중)
+#     "submitted"       → Submitted      (투고 완료, 심사 배정 전)
+#     "in preparation"  → In preparation (준비 중, 회색)
+#     (details 에 "in press" 또는 "accepted" 라고 써도 In press 로 표시됩니다)
+#
+#  표시 순서: In press → In revision → Under review → Submitted → In preparation → 연도별(최신 순)
+#  필터 버튼: In press / In review(수정·심사·투고) / In preparation — 해당 논문이 있을 때만 나타납니다.
+#
 #  selected: true  →  'Selected' 필터 & 별표 표시
 #  me: 굵게 표시할 내 이름 표기 (여러 형태 가능)
-#  새 논문 추가: 아래 템플릿을 복사해서 맨 위 papers: 바로 아래에 붙이세요.
 #
-#  - year: 2027
-#    type: journal
+#  ── 예시: 게재 승인된 논문 (inpress 는 details 가 그대로 보입니다)
+#  - year: 2026
+#    type: inpress
 #    authors: "Lee, W., Coauthor, A. and Coauthor, B."
 #    title: "Paper title"
 #    venue: "Journal Name"
-#    details: "volume, page"
+#    details: "accepted Oct 2026"
 #    doi: "10.xxxx/xxxxx"
-#    selected: true
+#
+#  ── 예시: 수정 중인 논문
+#  - year: 2026
+#    type: submitted
+#    authors: "Lee, W., Coauthor, A."
+#    title: "Paper title"
+#    venue: "Journal Name"
+#    details: "in revision"
+#
+#  ── 출판되면: type 을 journal 로 바꾸고 details 에 "권(호), 페이지", doi 를 넣으세요.
 # =====================================================================
 
 me: ["Lee, W.", "Lee,W", "Lee, W"]
 
 papers:
-  # ---------------- Submitted / under review / in preparation
+  # ---------------- In press (accepted) — 게재 승인 논문은 여기에 (type: inpress)
+
+  # ---------------- In revision / under review / submitted / in preparation (type: submitted)
   - year: 2026
     type: submitted
     authors: "Lee, W., Ancell, B., and Scanlon, B.R."
