@@ -220,7 +220,7 @@ a:hover { color: #0284c7; }
 .chip small { opacity: .6; margin-left: 4px; }
 #pub-search { flex: 0 1 300px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); font: inherit; font-size: 15px; background: #fff; }
 #pub-search:focus { outline: 2px solid var(--physics); outline-offset: 1px; }
-.year-group { display: grid; grid-template-columns: 90px 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid var(--line); }
+.year-group { display: grid; grid-template-columns: 112px 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid var(--line); }
 .year-group .yr { font: 600 26px/1.2 var(--f-display); color: var(--muted); }
 .pub { margin-bottom: 20px; padding-left: 16px; border-left: 3px solid transparent; }
 .pub:last-child { margin-bottom: 0; }
@@ -238,6 +238,14 @@ a:hover { color: #0284c7; }
 .badge.submitted { background: #fff1e6; color: #c2410c; }
 .badge.report, .badge.thesis { background: #e6fbf6; color: #0f766e; }
 .badge.star { background: #fff7ed; color: #ea580c; }
+/* manuscript pipeline badges */
+.badge.st-inpress { background: #dcfce7; color: #15803d; }
+.badge.st-inrevision { background: #fef3c7; color: #b45309; }
+.badge.st-underreview, .badge.submitted { background: #fff1e6; color: #c2410c; }
+.badge.st-submitted { background: #e0e7ff; color: #4338ca; }
+.badge.st-inpreparation { background: #f1f5f9; color: #64748b; }
+.st-group .yr { font-size: 19px; line-height: 1.25; }
+.st-group.st-inpress .yr { color: #15803d; }
 .doi { font: 500 12.5px/1 var(--f-mono); text-decoration: none; padding: 4px 8px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink-2); }
 .doi:hover { border-color: var(--ink-2); }
 .pub-empty { color: var(--muted); padding: 30px 0; }
