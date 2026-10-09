@@ -58,7 +58,8 @@
     'pub.note': '지도 학생들이 여러 논문의 공저자로 참여했습니다. 전체 목록은 <a data-bind="cv" href="assets/cv/Wonhyun_Lee_CV.pdf" target="_blank" rel="noopener">CV</a>에 있습니다.',
     'pub.all': '전체', 'pub.selected': '대표 논문', 'pub.journal': '저널', 'pub.conference': '프로시딩', 'pub.submitted': '심사 중', 'pub.report': '보고서 · 학위논문',
     'pub.b.journal': '저널', 'pub.b.conference': '프로시딩', 'pub.b.report': '보고서', 'pub.b.thesis': '학위논문', 'pub.b.star': '★ 대표',
-    'pub.inreview': '심사 중', 'pub.empty': '검색 결과가 없습니다.', 'st.under review': '심사 중', 'st.in preparation': '준비 중', 'st.in revision': '수정 중',
+    'pub.inreview': '심사 중', 'pub.empty': '검색 결과가 없습니다.', 'st.under review': '심사 중', 'st.in preparation': '준비 중', 'st.in revision': '수정 중', 'st.in press': '게재 예정', 'st.submitted': '투고 완료',
+    'pub.inpress': '게재 예정', 'pub.review': '심사 · 수정 중', 'pub.prep': '준비 중',
     'news.kicker': '소식', 'news.h2': '최근 소식', 'news.all': '전체 {n}개 보기 →',
     'tag.award': '수상', 'tag.paper': '논문', 'tag.grant': '연구비', 'tag.talk': '발표', 'tag.media': '언론', 'tag.service': '봉사',
     'team.kicker': '팀', 'team.h2': '구성원', 'team.alumni': '이전 멤버', 'team.with': '공동지도',
@@ -289,9 +290,29 @@
   function renderPubs(d) {
     const papers = list(d && d.papers).map((p, i) => ({ ...p, _i: i }));
     const me = list(d && d.me);
-    const TYPES = [['all', 'All'], ['selected', 'Selected'], ['journal', 'Journal'], ['conference', 'Proceedings'], ['submitted', 'Under review'], ['report', 'Reports & thesis']].map(([k, l]) => [k, t('pub.' + k, l)]);
-    const count = k => k === 'all' ? papers.length : k === 'selected' ? papers.filter(p => p.selected).length
-      : k === 'report' ? papers.filter(p => p.type === 'report' || p.type === 'thesis').length : papers.filter(p => p.type === k).length;
+    // pipeline status: type "inpress" (accepted) or type "submitted" + details: in revision | under review | submitted | in preparation
+    const ST = ['in press', 'in revision', 'under review', 'submitted', 'in preparation'];
+    const STL = { 'in press': 'In press', 'in revision': 'In revision', 'under review': 'Under review', submitted: 'Submitted', 'in preparation': 'In preparation' };
+    const status = p => {
+      const ty = String(p.type || '').toLowerCase().replace(/[\s_-]/g, '');
+      if (ty === 'inpress' || ty === 'accepted') return 'in press';
+      if (ty !== 'submitted') return '';
+      const s = String(p.status || p.details || 'under review').toLowerCase().trim();
+      if (/press|accept/.test(s)) return 'in press';
+      if (/revis|revision/.test(s)) return 'in revision';
+      if (/prep/.test(s)) return 'in preparation';
+      if (/^submitted/.test(s)) return 'submitted';
+      return 'under review';
+    };
+    papers.forEach(p => { p._st = status(p); });
+    const inGroup = (p, k) => k === 'all' ? true : k === 'selected' ? !!p.selected
+      : k === 'report' ? (p.type === 'report' || p.type === 'thesis')
+      : k === 'inpress' ? p._st === 'in press'
+      : k === 'review' ? ['in revision', 'under review', 'submitted'].includes(p._st)
+      : k === 'prep' ? p._st === 'in preparation'
+      : (!p._st && p.type === k);
+    const TYPES = [['all', 'All'], ['selected', 'Selected'], ['journal', 'Journal'], ['conference', 'Proceedings'], ['inpress', 'In press'], ['review', 'In review'], ['prep', 'In preparation'], ['report', 'Reports & thesis']].map(([k, l]) => [k, t('pub.' + k, l)]);
+    const count = k => papers.filter(p => inGroup(p, k)).length;
     let filt = 'all', q = '';
     const fbox = $('#pub-filters');
     fbox.innerHTML = TYPES.filter(([k]) => count(k) > 0).map(([k, l]) => `<button class="chip" role="tab" data-k="${k}" aria-selected="${k === filt}">${l}<small>${count(k)}</small></button>`).join('');
@@ -301,26 +322,29 @@
     });
     $('#pub-search').addEventListener('input', e => { q = e.target.value.trim().toLowerCase(); draw(); });
     const bold = a => { let s = esc(a); me.forEach(n => { s = s.split(esc(n)).join(`<b>${esc(n)}</b>`); }); return s; };
-    const LBL = { journal: t('pub.b.journal', 'Journal'), conference: t('pub.b.conference', 'Proceedings'), submitted: t('pub.submitted', 'Under review'), report: t('pub.b.report', 'Report'), thesis: t('pub.b.thesis', 'Thesis') };
+    const LBL = { journal: t('pub.b.journal', 'Journal'), conference: t('pub.b.conference', 'Proceedings'), report: t('pub.b.report', 'Report'), thesis: t('pub.b.thesis', 'Thesis') };
+    const stLabel = st => t('st.' + st, STL[st]);
+    const stCls = st => 'st-' + st.replace(/\s/g, '');
     function draw() {
-      let ps = papers.filter(p => filt === 'all' || (filt === 'selected' ? p.selected : filt === 'report' ? (p.type === 'report' || p.type === 'thesis') : p.type === filt));
-      if (q) ps = ps.filter(p => [p.title, p.authors, p.venue, p.year].join(' ').toLowerCase().includes(q));
-      // order: submitted first, then by year desc, keep file order within year
-      const rank = p => p.type === 'submitted' ? 1 : 0;
-      ps.sort((a, b) => rank(b) - rank(a) || (b.year || 0) - (a.year || 0) || a._i - b._i);
+      let ps = papers.filter(p => inGroup(p, filt));
+      if (q) ps = ps.filter(p => [p.title, p.authors, p.venue, p.year, p._st].join(' ').toLowerCase().includes(q));
+      // order: in press → in revision → under review → submitted → in preparation → published by year (desc), file order within each
+      const rank = p => p._st ? ST.indexOf(p._st) : 99;
+      ps.sort((a, b) => rank(a) - rank(b) || (b.year || 0) - (a.year || 0) || a._i - b._i);
       const groups = [];
       ps.forEach(p => {
-        const key = p.type === 'submitted' ? t('pub.inreview', 'In review') : String(p.year || '');
-        let g = groups.find(x => x.k === key); if (!g) groups.push(g = { k: key, items: [] }); g.items.push(p);
+        const key = p._st ? stLabel(p._st) : String(p.year || '');
+        let g = groups.find(x => x.k === key); if (!g) groups.push(g = { k: key, st: p._st, items: [] }); g.items.push(p);
       });
       $('#pub-list').innerHTML = groups.length ? groups.map(g => `
-        <div class="year-group"><div class="yr">${esc(g.k)}</div><div>${g.items.map(p => {
+        <div class="year-group${g.st ? ' st-group ' + stCls(g.st) : ''}"><div class="yr">${esc(g.k)}</div><div>${g.items.map(p => {
           const url = p.url || (p.doi ? `https://doi.org/${p.doi}` : '');
+          const showDetails = p.details && (!p._st || p.type === 'inpress');
           return `<div class="pub ${p.selected ? 'sel' : ''}">
             <p class="pub-title">${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(p.title)}</a>` : esc(p.title)}</p>
             <p class="pub-auth">${bold(p.authors || '')}</p>
-            <p class="pub-venue"><i>${esc(p.venue || '')}</i>${p.details && p.type !== 'submitted' ? `<span>${esc(p.details)}</span>` : ''}
-              <span class="badge ${esc(p.type)}">${p.type === 'submitted' ? esc(t('st.' + String(p.details || 'under review').toLowerCase(), p.details || 'Under review')) : (LBL[p.type] || esc(p.type || ''))}</span>
+            <p class="pub-venue"><i>${esc(p.venue || '')}</i>${showDetails ? `<span>${esc(p.details)}</span>` : ''}
+              <span class="badge ${p._st ? stCls(p._st) : esc(p.type)}">${p._st ? esc(stLabel(p._st)) : (LBL[p.type] || esc(p.type || ''))}</span>
               ${p.selected ? `<span class="badge star">${t('pub.b.star', '★ Selected')}</span>` : ''}
               ${p.doi ? `<a class="doi" href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">DOI</a>` : ''}</p>
           </div>`; }).join('')}</div></div>`).join('') : `<p class="pub-empty">${t('pub.empty', 'No matching publications.')}</p>`;
