@@ -1,0 +1,56 @@
+# =====================================================================
+#  join.yml  —  2. Join the Lab (features.yml 에서 join: true 로 켭니다)
+#  ▸ 교수 임용 후 학교·연구실 이름, 지원 방법을 채워 넣으세요.
+#  ▸ status: 모집 상태 문구 (예: "Recruiting Ph.D. students for Fall 2028")
+# =====================================================================
+
+title: "Join the lab"
+title_ko: "연구실 합류"
+status: "Recruiting Ph.D. students and postdocs — details coming soon"
+status_ko: "박사과정 학생 · 박사후연구원 모집 예정 — 세부 사항은 곧 안내"
+intro: "We build flood predictions that are physically honest, fast enough to matter, and useful to the people who need them. If that sounds like you, I would love to hear from you."
+intro_ko: "물리적으로 정직하고, 시간 안에 쓸 수 있을 만큼 빠르며, 필요한 사람에게 실제로 쓸모 있는 홍수 예측을 만듭니다. 관심이 있다면 꼭 연락 주세요."
+
+looking_for:
+  - title: "Curious about water"
+    title_ko: "물에 대한 호기심"
+    text: "Backgrounds in civil/environmental engineering, ocean or atmospheric science, hydrology, geoscience, applied math or computer science are all welcome."
+    text_ko: "토목·환경공학, 해양·대기과학, 수문학, 지구과학, 응용수학, 컴퓨터공학 등 어떤 배경이든 환영합니다."
+  - title: "Physics or code — ideally both, eventually"
+    title_ko: "물리 또는 코드 — 결국엔 둘 다"
+    text: "A strong physics background and a strong coding background are both good ways in. You'll learn the other side here."
+    text_ko: "물리에 강하든 코딩에 강하든 좋은 출발점입니다. 나머지는 여기서 배웁니다."
+  - title: "Wants their work to be used"
+    title_ko: "연구가 실제로 쓰이길 원하는 사람"
+    text: "Our projects are co-designed with agencies and communities, from Texas border colonias to Gulf Coast cities."
+    text_ko: "텍사스 국경 콜로니아부터 멕시코만 도시까지, 기관·지역사회와 함께 설계하는 프로젝트입니다."
+
+projects:
+  - "Physics-aware AI surrogates for compound flooding that transfer to new storms and basins"
+  - "Flood digital twins updated by lidar, SAR and gauges"
+  - "Probabilistic flash-flood warnings: where, how deep, how likely and how soon"
+  - "Hazard-to-adaptation analysis for underserved communities"
+projects_ko:
+  - "새로운 태풍·유역에도 통하는 물리 기반 AI 복합홍수 대리모델"
+  - "라이다·SAR·관측소로 갱신되는 홍수 디지털 트윈"
+  - "확률론적 돌발홍수 경보: 어디에, 얼마나 깊게, 얼마나 가능성 있게, 얼마나 빨리"
+  - "취약 지역사회를 위한 위험–적응 분석"
+
+culture:
+  - title: "IDEAS"
+    text: "Identify · Define · Explore · Anticipate · Select — how we go from a question to a decision."
+    text_ko: "파악 · 정의 · 탐색 · 예측 · 선택 — 질문에서 결정까지 가는 방법."
+  - title: "You own a real case study"
+    title_ko: "실제 사례를 직접 맡습니다"
+    text: "Every student leads a real-world flood problem and a first-author paper."
+    text_ko: "모든 학생이 실제 홍수 문제와 제1저자 논문을 주도합니다."
+  - title: "Open & reproducible"
+    title_ko: "공개 · 재현 가능"
+    text: "Open code, shared datasets, documented workflows."
+    text_ko: "공개 코드, 공유 데이터, 문서화된 워크플로."
+
+apply:
+  text: "Email me a short note on what draws you to flooding, your CV, and one piece of work you're proud of (a paper, code, thesis chapter or class project)."
+  text_ko: "홍수 연구에 끌리는 이유를 짧게 적고, CV와 자랑스러운 작업 하나(논문, 코드, 학위논문 일부, 수업 프로젝트 등)를 이메일로 보내 주세요."
+  email: "wonhyun.lee@beg.utexas.edu"
+  subject: "Prospective student — [your name]"

@@ -1,0 +1,21 @@
+# =====================================================================
+#  media.yml  —  News 섹션 맨 위의 "Featured" 인터뷰 영상
+#  ▸ embed: 방송사 기사 페이지의 공유(Embed) 주소. 클릭해야 영상이 로드됩니다(처음엔 사진만).
+#  ▸ YouTube 영상이면  embed: "https://www.youtube-nocookie.com/embed/영상ID"
+#  ▸ 여러 개를 넣으면 나란히 표시됩니다. features.yml 의 media_video 로 켜고 끕니다.
+# =====================================================================
+
+featured:
+  - kicker: "In the news · KXAN Austin TV"
+    kicker_ko: "언론 보도 · KXAN Austin TV"
+    title: "How Google's new AI tool could help forecast deadly flash floods"
+    title_ko: "구글의 새 AI 도구는 치명적인 돌발홍수 예보에 어떻게 도움이 될까"
+    date: "2026-04"
+    text: "Expert interview on AI-assisted flash-flood prediction — and why communities need to know where water will pond at the street and neighborhood scale, how deep, and for how long."
+    text_ko: "AI 기반 돌발홍수 예측에 대한 전문가 인터뷰 — 지역사회에는 거리·동네 단위에서 물이 어디에, 얼마나 깊게, 얼마나 오래 고이는지가 필요하다는 점을 이야기했습니다."
+    quote: "where the water may accumulate or may flood at the street or neighborhood"
+    poster: "assets/img/hill-3d.jpg"
+    embed: "https://redir1.kxan.com/nxs-video/vid-anvato-11739303/embed/?autoplay=1&injected_via=embed&post_id=3119311&aspect_ratio=landscape"
+    url: "https://www.kxan.com/weather-traffic-qas/google-rolls-out-ai-tool-to-predict-flash-floods-up-to-24-hours-ahead/"
+    also: "Also syndicated by The Hill"
+    also_ko: "The Hill 등에도 게재"

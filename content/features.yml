@@ -1,0 +1,28 @@
+# =====================================================================
+#  features.yml  —  섹션 켜기 / 끄기 + 방문 통계
+#
+#  ▸ true  = 웹사이트에 보임      ▸ false = 숨김 (내용은 그대로 보관)
+#  ▸ 숨긴 섹션 미리보기: 주소 끝에 ?preview=1
+#      예) https://wonhyun2.github.io/?preview=1
+#    (미리보기 화면에서는 숨김 섹션에 "PREVIEW" 표시가 붙고, 방문 통계는 집계되지 않습니다.)
+# =====================================================================
+
+sections:
+  sites: true          # 연구 지역 지도 (content/sites.yml)
+  software: true       # Software & Data (content/software.yml)
+  media_video: true    # KXAN 인터뷰 영상 — News 섹션 맨 위 (content/media.yml)
+
+  explorer: false      # 1. Flood Explorer — 홍수 지도 슬라이더 (content/explorer.yml)
+  stories: false       # 3. Research Stories — 논문 하나 = 카드 하나 (content/stories.yml)
+  teaching: false      # 4. Teaching (content/teaching.yml)
+  join: false          # 2. Join the Lab — 학생 모집 (content/join.yml)
+
+# ---------------- 방문 통계 (GoatCounter: 무료 · 쿠키 없음 · 개인정보 수집 없음)
+#  1) https://www.goatcounter.com 에서 무료 가입 → "code"를 정합니다 (예: wonhyun2)
+#  2) 아래 goatcounter: 에 그 code 를 넣으면 바로 집계 시작
+#     대시보드: https://<code>.goatcounter.com  (어느 나라/기관/페이지에서 왔는지)
+#  3) 화면 하단에 방문자 수를 보이려면 show_counter: true
+#     (GoatCounter 설정 → "Allow adding visitor counts on your website" 를 켜야 합니다)
+analytics:
+  goatcounter: ""
+  show_counter: false

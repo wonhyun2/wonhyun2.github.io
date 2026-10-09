@@ -1,0 +1,74 @@
+# =====================================================================
+#  teaching.yml  —  4. Teaching (features.yml 에서 teaching: true 로 켭니다)
+#  ▸ courses: level(Undergraduate/Graduate), name, text, new: true(신설 과목 표시), syllabus: PDF 경로(선택)
+# =====================================================================
+
+title: "Teaching"
+title_ko: "강의"
+philosophy: "Physical intuition first, then equations, then computation. I bring real floods and real data into the classroom so students learn to make decisions under uncertainty — and to say honestly what a model can and cannot tell them."
+philosophy_ko: "물리적 직관이 먼저, 그다음 수식, 마지막이 계산입니다. 실제 홍수와 실제 데이터를 강의실로 가져와, 학생들이 불확실성 속에서 판단하고 모델이 말해줄 수 있는 것과 없는 것을 정직하게 말하도록 가르칩니다."
+
+principles:
+  - title: "Physics → math → code"
+    title_ko: "물리 → 수학 → 코드"
+    text: "Students reason about gravity, friction and boundaries before the governing equations — and run a model only once they know what it should show."
+    text_ko: "지배방정식 전에 중력·마찰·경계조건을 먼저 생각하고, 결과를 예상할 수 있을 때 모델을 돌립니다."
+  - title: "Real data, open tools"
+    title_ko: "실제 데이터, 공개 도구"
+    text: "Rainfall, gauges and terrain from real events; results written up as a memo for an agency audience, not just a problem set."
+    text_ko: "실제 사건의 강우·관측·지형 자료로 분석하고, 결과는 문제풀이가 아니라 기관에 보내는 메모로 씁니다."
+  - title: "Scaffold, don't water down"
+    title_ko: "수준을 낮추지 않고 단계를 놓는다"
+    text: "Documented examples → milestones → independent projects; rotating team roles so coders explain and physicists code."
+    text_ko: "예제 → 단계별 과제 → 독립 프로젝트. 팀 역할을 돌아가며 맡아 코딩하는 학생은 설명하고, 물리를 하는 학생은 코딩합니다."
+
+courses:
+  - level: "Undergraduate"
+    level_ko: "학부"
+    name: "Fluid Mechanics"
+    name_ko: "유체역학"
+    text: "Conservation laws through water you can see — open channels, pipes and waves."
+    text_ko: "눈에 보이는 물로 배우는 보존 법칙 — 개수로, 관로, 파랑."
+  - level: "Undergraduate"
+    level_ko: "학부"
+    name: "Hydrology & Water Resources"
+    name_ko: "수문학 · 수자원"
+    text: "Rainfall to runoff to rivers, with Texas floods as case studies."
+    text_ko: "강우에서 유출, 하천까지 — 텍사스 홍수를 사례로."
+  - level: "Undergraduate"
+    level_ko: "학부"
+    name: "Coastal Engineering"
+    name_ko: "해안공학"
+    text: "Waves, tides, surge and sediment — including Engineering-with-Nature solutions."
+    text_ko: "파랑·조석·해일·표사 — 자연기반 해법 포함."
+  - level: "Graduate"
+    level_ko: "대학원"
+    name: "Computational Flood Risk & Climate Resilience"
+    name_ko: "전산 홍수위험 · 기후 회복력"
+    new: true
+    text: "A semester-long project on a real flood-risk problem: hydrodynamics, remote sensing, ensembles and adaptation."
+    text_ko: "실제 홍수위험 문제를 한 학기 프로젝트로 — 수리동역학, 원격탐사, 앙상블, 적응 대책."
+  - level: "Graduate"
+    level_ko: "대학원"
+    name: "Physics-Informed ML for Environmental Systems"
+    name_ko: "환경 시스템을 위한 물리 기반 머신러닝"
+    new: true
+    text: "When a data-driven method is appropriate, how physics makes it reliable, and how to judge whether it transfers."
+    text_ko: "데이터 기반 방법이 언제 적절한지, 물리가 어떻게 신뢰도를 높이는지, 다른 곳에도 통하는지 판단하는 법."
+  - level: "Graduate"
+    level_ko: "대학원"
+    name: "Computational Hydrodynamics"
+    name_ko: "전산 수리동역학"
+    text: "Shallow-water models from Delft3D-FM to SFINCS: setup, validation and uncertainty."
+    text_ko: "Delft3D-FM부터 SFINCS까지 천수 모델 — 구축, 검증, 불확실성."
+
+experience:
+  - "Teaching assistant, Applied Engineering Mathematics & Fluid Mechanics — Seoul National University of Science & Technology"
+  - "Hydraulic laboratory assistant: wave generation, pipe flow, open-channel hydraulics"
+  - "SFINCS modeling lectures for graduate students — UT Austin CAEE Coastal Hazards Lab"
+  - "Seminars on hydrodynamic modeling and AI-assisted flood prediction — BEG and UT EWRE / CWE"
+experience_ko:
+  - "응용공학수학 · 유체역학 조교 — 서울과학기술대학교"
+  - "수리실험 조교: 조파, 관수로, 개수로 실험"
+  - "대학원생 대상 SFINCS 모델링 강의 — UT 오스틴 CAEE 연안재해 연구실"
+  - "수리동역학 모델링 · AI 홍수 예측 세미나 — BEG, UT EWRE / CWE"

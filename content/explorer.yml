@@ -1,0 +1,44 @@
+# =====================================================================
+#  explorer.yml  —  1. Flood Explorer (방문자가 직접 시간을 넘겨 보는 홍수 지도)
+#  ▸ features.yml 에서 explorer: true 로 켭니다. (지금은 ?preview=1 에서만 보임)
+#
+#  scenario 종류
+#   (a) type: video   → 동영상을 슬라이더로 앞뒤로 넘겨 봅니다.  src: mp4 경로
+#   (b) type: frames  → 시간별 이미지(PNG/JPG)를 슬라이더로 넘깁니다.
+#         frames: [{ src: "assets/explorer/hill/t00.png", label: "Jul 4 · 00:00" }, ...]
+#         (이미지는 모두 같은 크기·같은 영역이어야 자연스럽습니다)
+#  ▸ legend: 색 범례 (예: "Water depth (m)"),  start_label / end_label: 슬라이더 양 끝 글자
+# =====================================================================
+
+title: "Flood explorer"
+title_ko: "홍수 탐색기"
+intro: "Drag through time and watch the water rise — the same simulations behind the papers."
+intro_ko: "시간을 직접 넘기며 물이 차오르는 모습을 보세요 — 논문에 쓰인 바로 그 모의 결과입니다."
+
+scenarios:
+  - name: "Camp Mystic · July 4, 2025"
+    name_ko: "캠프 미스틱 · 2025년 7월 4일"
+    type: video
+    src: "assets/video/camp3d.mp4"
+    caption: "SFINCS hindcast forced by observed (MRMS) rainfall, South Fork Guadalupe River, 3-D view."
+    caption_ko: "관측 강우(MRMS)로 구동한 SFINCS 재현, 과달루페 강 남쪽 지류, 3차원 화면."
+    legend: "Water depth"
+    legend_ko: "수심"
+    start_label: "Before"
+    start_label_ko: "홍수 전"
+    end_label: "Peak and after"
+    end_label_ko: "최고수위 이후"
+  - name: "Physics vs. AI · Hurricane Beryl"
+    name_ko: "물리 모델 vs. AI · 허리케인 베릴"
+    type: video
+    src: "assets/video/ai_lsm_fno.mp4"
+    caption: "Unseen test storm: SFINCS vs. LSM vs. FNO flood depth and |error|."
+    caption_ko: "처음 보는 검증 태풍: SFINCS vs. LSM vs. FNO 수심과 오차."
+    start_label: "Landfall −"
+    end_label: "Landfall +"
+  - name: "Hill Country probability (add frames)"
+    name_ko: "힐 컨트리 침수 확률 (프레임 추가 예정)"
+    type: frames
+    frames: []
+    caption: "Add hourly PNG maps of P(depth ≥ 0.1 m) to assets/explorer/hill/ and list them here."
+    caption_ko: "P(수심 ≥ 0.1 m) 시간별 PNG 지도를 assets/explorer/hill/ 에 넣고 여기에 나열하세요."

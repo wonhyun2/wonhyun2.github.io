@@ -1,0 +1,209 @@
+# =====================================================================
+#  sites.yml  —  "From the ocean to the hills" 연구 지역 지도
+#
+#  ▸ 각 지점: name, lat(위도), lon(경도), year, kind, title, text, stat(핵심 숫자), image, doi/url
+#  ▸ kind 색: physics(파랑) · probability(청록) · ai(보라) · people(주황)
+#  ▸ size: 물결 원의 크기 1~3 (영향 규모)
+#  ▸ tour: 'Flood tour' 버튼을 누르면 order 순서대로 날아가며 소개합니다 (숫자 작은 것부터).
+#  ▸ 위도/경도 확인: Google 지도에서 우클릭 → 첫 줄 숫자 (예: 29.76, -95.37)
+#  ▸ 경로(paths): 물이 흐르는 애니메이션 선 — 해안선/강을 따라 점들을 이어줍니다.
+# =====================================================================
+
+title: "From the ocean to the hills"
+title_ko: "바다에서 언덕까지"
+intro: "One modeling thread, many waters: where I have built, tested and applied flood and ocean models. Click a ripple — or take the flood tour."
+intro_ko: "하나의 모델링 줄기, 여러 물길. 홍수·해양 모델을 만들고 검증하고 적용해 온 곳들입니다. 물결을 눌러 보거나 'Flood tour'를 시작해 보세요."
+
+views:
+  texas: { center: [29.3, -97.4], zoom: 6 }
+  gulf:  { center: [27.2, -89.5], zoom: 5 }
+  world: { center: [24, -20], zoom: 2 }
+start: texas
+
+paths:
+  - name: "Gulf-wide SFINCS · 17 zones"
+    name_ko: "멕시코만 전역 SFINCS · 17개 구역"
+    kind: probability
+    points: [[25.95,-97.15],[26.6,-97.3],[27.8,-97.1],[28.4,-96.4],[28.95,-95.3],[29.3,-94.8],[29.73,-93.87],[29.78,-93.3],[29.55,-92.3],[29.5,-91.6],[29.24,-90.0],[29.05,-89.35],[29.6,-89.5],[30.2,-89.4],[30.4,-88.9],[30.25,-88.1],[30.33,-87.2],[30.38,-86.5],[30.15,-85.7],[29.7,-85.0],[29.9,-84.4],[29.13,-83.03],[28.2,-82.8],[27.6,-82.75],[26.45,-82.0],[26.1,-81.8],[25.4,-81.15],[25.12,-81.1],[24.7,-81.3],[24.55,-81.8]]
+  - name: "Guadalupe River · Hunt → Comfort"
+    name_ko: "과달루페 강 · 헌트 → 컴포트"
+    kind: probability
+    points: [[30.07,-99.33],[30.08,-99.24],[30.05,-99.14],[29.94,-99.04],[29.97,-98.91]]
+
+sites:
+  - name: "Texas Hill Country"
+    name_ko: "텍사스 힐 컨트리"
+    lat: 30.05
+    lon: -99.14
+    year: "2025–26"
+    kind: probability
+    size: 3
+    order: 12
+    title: "100 rainfall futures × street-scale physics"
+    title_ko: "100개의 강우 시나리오 × 거리 단위 물리 모델"
+    text: "July 4, 2025 flash flood on the Guadalupe River: a 100-member WRF ensemble drives GPU SFINCS on 1 m lidar terrain to map flood probability, depth and time-to-danger."
+    text_ko: "2025년 7월 4일 과달루페 강 돌발홍수 — 100개 WRF 앙상블로 1 m 라이다 지형 위 GPU SFINCS를 구동해 침수 확률·수심·위험 도달 시간을 산출했습니다."
+    stat: "~8 m in 45 min"
+    image: "assets/img/hill-3d.jpg"
+    doi: "10.2139/ssrn.7545121"
+
+  - name: "Houston · Hurricane Harvey"
+    name_ko: "휴스턴 · 허리케인 하비"
+    lat: 29.76
+    lon: -95.37
+    year: "2017"
+    kind: physics
+    size: 3
+    order: 8
+    title: "Compound flooding, driver by driver"
+    title_ko: "유발 요인별로 분해한 복합홍수"
+    text: "Coupled surge–wave–rain–river hindcast with Delft3D-FM: rain caused ~60–65% of flooding, and the drivers amplify each other nonlinearly."
+    text_ko: "Delft3D-FM 해일–파랑–강우–하천 결합 재현: 침수의 약 60–65%가 강우 때문이었고, 유발 요인들은 비선형적으로 서로를 증폭했습니다."
+    stat: "0.62 m MAE vs. high-water marks"
+    stat_ko: "흔적수위 대비 평균오차 0.62 m"
+    doi: "10.1007/s11069-023-06247-9"
+
+  - name: "Galveston · Hurricane Ike"
+    name_ko: "갤버스턴 · 허리케인 아이크"
+    lat: 29.30
+    lon: -94.80
+    year: "2008"
+    kind: probability
+    size: 2
+    order: 7
+    title: "From 'what if?' to 'how likely?'"
+    title_ko: "'만약'에서 '얼마나 가능한가'로"
+    text: "Monte-Carlo forecast-error ensembles with SFINCS turn a hurricane forecast into flood probabilities days before landfall."
+    text_ko: "예보 오차 몬테카를로 앙상블과 SFINCS로, 상륙 며칠 전 허리케인 예보를 침수 확률 지도로 바꿉니다."
+    stat: "~100 members in ~4 h"
+    stat_ko: "약 100개 시나리오, 약 4시간"
+    image: "assets/img/galveston-ike.jpg"
+    doi: "10.1016/j.coastaleng.2025.104721"
+
+  - name: "Matagorda · Hurricane Beryl"
+    name_ko: "마타고다 · 허리케인 베릴"
+    lat: 28.75
+    lon: -95.85
+    year: "2024"
+    kind: ai
+    size: 2
+    order: 9
+    title: "Rapid intensification + sea-level rise — and an AI test"
+    title_ko: "급격한 강화 + 해수면 상승 — 그리고 AI 검증"
+    text: "Rapid intensification and relative sea-level rise amplified Harvey and Beryl flooding; Beryl is also the unseen test storm for our neural-operator surrogates."
+    text_ko: "급격한 강화와 상대적 해수면 상승이 하비·베릴 홍수를 키웠습니다. 베릴은 신경연산자 대리모델의 '처음 보는' 검증 태풍이기도 합니다."
+    stat: "AI flood map in seconds · CSI 0.96"
+    stat_ko: "AI 침수 지도 수 초 · CSI 0.96"
+    image: "assets/img/rslr-trend.jpg"
+    doi: "10.1029/2025EF007678"
+
+  - name: "Lower Rio Grande Valley"
+    name_ko: "리오그란데 밸리 하류"
+    lat: 26.16
+    lon: -97.99
+    year: "2015–25"
+    kind: people
+    size: 3
+    order: 11
+    title: "Hazard → impact → adaptation in colonias"
+    title_ko: "콜로니아의 위험 → 피해 → 적응"
+    text: "Five rainfall floods with SFINCS + FloodAdapt + Delft-FIAT find recurrent hotspots outside FEMA zones and test floodproofing and pumps."
+    text_ko: "다섯 차례 강우 홍수를 SFINCS + FloodAdapt + Delft-FIAT로 분석해 FEMA 구역 밖의 반복 침수 지점을 찾고, 방수·펌프 대책을 검증했습니다."
+    stat: ">90% damage cut · −27% depth"
+    stat_ko: "피해 90% 이상 감소 · 수심 27% 감소"
+    image: "assets/img/floodadapt-measures.jpg"
+    doi: "10.2139/ssrn.7228030"
+
+  - name: "Texas estuaries"
+    name_ko: "텍사스 하구"
+    lat: 28.05
+    lon: -97.05
+    year: "2025–26"
+    kind: physics
+    size: 1
+    order: 10
+    title: "Salinity, temperature and fish habitat"
+    title_ko: "염분, 수온, 그리고 어류 서식지"
+    text: "With the UT Marine Science Institute: modeled estuarine temperature and salinity show climate-driven loss of fish spawning habitat."
+    text_ko: "UT 해양과학연구소와 함께 — 하구 수온·염분 모의로 기후변화에 따른 어류 산란 서식지 감소를 보였습니다."
+    stat: "Nature Climate Change (in review)"
+    stat_ko: "Nature Climate Change (심사 중)"
+    image: "assets/img/msi-habitat.jpg"
+
+  - name: "Gulf of America coast"
+    name_ko: "멕시코만 연안 전역"
+    lat: 29.15
+    lon: -89.9
+    year: "2025–30"
+    kind: probability
+    size: 3
+    order: 6
+    title: "The whole Gulf coast in ~2 hours per storm"
+    title_ko: "멕시코만 연안 전체를 태풍당 약 2시간에"
+    text: "NASEM Gulf Research Program (PI): 17 SFINCS zones from Texas to the Florida Keys — Katrina, Ike, Ida, Ian — plus NISAR land subsidence (NASA Co-PI)."
+    text_ko: "NASEM 걸프 연구 프로그램(책임연구자): 텍사스부터 플로리다 키스까지 17개 SFINCS 구역 — 카트리나·아이크·아이다·이언 — 그리고 NISAR 지반 침하(NASA 공동책임)."
+    stat: "17 zones · 2,000+ km"
+    stat_ko: "17개 구역 · 2,000 km 이상"
+    image: "assets/img/nisar-vlm.jpg"
+
+  - name: "Gulf of America · Hurricane Katrina"
+    name_ko: "멕시코만 · 허리케인 카트리나"
+    lat: 26.6
+    lon: -88.4
+    year: "2005"
+    kind: physics
+    size: 2
+    order: 5
+    title: "How a hurricane stirs the ocean"
+    title_ko: "허리케인은 바다를 어떻게 휘젓는가"
+    text: "3-D hydrodynamic modeling of mixed-layer deepening under Hurricane Katrina (U.S. Naval Research Laboratory)."
+    text_ko: "허리케인 카트리나 통과 시 혼합층 심화를 3차원 수치모델로 재현했습니다 (미 해군연구소)."
+    stat: "J. Marine Sci. Eng. 2024"
+    doi: "10.3390/jmse12040678"
+
+  - name: "Puerto Rico"
+    name_ko: "푸에르토리코"
+    lat: 18.22
+    lon: -66.45
+    year: "2018–21"
+    kind: probability
+    size: 2
+    order: 4
+    title: "Probabilistic surge & inundation system"
+    title_ko: "확률론적 해일·침수 예측 시스템"
+    text: "Delft3D-FM storm-surge and wave configurations and ensemble evaluation for the Navy's Probabilistic Surge and Inundation Prediction System."
+    text_ko: "미 해군 확률론적 해일·침수 예측 시스템을 위한 Delft3D-FM 해일·파랑 모델 구축과 앙상블 검증."
+    stat: "NRL Formal Report 2021"
+    stat_ko: "NRL 공식 보고서 2021"
+
+  - name: "Arabian / Persian Gulf"
+    name_ko: "아라비아(페르시아)만"
+    lat: 26.8
+    lon: 51.6
+    year: "2014–18"
+    kind: physics
+    size: 2
+    order: 3
+    title: "Circulation, salinity and desalination"
+    title_ko: "순환, 염분, 그리고 해수담수화"
+    text: "Ph.D. at Texas A&M: 3-D circulation, thermohaline structure and the footprint of large-scale desalination discharges."
+    text_ko: "텍사스 A&M 박사 연구 — 3차원 순환, 수온·염분 구조, 대규모 해수담수화 배출수의 영향."
+    stat: "Coastal Eng. Proc. (ICCE 2018)"
+    image: "assets/img/desal-gulf.jpg"
+    doi: "10.9753/icce.v36.papers.3"
+
+  - name: "South Korea"
+    name_ko: "대한민국"
+    lat: 36.4
+    lon: 127.9
+    year: "2010–12"
+    kind: physics
+    size: 1
+    order: 2
+    title: "Where it started: rain and climate"
+    title_ko: "시작점: 비와 기후"
+    text: "M.E. research at Seoul National University of Science & Technology on rainfall and temperature variability across South Korea."
+    text_ko: "서울과학기술대 석사 연구 — 한반도 강우·기온 변동성 분석."
+    stat: "3 papers · KWRA · KOSHAM"
+    stat_ko: "논문 3편 · 한국수자원학회 · 한국방재학회"
+    doi: "10.3741/JKWRA.2012.45.4.393"
