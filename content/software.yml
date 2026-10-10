@@ -201,6 +201,15 @@ models:
       note: "Same model family as SFINCS: reduced physics for fast, large-area flooding."
       note_ko: "SFINCS와 같은 계열 — 빠른 광역 침수를 위한 축약 물리."
 
+    - name: "ANUGA"
+      group: inundation
+      by: "Geoscience Australia · ANU"
+      tag: "Finite-volume shallow-water model on unstructured triangular meshes"
+      tag_ko: "비정형 삼각형 격자 유한체적 천수 모델"
+      note: "Open-source simulation of floods, tsunamis, storm surges and dam breaks, including wetting and drying; parallel and GPU solvers."
+      note_ko: "홍수·쓰나미·폭풍해일·댐 붕괴를 침수·건조 처리와 함께 계산하는 오픈소스 모델 (병렬·GPU 지원)."
+      code: "https://github.com/anuga-community/anuga_core"
+
     # ================= watershed hydrology
     - name: "HEC-HMS"
       group: hydrology
