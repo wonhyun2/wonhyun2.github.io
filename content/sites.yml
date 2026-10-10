@@ -14,6 +14,9 @@ title_ko: "바다에서 언덕까지"
 intro: "One modeling thread, many waters: where I have built, tested and applied flood and ocean models. Click a ripple — or take the flood tour."
 intro_ko: "하나의 모델링 줄기, 여러 물길. 홍수·해양 모델을 만들고 검증하고 적용해 온 곳들입니다. 물결을 눌러 보거나 'Flood tour'를 시작해 보세요."
 
+# 배경 지도 (API key 필요 없음): satellite(위성, 기본) 또는 dark
+basemap: satellite
+
 views:
   texas: { center: [29.3, -97.4], zoom: 6 }
   gulf:  { center: [27.2, -89.5], zoom: 5 }
