@@ -70,7 +70,7 @@
     'rec.kicker': '수상 및 학술 활동', 'rec.h2': '수상 · 초청강연 · 학술봉사', 'rec.awards': '수상', 'rec.talks': '초청 강연', 'rec.service': '학술 봉사', 'rec.media': '언론 보도', 'rec.toolbox': '도구', 'rec.members': '학회 회원',
     'contact.kicker': '연락처', 'contact.h2': '다음 홍수가 닥치기 전에,<br><em>함께 준비합시다.</em>', 'contact.sub': '학생, 공동연구자, 기관, 언론 관계자 모두 편하게 연락 주세요.',
     'nav.software': '도구 · 데이터', 'nav.teaching': '강의', 'nav.join': '합류',
-    'sites.kicker': '물이 있는 곳', 'sites.tour': '홍수 투어', 'map.stop': '정지', 'map.texas': '텍사스', 'map.gulf': '멕시코만', 'map.world': '세계', 'map.close': '닫기',
+    'sites.kicker': '물이 있는 곳', 'sites.tour': '홍수 투어', 'map.stop': '정지', 'map.texas': '텍사스', 'map.gulf': '멕시코만', 'map.world': '세계', 'map.satellite': '위성', 'map.dark': '다크', 'map.close': '닫기',
     'k.physics': '물리', 'k.probability': '빠른 확률 모의', 'k.ai': 'AI', 'k.people': '사람 · 적응',
     'exp.kicker': '인터랙티브', 'exp.empty': '아직 프레임이 없습니다 — explorer.yml 에 이미지를 추가하세요.', 'st.kicker': '연구 이야기',
     'sw.kicker': '오픈 사이언스', 'sw.site': '홈페이지', 'sw.code': '코드', 'sw.docs': '문서', 'sw.paper': '논문', 'sw.materials': '자료',
@@ -535,10 +535,23 @@
     const startKey = d.start && views[d.start] ? d.start : Object.keys(views)[0];
     const map = L.map(box, { scrollWheelZoom: false, worldCopyJump: true, zoomSnap: 0.25, attributionControl: true })
       .setView(views[startKey].center, views[startKey].zoom);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      subdomains: 'abcd', maxZoom: 18,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'
-    }).addTo(map);
+    // basemaps: no API key needed (Esri World Imagery / Dark Gray). sites.yml → basemap: satellite | dark, or tiles: custom URL
+    const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/';
+    const BASE = {
+      satellite: [L.tileLayer(ESRI + 'World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18, className: 'tiles-sat', attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics' }),
+                  L.tileLayer(ESRI + 'Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18, className: 'tiles-ref', attribution: '' })],
+      dark: [L.tileLayer(ESRI + 'Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, attribution: '&copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors' }),
+             L.tileLayer(ESRI + 'Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, attribution: '' })]
+    };
+    if (d.tiles) BASE.custom = [L.tileLayer(d.tiles, { maxZoom: 18, attribution: d.tiles_attribution || '' })];
+    let baseKey = d.tiles ? 'custom' : (BASE[d.basemap] ? d.basemap : 'satellite');
+    const setBase = k => { Object.values(BASE).flat().forEach(l => map.removeLayer(l)); BASE[k].forEach(l => l.addTo(map)); baseKey = k; box.dataset.base = k; };
+    setBase(baseKey);
+    if (!d.tiles) {
+      const bb = el('div', { class: 'map-base' }, ['satellite', 'dark'].map(k => `<button type="button" data-b="${k}" aria-pressed="${k === baseKey}">${esc(t('map.' + k, k === 'satellite' ? 'Satellite' : 'Dark'))}</button>`).join(''));
+      bb.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; setBase(b.dataset.b); bb.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); });
+      $('.map-ui').append(bb);
+    }
     box.addEventListener('click', () => map.scrollWheelZoom.enable(), { once: true });
 
     // flowing water lines (coast, rivers)
