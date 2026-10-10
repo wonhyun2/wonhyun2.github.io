@@ -633,3 +633,9 @@ html[lang="ko"] .kicker, html[lang="ko"] .eyebrow, html[lang="ko"] .h4, html[lan
 
 .visit-count { font: 500 12px/1 var(--f-mono); color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { .flow-line, .rp.wet i { animation: none; } }
+/* basemap: darken satellite so ripples & flow lines glow */
+.tiles-sat { filter: brightness(.62) saturate(.85) contrast(1.05); }
+.tiles-ref { opacity: .75; }
+.map-base { display: flex; margin-left: auto; background: rgba(7, 13, 24, .78); border: 1px solid rgba(255, 255, 255, .14); border-radius: 999px; padding: 3px; backdrop-filter: blur(6px); }
+.map-base button { font: 600 12px/1 var(--f-body); color: #b6c4d4; background: none; border: 0; padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+.map-base button[aria-pressed="true"] { background: #e6edf4; color: #0b1220; }
