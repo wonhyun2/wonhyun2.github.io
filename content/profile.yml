@@ -88,7 +88,7 @@ appointments:
 
 # 첫 화면 아래 '숫자로 보는 연구' — 직접 고쳐서 최신화하세요
 stats:
-  - value: "12"
+  - value: "14"
     label: "peer-reviewed papers & proceedings"
     label_ko: "심사 논문 및 프로시딩"
   - value: "$2.5M"
