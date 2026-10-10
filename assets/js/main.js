@@ -73,7 +73,7 @@
     'sites.kicker': '물이 있는 곳', 'sites.tour': '홍수 투어', 'map.stop': '정지', 'map.texas': '텍사스', 'map.gulf': '멕시코만', 'map.world': '세계', 'map.satellite': '위성', 'map.dark': '다크', 'map.close': '닫기',
     'k.physics': '물리', 'k.probability': '빠른 확률 모의', 'k.ai': 'AI', 'k.people': '사람 · 적응',
     'exp.kicker': '인터랙티브', 'exp.empty': '아직 프레임이 없습니다 — explorer.yml 에 이미지를 추가하세요.', 'st.kicker': '연구 이야기',
-    'sw.kicker': '오픈 사이언스', 'sw.site': '홈페이지', 'sw.code': '코드', 'sw.docs': '문서', 'sw.paper': '논문', 'sw.materials': '자료',
+    'sw.kicker': '오픈 사이언스', 'sw.hands': '직접 사용', 'sw.txtip': '텍사스 TIFF 인벤토리의 모델 수', 'sw.inland': '내륙', 'sw.coastal': '연안', 'sw.invsrc': '소프트웨어별 모델 수 — 텍사스 통합홍수프레임워크(TIFF) 2025 최종보고서 표 3-4. 막대 길이 ∝ √개수.', 'sw.site': '홈페이지', 'sw.code': '코드', 'sw.docs': '문서', 'sw.paper': '논문', 'sw.materials': '자료',
     'media.play': '영상 재생', 'media.read': '기사 보기', 'preview.tag': '미리보기 — 실제 사이트에서는 숨김 (features.yml)',
     'teach.kicker': '강의', 'teach.courses': '과목', 'teach.exp': '경험', 'teach.new': '신설',
     'join.kicker': '예비 학생', 'join.who': '이런 분을 찾습니다', 'join.projects': '가능한 연구 주제', 'join.culture': '일하는 방식', 'join.email': '이메일 보내기',
@@ -706,10 +706,31 @@
     const btn = (href, label, ic) => href ? `<a class="sw-btn" href="${esc(href)}" target="_blank" rel="noopener">${ic ? icon(ic) : ''}${esc(label)}</a>` : '';
     const mo = d.models || {};
     $('#sw-models-title').textContent = mo.title || '';
-    $('#sw-models').innerHTML = list(mo.items).map(m => `<article class="sw-card reveal">
+    const items = list(mo.items), groups = list(mo.groups);
+    const card = m => `<article class="sw-card" data-g="${esc(m.group || '')}">
         <header><h4>${esc(m.name)}</h4><span class="sw-by">${esc(m.by || '')}</span></header>
-        <p class="sw-tag">${esc(m.tag || '')}</p>${m.use ? `<p class="sw-use">${md(m.use)}</p>` : ''}
-        <div class="sw-links">${btn(m.site, t('sw.site', 'Website'), 'link')}${btn(m.code, t('sw.code', 'Code'), 'github')}${btn(m.docs, t('sw.docs', 'Docs'), 'doc')}${m.doi ? btn(doiUrl(m.doi), 'DOI', '') : ''}</div></article>`).join('');
+        <p class="sw-tag">${esc(m.tag || '')}</p>${m.note ? `<p class="sw-use">${md(m.note)}</p>` : m.use ? `<p class="sw-use">${md(m.use)}</p>` : ''}
+        <div class="sw-links">${btn(m.site, t('sw.site', 'Website'), 'link')}${btn(m.code, t('sw.code', 'Code'), 'github')}${btn(m.docs, t('sw.docs', 'Docs'), 'doc')}${m.doi ? btn(doiUrl(m.doi), 'DOI', '') : ''}${m.paper ? btn(doiUrl(m.paper), t('sw.paper', 'Paper'), 'doc') : ''}</div></article>`;
+    const gridEl = $('#sw-models');
+    // filter chips: All · Hands-on · groups
+    if (groups.length) {
+      const chips = [['all', t('pub.all', 'All'), items.length], ...groups.map(g => [g.key, g.name, items.filter(m => m.group === g.key).length])];
+      const bar = el('div', { class: 'chips sw-chips', role: 'tablist' }, chips.filter(c => c[2]).map(([k, l, n], i) => `<button class="chip" role="tab" data-k="${esc(k)}" aria-selected="${k === 'all'}">${esc(l)}<small>${n}</small></button>`).join(''));
+      gridEl.before(bar);
+      if (mo.note) gridEl.before(el('p', { class: 'sw-note-top' }, md(mo.note) + (mo.source ? ` <a href="${esc(mo.source)}" target="_blank" rel="noopener">TIFF ↗</a>` : '')));
+      const draw = k => { gridEl.innerHTML = items.filter(m => k === 'all' || m.group === k).map(card).join(''); };
+      bar.addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; bar.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-selected', x === b)); draw(b.dataset.k); });
+      draw('all');
+    } else gridEl.innerHTML = items.map(card).join('');
+    // Texas model inventory chart (TIFF)
+    const inv = mo.inventory;
+    if (inv && mo.show_inventory) {
+      const bars = (rows, cls) => { const mx = Math.max(...rows.map(r => r[1])); return rows.map(([n, v]) => `<div class="inv-row ${cls}"><span class="inv-n">${esc(n)}</span><span class="inv-b"><i style="width:${Math.max(2, Math.sqrt(v / mx) * 100).toFixed(1)}%"></i></span><span class="inv-v">${v}</span></div>`).join(''); };
+      const box = el('div', { class: 'sw-inv' }, `<h3 class="sw-h">${esc(inv.title || '')}</h3><p class="sw-inv-insight">${md(inv.insight || '')}</p>
+        <div class="inv-cols"><div><p class="inv-lab">${esc(t('sw.inland', 'Inland'))}</p>${bars(list(inv.inland), 'in')}</div><div><p class="inv-lab">${esc(t('sw.coastal', 'Coastal'))}</p>${bars(list(inv.coastal), 'co')}</div></div>
+        <p class="inv-src">${esc(t('sw.invsrc', 'Number of models by software, Texas Integrated Flooding Framework (TIFF) 2025 Final Report, Table 3-4. Bar length ∝ √count.'))}</p>`);
+      gridEl.after(box);
+    }
     const tr = d.training || {};
     $('#sw-train-title').textContent = tr.title || '';
     $('#sw-train').innerHTML = list(tr.items).map(x => `<li><b>${esc(x.title)}</b><span class="sw-where">${esc(x.where || '')}</span><p>${md(x.text || '')}</p>${x.materials ? btn(x.materials, t('sw.materials', 'Materials'), 'doc') : ''}</li>`).join('');
