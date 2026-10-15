@@ -10,6 +10,10 @@ news:
     tag: talk
     text: "Five presentations at **AGU Fall Meeting 2026** (San Francisco): multi-domain SFINCS across the Gulf, LRGV pluvial flood adaptation, PlanetScope colonias monitoring, LiDAR building-level flash-flood vulnerability in Kerrville and drought and hydrologic variablity in Central Texas Hill County using high-resolution data and ML ."
     text_ko: "**AGU Fall Meeting 2026**(샌프란시스코)에서 5편 발표: 멕시코만 다중 영역 SFINCS, 로어 리오그란데 밸리 내수침수 적응, PlanetScope 콜로니아 모니터링, LiDAR 기반 커빌 건물 단위 돌발홍수 취약성, 고해상도 자료와 머신러닝을 활용한 텍사스 힐 컨트리 중부의 가뭄·수문 변동성."
+  - date: "2026-10"
+    tag: talk
+    text: "A poster presentations at **NIED-SHIELD Joint Workshop**: Transferable Reduced-Complexity Flood Modeling across Diverse U.S. Gulf Coast Environments Using SFINCS. It is about the Gulf-wide coastal flood modeling framework. https://www.jsg.utexas.edu/research/strategic-investment-plan/science-for-hazards-impact-evaluation-and-long-term-adaptation-shield/nied-shield-joint-workshop-building-multi-hazard-resilience-on-a-changing-earth/"
+    text_ko: "**NIED-SHIELD Joint Workshop**에서 포스 발표: SFINCS를 활용한 다양한 미국 멕시코만 연안 환경에 적용 가능한 간소화된 홍수 모델링. 멕시코만 전역에 걸친 해안 홍수 모델링 프레임워크에 관한 내용입니다. https://www.jsg.utexas.edu/research/strategic-investment-plan/science-for-hazards-impact-evaluation-and-long-term-adaptation-shield/nied-shield-joint-workshop-building-multi-hazard-resilience-on-a-changing-earth/"
   - date: "2026-09"
     tag: grant
     text: "**COAST-NISAR** selected by NASA's NISAR Data **$975,000**, Applications, Research & Technology program (Co-PI) — compound-flood assessment from space."
