@@ -53,6 +53,12 @@ papers:
     doi: "10.2139/ssrn.7545121"
   - year: 2026
     type: submitted
+    authors: "Kyne, D., Scanlon B.R., Zhang, Y., Stephens K., Porter, B., Lee, W. and Vega, A."
+    title: "Poverty, Income, and the Geography of Colonias in Texas’s Rio Grande Valley"
+    venue: "Manuscript"
+    details: "under review"
+  - year: 2026
+    type: submitted
     authors: "Souza, P.M.J., Lee, W., Bolser, D.G., Souza, C.M. and Brandl, S.J."
     title: "Acoustic competition amplifies climate-driven loss of fish spawning habitat"
     venue: "Nature Climate Change"
@@ -95,13 +101,7 @@ papers:
     title: "Learning from the oracle: prioritizing Gulf Coast high-tide flood forecasting efforts"
     venue: "Manuscript"
     details: "in preparation"
-  - year: 2026
-    type: submitted
-    authors: "Kyne, D., Scanlon B.R., Zhang, Y., Stephens K., Porter, B., Lee, W. and Vega, A."
-    title: "Poverty, Income, and the Geography of Colonias in Texas’s Rio Grande Valley"
-    venue: "Manuscript"
-    details: "in preparation"
-
+  
   # ---------------- Journal articles
   - year: 2026
     type: journal
