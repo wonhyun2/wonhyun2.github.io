@@ -110,6 +110,18 @@ themes:
       - "FloodAdapt 시나리오: 방수화, 건물 상승, 배수펌프장 — 대책별 피해 저감 효과."
       - "관측 → 모의 → 학습 → 실행: 연안·도시 홍수 회복력을 위한 디지털 트윈 순환."
     tags: ["FloodAdapt", "Delft-FIAT", "Digital twin", "Equity"]
+    # 인터랙티브 앱 (선택): 있으면 이 카드는 넓은 레이아웃이 되고, 앱이 메인, media 그림이 아래 보조 그림이 됩니다.
+    #   src: 앱 주소 (같은 github.io 계정의 다른 저장소 GitHub Pages)   poster: 클릭 전 미리보기 그림
+    interactive:
+      src: "https://wonhyun2.github.io/floodadapt_test_swipemap/"
+      poster: "assets/img/floodadapt-swipe-poster.jpg"
+      title: "Try it: swipe between FloodAdapt scenarios"
+      title_ko: "직접 해보기: 스와이프로 FloodAdapt 시나리오 비교"
+      note: "Hidalgo County, Texas · 11 scenarios. Drag the white handle to compare flood depth and building damage with and without measures; click a row in the table to change the scenario."
+      note_ko: "텍사스 히달고 카운티 · 11개 시나리오. 흰색 손잡이를 끌어 대책 전후의 침수심과 건물 피해를 비교하고, 표의 행을 눌러 시나리오를 바꿔 보세요."
+      size: "about 20 MB"
+      size_ko: "약 20 MB"
+      height: 720
     media:
       type: image
       src: "assets/img/floodadapt-measures.jpg"
