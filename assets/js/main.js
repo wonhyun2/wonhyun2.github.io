@@ -52,6 +52,7 @@
     return 'en';
   })();
   const UI = { ko: {
+    'app.badge': '인터랙티브', 'app.full': '전체 화면으로 열기', 'app.launch': '인터랙티브 지도 열기', 'app.loads': '불러오는 데이터',
     'nav.research': '연구', 'nav.projects': '연구과제', 'nav.pubs': '논문', 'nav.news': '소식', 'nav.team': '구성원', 'nav.gallery': '갤러리', 'nav.contact': '연락처',
     'hero.watch': '연구 소개 영상 보기', 'hero.explore': '연구 둘러보기',
     'about.kicker': '소개', 'about.h2': '홍수는 한 가지 원인으로 오지 않습니다.<br><em>예측도 그래야 합니다.</em>', 'about.appts': '경력', 'about.edu': '학력',
@@ -240,6 +241,7 @@
   }
   function renderResearch(r) {
     if (!r) return;
+    const tr = t;   // the theme loop below shadows t()
     $('#research-intro').innerHTML = md(r.intro || '');
     const box = $('#themes'); box.innerHTML = '';
     list(r.themes).forEach(t => {
@@ -247,6 +249,45 @@
       const art = el('article', { class: 'theme reveal', id: `theme-${t.id || ''}`, style: { '--accent': c } });
       const gal = list(t.gallery);
       const papers = paperLinks(t.papers);
+      const app = t.interactive;
+      if (app && app.src) {
+        art.classList.add('theme--wide');
+        art.innerHTML = `
+        <div class="theme-text">
+          <div>
+            <div class="theme-kicker">${esc(t.kicker || t.pillar)}</div>
+            <h3>${esc(t.title)}</h3>
+            <p>${md(t.summary || '')}</p>
+          </div>
+          <div>
+            <ul>${list(t.bullets).map(b => `<li>${md(b)}</li>`).join('')}</ul>
+            <div class="tags">${list(t.tags).map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+            ${papers ? `<div class="paper-links">${papers}</div>` : ''}
+          </div>
+        </div>
+        <div class="theme-app">
+          <div class="app-head">
+            <span class="app-badge">${esc(tr('app.badge', 'Interactive'))}</span>
+            <h4>${esc(app.title || '')}</h4>
+            <a class="app-full" href="${esc(app.src)}" target="_blank" rel="noopener">${esc(tr('app.full', 'Open full screen'))} ↗</a>
+          </div>
+          <div class="app-frame" style="--app-h:${Number(app.height) || 720}px">
+            <button class="app-poster" type="button" style="background-image:url('${esc(app.poster || '')}')" data-src="${esc(app.src)}" data-title="${esc(app.title || t.title)}">
+              <span class="app-play"><span class="app-tri">▶</span>${esc(tr('app.launch', 'Launch interactive map'))}</span>
+              ${app.size ? `<span class="app-size">${esc(tr('app.loads', 'Loads'))} ${esc(app.size)}</span>` : ''}
+            </button>
+          </div>
+          ${app.note ? `<p class="app-note">${md(app.note)}</p>` : ''}
+        </div>
+        <figure class="theme-media theme-sub">
+          <div class="frame" data-full="${t.media && t.media.type !== 'video' ? esc(t.media.src) : ''}" data-cap="${esc(t.media?.caption || '')}">${mediaHTML(t.media, t.title)}</div>
+          <figcaption>${md(t.media?.caption || '')}
+            ${gal.length ? `<div class="thumbs">${gal.map(g => `<button data-full="${esc(g.src)}" data-cap="${esc(g.caption || '')}" aria-label="Enlarge figure"><img src="${esc(g.src)}" alt="" loading="lazy"></button>`).join('')}</div>` : ''}
+          </figcaption>
+        </figure>`;
+        box.append(art);
+        return;
+      }
       art.innerHTML = `
         <figure class="theme-media">
           <div class="frame" data-full="${t.media && t.media.type !== 'video' ? esc(t.media.src) : ''}" data-cap="${esc(t.media?.caption || '')}">${mediaHTML(t.media, t.title)}</div>
@@ -262,6 +303,23 @@
           ${papers ? `<div class="paper-links">${papers}</div>` : ''}
         </div>`;
       box.append(art);
+    });
+    // interactive apps: load only on click (the FloodAdapt viewer pulls ~20 MB of data)
+    box.addEventListener('click', e => {
+      const b = e.target.closest('.app-poster'); if (!b) return;
+      const fr = el('iframe', { src: b.dataset.src, title: b.dataset.title || 'interactive map', loading: 'eager', allow: 'fullscreen', allowfullscreen: '' });
+      fr.addEventListener('load', () => {
+        // same github.io origin: once the data is in, fit the map to the study area
+        try {
+          const d = fr.contentDocument; let n = 0;
+          const iv = setInterval(() => {
+            const z = d && [...d.querySelectorAll('button')].find(x => /full area/i.test(x.textContent));
+            if (z && d.querySelectorAll('.leaflet-tile-loaded').length) { setTimeout(() => z.click(), 600); clearInterval(iv); }
+            if (++n > 40) clearInterval(iv);
+          }, 500);
+        } catch (_) { /* cross-origin or app changed: leave its own view */ }
+      });
+      b.replaceWith(fr);
     });
     const also = $('#also'); also.innerHTML = '';
     list(r.also).forEach(a => {
