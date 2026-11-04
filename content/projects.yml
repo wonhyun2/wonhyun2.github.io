@@ -21,6 +21,15 @@ projects:
     color: "#a78bfa"
     text: "Satellite radar measurements of vertical land motion feeding AI-driven compound-flood models and a coastal digital twin."
 
+  - title: "AIDatasets:Impact: Closing the Land-Ocean and Gauge-Mesh Seams: An AI-Ready Dataset for Compound Flood Discovery"
+    sponsor: "NSF - U.S. National Science Foundation"
+    role: "Co-PI"
+    amount: "$2,000,000"
+    period: "2027 – 2030"
+    status: pending
+    color: "#38bdf8"
+    text: "SEAM is a project that integrates diverse data sources—such as observations, models, and terrain information—to build AI-ready event datasets and reproducible analysis packages for studying the full evolution of compound floods."
+  
   - title: "Texas Oﬀ shore Legacy and Orphaned Wells: Environmental and Climate-Informed Risk Assessment and Integrated Mapping"
     sponsor: "National Academies (NASEM) Gulf Research Program (GRP)"
     role: "Co-PI"
