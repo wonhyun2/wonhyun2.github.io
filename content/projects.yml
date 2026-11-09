@@ -30,6 +30,15 @@ projects:
     color: "#38bdf8"
     text: "SEAM is a project that integrates diverse data sources—such as observations, models, and terrain information—to build AI-ready event datasets and reproducible analysis packages for studying the full evolution of compound floods."
   
+  - title: "(LOI submitted) Storm-Tested Optimization of Resilient Marshes through Beneficial Use of Dredged Sediment (STORM-BUDS) "
+    sponsor: "NOAA-NOS-NCCOS-2026-32934"
+    role: "Lead-PI"
+    amount: "$1,400,000"
+    period: "2027 – 2030"
+    status: pending
+    color: "#38bdf8"
+    text: "STORM-BUDS will combine field observations and storm simulations to determine how best to place and replenish dredged sediment in the Matagorda coastal system to sustain marshes and reduce flood exposure under storms and rising relative sea levels."
+  
   - title: "Texas Oﬀ shore Legacy and Orphaned Wells: Environmental and Climate-Informed Risk Assessment and Integrated Mapping"
     sponsor: "National Academies (NASEM) Gulf Research Program (GRP)"
     role: "Co-PI"
