@@ -53,12 +53,6 @@ papers:
     doi: "10.2139/ssrn.7545121"
   - year: 2026
     type: submitted
-    authors: "Kyne, D., Scanlon B.R., Zhang, Y., Stephens K., Porter, B., Lee, W. and Vega, A."
-    title: "Track-Level Poverty, Income, and the Documented Needs of Colonias in Texas’s Rio Grande Valley"
-    venue: "Land"
-    details: "in press"
-  - year: 2026
-    type: submitted
     authors: "Souza, P.M.J., Lee, W., Bolser, D.G., Souza, C.M. and Brandl, S.J."
     title: "Acoustic competition amplifies climate-driven loss of fish spawning habitat"
     venue: "Nature Climate Change"
@@ -103,6 +97,13 @@ papers:
     details: "in preparation"
   
   # ---------------- Journal articles
+  - year: 2026
+    type: journal
+    authors: "Kyne, D., Scanlon B.R., Zhang, Y., Stephens K., Porter, B., Lee, W. and Vega, A."
+    title: "Track-Level Poverty, Income, and the Documented Needs of Colonias in Texas’s Rio Grande Valley"
+    venue: "Land"
+    details: "15(11), 2153"
+    doi: "10.3390/land15112153"
   - year: 2026
     type: journal
     authors: "Kyne, D., Scanlon, B.R., Zhang, Y., Stephens, K., Porter, B., Lee, W. and Vega, A."
